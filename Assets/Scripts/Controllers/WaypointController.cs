@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class WaypointController : MonoBehaviour
 {
-    [SerializeField] private WayPoints[] _wayPointsArray;
-    public WayPoints[] WayPointsArray => _wayPointsArray;
-
     #region Singleton
     public static WaypointController Instance;
     private void Awake()
@@ -13,4 +10,7 @@ public class WaypointController : MonoBehaviour
             Instance = this;
     }
     #endregion
+
+    [SerializeField] private WayPoints[] _wayPointsArray;
+    public WayPoints[] WayPointsArray => _wayPointsArray;
 }

@@ -1,8 +1,16 @@
 using UnityEngine;
+
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera = null;
     [SerializeField] private float _dragSpeed = 0.01f;
+
+    private Vector3 _mainCameraStartingPosition = Vector3.zero;
+
+    private void Start()
+    {
+        _mainCameraStartingPosition = _mainCamera.transform.position;
+    }
 
     private void Update()
     {
@@ -15,9 +23,9 @@ public class CameraManager : MonoBehaviour
                 _mainCamera.transform.Translate(-TouchDeltaPosition.x * _dragSpeed, -TouchDeltaPosition.y * _dragSpeed, 0);
 
                 _mainCamera.transform.position = new Vector3(
-                    Mathf.Clamp(_mainCamera.transform.position.x, 5, 65),
-                    Mathf.Clamp(_mainCamera.transform.position.y, 25, 25),
-                    Mathf.Clamp(_mainCamera.transform.position.z, -25, 45));
+                    Mathf.Clamp(_mainCamera.transform.position.x, 25, 55),
+                    Mathf.Clamp(_mainCamera.transform.position.y, _mainCameraStartingPosition.y, _mainCameraStartingPosition.y),
+                    Mathf.Clamp(_mainCamera.transform.position.z, 5, 30));
             }
         }
 
