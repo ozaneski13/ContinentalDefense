@@ -8,12 +8,16 @@ public class Node : MonoBehaviour
     private Color _startColor = Color.white;
 
     [SerializeField] private Vector3 _positionOffset = Vector3.zero;
+    
+    private Transform _turretHolder = null;
 
     private GameObject _currentTurrent = null;
     public GameObject CurrentTurret => _currentTurrent;
 
     private void Start()
     {
+        _turretHolder = TurretHolder.Instance.transform;
+
         _startColor = _renderer.material.color;
     }
 
@@ -21,6 +25,6 @@ public class Node : MonoBehaviour
     {
         GameObject turretToBuild = BuildManager.Instance.GetTurretToBuild;
 
-        _currentTurrent = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation);
+        _currentTurrent = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
     }
 }

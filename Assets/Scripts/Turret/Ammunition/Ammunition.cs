@@ -15,6 +15,13 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private Transform _target = null;
 
+    private Transform _particleHolder = null;
+
+    private void Start()
+    {
+        _particleHolder = ParticleHolder.Instance.transform;
+    }
+
     private void Update()
     {
         if (_target == null)
@@ -42,7 +49,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private void Hit()
     {
-        GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation);
+        GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
         Destroy(particle, 2f);
 
         Destroy(gameObject);
