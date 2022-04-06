@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class TouchManager : MonoBehaviour
     {
         Node node = nodeGO.GetComponent<Node>();
 
-        if (node.CurrentTurret == null)
+        if (node.CurrentTurret == null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         {
             node.CreateNewTurret();
         }

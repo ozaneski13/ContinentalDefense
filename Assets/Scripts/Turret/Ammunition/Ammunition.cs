@@ -27,6 +27,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
         if (_target == null)
         {
             Destroy(gameObject);
+
             return;
         }
 
@@ -36,6 +37,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
         if (direction.magnitude <= deltaDistance)
         {
             Hit();
+
             return;
         }
 

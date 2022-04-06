@@ -11,13 +11,20 @@ public class BuildManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private GameObject _standartTurretPrefab = null;
+    public GameObject StandartTurretPrefab => _standartTurretPrefab;
+
+    /*[SerializeField] private GameObject _missileLauncherPrefab = null;
+    public GameObject MissileLauncherPrefab => _missileLauncherPrefab;
+
+    [SerializeField] private GameObject _laserBeamPrefab = null;
+    public GameObject LaserBeamPrefab => _laserBeamPrefab;*/
+
     private GameObject _turretToBuild = null;
     public GameObject GetTurretToBuild => _turretToBuild;
 
-    [SerializeField] private GameObject _standartTurretPrefab = null;
-
-    private void Start()
+    public void SetTurretToBuild(GameObject turretToBuild)
     {
-        _turretToBuild = _standartTurretPrefab;
+        _turretToBuild = turretToBuild;
     }
 }

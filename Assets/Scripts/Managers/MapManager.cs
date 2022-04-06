@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System;
 using UnityEditor.AI;
 
@@ -70,4 +70,4 @@ public class MapManager : MonoBehaviour
         //ADD START TO startingPointX, startingPointY
         //ADD END TO endingPointX, endingPointY
     }
-}
+}*/
