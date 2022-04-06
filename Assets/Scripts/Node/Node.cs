@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Node : MonoBehaviour
@@ -5,14 +6,16 @@ public class Node : MonoBehaviour
     [SerializeField] private Renderer _renderer = null;
     [SerializeField] private Color _nodeOccupiedColor = Color.red;
 
+    [SerializeField] private float _nodeOccupiedTimer = 0.5f;
+
     private Color _startColor = Color.white;
 
     [SerializeField] private Vector3 _positionOffset = Vector3.zero;
     
     private Transform _turretHolder = null;
 
-    private GameObject _currentTurrent = null;
-    public GameObject CurrentTurret => _currentTurrent;
+    private GameObject _currentTurret = null;
+    public GameObject CurrentTurret => _currentTurret;
 
     private void Start()
     {
@@ -28,6 +31,20 @@ public class Node : MonoBehaviour
         if (turretToBuild == null)
             return;
 
-        _currentTurrent = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
+        _currentTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
+    }
+
+    public void NodeOccupied()
+    {
+        StartCoroutine(OccupiedRoutine());
+    }
+
+    private IEnumerator OccupiedRoutine()
+    {
+        _renderer.material.color = _nodeOccupiedColor;
+
+        yield return new WaitForSeconds(_nodeOccupiedTimer);
+
+        _renderer.material.color = _startColor;
     }
 }
