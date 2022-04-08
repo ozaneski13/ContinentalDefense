@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 361133351125335240}
   - component: {fileID: 2497209094670453898}
   - component: {fileID: 6251784487096859709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710611b7eaab5ff419b129016d11be24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthPoint: 100
+  _speed: 10
+  _defaultWay: 0
 --- !u!114 &6251784487096859709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,5 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f37102f854776d4092da6d64dcfcfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _defaultWay: 0
+  _enemy: {fileID: 2497209094670453898}

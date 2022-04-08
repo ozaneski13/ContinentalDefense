@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10f;
-    [SerializeField] private int _defaultWay = 0;
+    [SerializeField] private Enemy _enemy = null;
 
     private WaypointController _wayPointController = null;
 
     private Transform _target = null;
     private int _wayPointIndex = 0;
+    private int _defaultWay = 0;
 
+    private float _speed = 0f;
+   
     private bool _targetSet = false;
 
     private void Start()
     {
         _wayPointController = WaypointController.Instance;
+
+        _speed = _enemy.Speed;
+        _defaultWay = _enemy.DefaultWay;
 
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
         _targetSet = true;

@@ -3,21 +3,19 @@ using UnityEngine;
 
 public class Turret_Attack : MonoBehaviour
 {
-    [Header("Rotation")]
-    [SerializeField] private Transform _partToRotate = null;
-
-    [SerializeField] private float _range = 15f;
-    [SerializeField] private float _rotationSpeed = 10f;
-    [SerializeField] private float _timeToCheckTarget = 0.5f;
-
-    [Header("Fire")]
     [SerializeField] private Turret _turret = null;
 
+    [Header("Rotation")]
+    [SerializeField] private Transform _partToRotate = null;
+    
+    private float _range = 0f;
+    private float _rotationSpeed = 0f;
+    private float _timeToCheckTarget = 0f;
+
+    [Header("Fire")]
     [SerializeField] private Transform _firePoint = null;
-
     [SerializeField] private GameObject _bulletPrefab = null;
-
-    [SerializeField] private float _fireRate = 1f;
+    private float _fireRate = 0f;
 
     private Transform _target = null;
 
@@ -27,6 +25,11 @@ public class Turret_Attack : MonoBehaviour
 
     private void Start()
     {
+        _range = _turret.Range;
+        _rotationSpeed = _turret.RotationSpeed;
+        _timeToCheckTarget = _turret.TimeToCheckTarget;
+        _fireRate = _turret.FireRate;
+
         _updateTargetRoutine = UpdateTargetRoutine();
         StartCoroutine(_updateTargetRoutine);
     }
@@ -110,11 +113,5 @@ public class Turret_Attack : MonoBehaviour
     {
         GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
         bullet.GetComponent<Ammunition>().SetTarget(_target);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _range);
     }
 }

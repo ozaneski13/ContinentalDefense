@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int _healthPoint;
+    public int HealthPoint => _healthPoint;
+
+    [SerializeField] private float _speed;
+    public float Speed => _speed;
+
+
+    [SerializeField] private int _defaultWay;
+    public int DefaultWay => _defaultWay;
+
+    private int _currentHealthPoint;
+
+    private void Start()
     {
-        
+        _currentHealthPoint = _healthPoint;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetHit(int damage)
     {
-        
+        if (_currentHealthPoint > damage)
+            _currentHealthPoint -= damage;
+
+        else
+            Destroy(gameObject);
     }
 }

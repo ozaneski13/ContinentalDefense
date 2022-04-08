@@ -11,8 +11,12 @@ public class Ammunition : MonoBehaviour, IAmmunition
     [SerializeField] private float _slowRate;
     public float SlowRate => _slowRate;
 
+    [SerializeField] private float _explosionRadius;
+    public float ExplosionRadius => _explosionRadius;
+
     [SerializeField] private GameObject _bulletImpactParticle = null;
 
+    [SerializeField] private LayerMask _targetsLayer;
     private Transform _target = null;
 
     private Transform _particleHolder = null;
@@ -42,6 +46,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
         }
 
         transform.Translate(direction.normalized * deltaDistance, Space.World);
+        transform.LookAt(_target);
     }
 
     public void SetTarget(Transform target)
@@ -52,8 +57,31 @@ public class Ammunition : MonoBehaviour, IAmmunition
     private void Hit()
     {
         GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
-        Destroy(particle, 2f);
+        Destroy(particle, 5f);
+
+        if (_explosionRadius > 0)
+        {
+            Explode();
+        }
+
+        else
+        {
+            DamageEnemy(_target.gameObject);
+        }
 
         Destroy(gameObject);
+    }
+
+    private void Explode()
+    {
+        Collider[] hitArray = Physics.OverlapSphere(transform.position, _explosionRadius, _targetsLayer);
+
+        foreach (Collider collider in hitArray)
+            DamageEnemy(collider.gameObject);
+    }
+
+    private void DamageEnemy(GameObject enemy)
+    {
+        enemy.GetComponent<Enemy>().GetHit(_damage);
     }
 }

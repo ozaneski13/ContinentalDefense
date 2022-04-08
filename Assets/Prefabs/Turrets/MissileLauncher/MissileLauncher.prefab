@@ -48,7 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buyPrice: 100
   _upgradePrice: 200
+  _range: 30
   _damage: 50
+  _rotationSpeed: 10
+  _fireRate: 0.5
+  _timeToCheckTarget: 0.5
   _upgradable: 1
 --- !u!114 &1298765659694309039
 MonoBehaviour:
@@ -62,14 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbc2cb67133dc648ad94438b259e6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 7505700611245993185}
-  _range: 30
-  _rotationSpeed: 10
-  _timeToCheckTarget: 0.5
   _turret: {fileID: 1298765659694309038}
+  _partToRotate: {fileID: 7505700611245993185}
   _firePoint: {fileID: 3085569297099900589}
-  _bulletPrefab: {fileID: 1553536428965044812, guid: 3a0700ff920e5fe41914b0895849a9d9, type: 3}
-  _fireRate: 0.2
+  _bulletPrefab: {fileID: 6223607429571335158, guid: 6d3fcd74a547b444f97278a0822f8e9d, type: 3}
 --- !u!1 &1437679236210327943
 GameObject:
   m_ObjectHideFlags: 0
