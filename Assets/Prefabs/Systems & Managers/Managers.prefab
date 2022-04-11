@@ -31,6 +31,7 @@ Transform:
   - {fileID: 1853978907507092555}
   - {fileID: 1853978908116950092}
   - {fileID: 7343982914878127148}
+  - {fileID: 7709458295072578578}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,8 +236,52 @@ MonoBehaviour:
   _maxWaveNumber: 100
   _defaultWay: 0
   _countdown: 2
-  _timeBetweenWaves: 3
+  _timeBetweenWaves: 20
   _timeBetweenEachSpawn: 0.5
+--- !u!1 &4945394696832284009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7709458295072578578}
+  - component: {fileID: 6379014594694286141}
+  m_Layer: 0
+  m_Name: PlayerStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7709458295072578578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945394696832284009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1853978906788850939}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6379014594694286141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945394696832284009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413acc20bfee17b4db93c303d22a6f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startMoney: 400
 --- !u!1 &5905710478631932676
 GameObject:
   m_ObjectHideFlags: 0

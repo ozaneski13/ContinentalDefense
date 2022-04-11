@@ -129,10 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b54e0c29e788147985491afb406eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buyPrice: 50
-  _upgradePrice: 0
+  _cost: 0
+  _upgradePrice: 150
   _range: 20
-  _damage: 20
   _rotationSpeed: 10
   _fireRate: 1.5
   _timeToCheckTarget: 0.5

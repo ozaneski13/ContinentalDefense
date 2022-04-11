@@ -38,9 +38,8 @@ public class WaveSpawner : MonoBehaviour
             _isAllWavesSpawned = true;
 
             _countdown = 0;
-
-            if (_countdownText != null)
-                _countdownText.text = _countdown.ToString();
+            
+            _countdownText.text = _countdown.ToString();
 
             StopAllCoroutines();
 
@@ -51,8 +50,9 @@ public class WaveSpawner : MonoBehaviour
 
         _countdown -= Time.deltaTime;
 
-        if (_countdownText != null)
-            _countdownText.text = Mathf.Round(_countdown).ToString();
+        _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
+
+        _countdownText.text = string.Format("{0:00.00}", _countdown);//Mathf.Round(_countdown).ToString();
     }
 
     private void OnDestroy()
