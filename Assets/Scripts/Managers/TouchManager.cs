@@ -28,12 +28,15 @@ public class TouchManager : MonoBehaviour
     {
         Node node = nodeGO.GetComponent<Node>();
 
+        if (node == null)
+            return;
+
         if (node.CurrentTurret == null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         {
             node.CreateNewTurret();
         }
 
-        else if(node.CurrentTurret != null)// && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        else if(node.CurrentTurret != null)
         {
             Turret turret = node.CurrentTurret.GetComponent<Turret>();
 
