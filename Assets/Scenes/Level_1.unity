@@ -4272,6 +4272,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1296943782536997586, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+      propertyPath: m_Name
+      value: OverlayCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296943782695678068, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+      propertyPath: m_Name
+      value: BottomCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 1296943782804476321, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
       propertyPath: m_Name
       value: UI
@@ -4422,10 +4430,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
-      propertyPath: _countdown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _enemyParent
       value: 
       objectReference: {fileID: 1555156144}
@@ -4433,10 +4437,6 @@ PrefabInstance:
       propertyPath: _countdownText
       value: 
       objectReference: {fileID: 1718289067}
-    - target: {fileID: 6379014594694286141, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
-      propertyPath: _startMoney
-      value: 400
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
 --- !u!1001 &3308176425995606260

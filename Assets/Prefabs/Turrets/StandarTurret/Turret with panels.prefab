@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cost: 0
-  _upgradePrice: 150
+  _upgradePrice: -150
   _range: 20
   _rotationSpeed: 10
   _fireRate: 1.5

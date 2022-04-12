@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private int _health = 100;
+    public int Health => _health;
+
     [SerializeField] private int _startMoney = 0;
 
     private int _money = 0;
@@ -21,10 +24,23 @@ public class PlayerStats : MonoBehaviour
 
     public Action MoneyCountChanged;
 
+    public Action HealthCountChanged;
+    public Action NoHealthRemain;
+
     public void MoneyChanged(int value)
     {
         _money += value;
 
         MoneyCountChanged?.Invoke();
+    }
+
+    public void HealthChanged(int value)
+    {
+        _health -= value;
+
+        HealthCountChanged?.Invoke();
+
+        if (_health == 0)
+            NoHealthRemain?.Invoke();
     }
 }

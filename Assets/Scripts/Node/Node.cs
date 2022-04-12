@@ -43,7 +43,7 @@ public class Node : MonoBehaviour
         GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity);
         Destroy(particle, 5f);
 
-        _playerStats.MoneyChanged(-turret.Cost);
+        _playerStats.MoneyChanged(turret.Cost);
         _currentTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
     }
 

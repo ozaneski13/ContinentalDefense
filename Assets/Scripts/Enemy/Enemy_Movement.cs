@@ -4,6 +4,8 @@ public class Enemy_Movement : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy = null;
 
+    private PlayerStats _playerStats = null;
+
     private WaypointController _wayPointController = null;
 
     private Transform _target = null;
@@ -16,6 +18,7 @@ public class Enemy_Movement : MonoBehaviour
 
     private void Start()
     {
+        _playerStats = PlayerStats.Instance;
         _wayPointController = WaypointController.Instance;
 
         _speed = _enemy.Speed;
@@ -41,6 +44,8 @@ public class Enemy_Movement : MonoBehaviour
         if (_wayPointIndex >= _wayPointController.WayPointsArray[_defaultWay].WayPointsList.Count - 1)
         {
             Destroy(gameObject);
+            _playerStats.HealthChanged(_enemy.Damage);
+
             return;
         }
 
