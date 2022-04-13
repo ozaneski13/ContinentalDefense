@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _dragSpeed: 0.01
+  _dragSpeed: 0.02
 --- !u!1 &1853978907404602990
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,10 +235,10 @@ MonoBehaviour:
   _spawnPoint: {fileID: 1853978907404602989}
   _countdownText: {fileID: 0}
   _maxWaveNumber: 100
-  _defaultWay: 0
   _countdown: 5
   _timeBetweenWaves: 20
   _timeBetweenEachSpawn: 0.5
+  _defaultWay: 0
 --- !u!1 &2749537474523023068
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3091749982393138146}
+  - component: {fileID: 7667009471165617349}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -269,6 +270,18 @@ Transform:
   m_Father: {fileID: 1853978906788850939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7667009471165617349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749537474523023068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cb7bb67adf7684f96e103d76ad8e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4945394696832284009
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,3 +372,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _standartTurretPrefab: {fileID: 3799522555678594570, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
   _missileLauncherPrefab: {fileID: 1298765659694309008, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
+  _laserBeamPrefab: {fileID: 2263929717871754503, guid: dc868e13826602f4fb930c85a06acf59, type: 3}

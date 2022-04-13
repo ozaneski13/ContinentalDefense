@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823382598785582122}
-  - component: {fileID: 1298765659694309038}
-  - component: {fileID: 1298765659694309039}
+  - component: {fileID: -4190950338126009654}
+  - component: {fileID: 4329768136007290519}
   m_Layer: 0
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1298765659694309038
+--- !u!114 &-4190950338126009654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,17 +43,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298765659694309008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b54e0c29e788147985491afb406eef, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cc5461dc325b6642b2fa34245cadd32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turretType: 1
   _cost: -100
   _upgradePrice: -200
   _range: 30
   _rotationSpeed: 10
-  _fireRate: 0.5
   _timeToCheckTarget: 0.5
   _upgradable: 1
---- !u!114 &1298765659694309039
+  _fireRate: 0.5
+--- !u!114 &4329768136007290519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,10 +63,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298765659694309008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bbc2cb67133dc648ad94438b259e6f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 200a5b9a2d7353f4f90d532572f71d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turret: {fileID: 1298765659694309038}
+  _turret: {fileID: -4190950338126009654}
   _partToRotate: {fileID: 7505700611245993185}
   _firePoint: {fileID: 3085569297099900589}
   _bulletPrefab: {fileID: 6223607429571335158, guid: 6d3fcd74a547b444f97278a0822f8e9d, type: 3}
@@ -204,7 +205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3234061219084189581}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7.9547215, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -212,7 +213,7 @@ Transform:
   - {fileID: 3085569297099900589}
   m_Father: {fileID: 1823382598785582122}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5931788835577391185
 GameObject:
   m_ObjectHideFlags: 0

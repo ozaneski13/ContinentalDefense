@@ -3,20 +3,22 @@ using UnityEngine.UI;
 
 public class CostUI : MonoBehaviour
 {
-    [SerializeField] private Turret _StandartTurret = null;
+    [Header("Turret Prefabs")]
+    [SerializeField] private Turret _standartTurret = null;
     [SerializeField] private Turret _missileLauncher = null;
-    //[SerializeField] private Turret _laserBeam = null;
+    [SerializeField] private Turret _laserBeamer = null;
 
+    [Header("Cost Texts")]
     [SerializeField] private Text _standartTurretText = null;
     [SerializeField] private Text _missileLauncherText = null;
-    //[SerializeField] private Text _laserBeamText = null;
+    [SerializeField] private Text _laserBeamText = null;
 
     private void Awake()
     {
-        _standartTurretText.text = "$" + _StandartTurret.Cost;
+        _standartTurretText.text = "$" + Mathf.Abs(_standartTurret.Cost);
 
-        _missileLauncherText.text = "$" + _missileLauncher.Cost;
+        _missileLauncherText.text = "$" + Mathf.Abs(_missileLauncher.Cost);
 
-        //_laserBeamText.text = "$" + _laserBeam.Cost;
+        _laserBeamText.text = "$" + Mathf.Abs(_laserBeamer.Cost);
     }
 }

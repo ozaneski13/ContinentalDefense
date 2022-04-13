@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] private Camera _mainCamera = null;
     [SerializeField] private float _dragSpeed = 0.01f;
 

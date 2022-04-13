@@ -1,37 +1,19 @@
-using System.Collections;
 using UnityEngine;
 
-public class Turret_Attack : MonoBehaviour
+public class Turret_Attack : Turret_Control
 {
-    [SerializeField] private Turret _turret = null;
-
-    [Header("Rotation")]
-    [SerializeField] private Transform _partToRotate = null;
-    
-    private float _range = 0f;
-    private float _rotationSpeed = 0f;
-    private float _timeToCheckTarget = 0f;
-
-    [Header("Fire")]
-    [SerializeField] private Transform _firePoint = null;
+    [Header("Fire Bullet")]
     [SerializeField] private GameObject _bulletPrefab = null;
+
+    private AttackerTurret _attackerTurret = null;
+
     private float _fireRate = 0f;
-
-    private Transform _target = null;
-
-    private IEnumerator _updateTargetRoutine = null;
-
-    private float _fireCountdown = 0f;
 
     private void Start()
     {
-        _range = _turret.Range;
-        _rotationSpeed = _turret.RotationSpeed;
-        _timeToCheckTarget = _turret.TimeToCheckTarget;
-        _fireRate = _turret.FireRate;
+        _attackerTurret = _turret as AttackerTurret;
 
-        _updateTargetRoutine = UpdateTargetRoutine();
-        StartCoroutine(_updateTargetRoutine);
+        _fireRate = _attackerTurret.FireRate;
     }
 
     private void Update()
@@ -44,69 +26,15 @@ public class Turret_Attack : MonoBehaviour
         }
 
         RotateToEnemy();
-
+        
         if (_fireCountdown <= 0f)
         {
             FireBullet();
+            
             _fireCountdown = 1f / _fireRate;
         }
-
+        
         _fireCountdown -= Time.deltaTime;
-    }
-
-    private void OnDestroy()
-    {
-        StopCoroutine(_updateTargetRoutine);
-    }
-
-    private IEnumerator UpdateTargetRoutine()
-    {
-        GameObject[] enemies = null;
-        GameObject nearestEnemy = null;
-
-        while (true)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            nearestEnemy = null;
-
-            float shortestDistance = Mathf.Infinity;
-
-            foreach (GameObject enemy in enemies)
-            {
-                float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-
-                if (distanceToEnemy < shortestDistance)
-                {
-                    shortestDistance = distanceToEnemy;
-                    nearestEnemy = enemy;
-                }
-            }
-
-            if (nearestEnemy != null && shortestDistance <= _range)
-                _target = nearestEnemy.transform;
-            else
-                _target = null;
-
-            yield return new WaitForSeconds(_timeToCheckTarget);
-        }
-    }
-
-    private void RotateToEnemy()
-    {
-        Vector3 direction = _target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed).eulerAngles;
-
-        _partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-    }
-
-    private void TurnToStartingRotation()
-    {
-        Vector3 startDirection = new Vector3(0f, 90f, 0f);
-        Quaternion startLookRotation = Quaternion.LookRotation(startDirection);
-        Vector3 startRotation = Quaternion.Lerp(_partToRotate.rotation, startLookRotation, Time.deltaTime * (_rotationSpeed)).eulerAngles;
-
-        _partToRotate.rotation = Quaternion.Euler(0f, startRotation.y, 0f);
     }
 
     private void FireBullet()

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] private Enemy _enemy = null;
 
     private PlayerStats _playerStats = null;
@@ -9,6 +10,7 @@ public class Enemy_Movement : MonoBehaviour
     private WaypointController _wayPointController = null;
 
     private Transform _target = null;
+
     private int _wayPointIndex = 0;
     private int _defaultWay = 0;
 

@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     }
     #endregion
 
+    [Header("Stats")]
     [SerializeField] private int _health = 100;
     public int Health => _health;
 

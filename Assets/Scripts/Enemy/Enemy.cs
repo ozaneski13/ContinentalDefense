@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
+    [Header("Stats")]
     [SerializeField] private int _healthPoint;
     public int HealthPoint => _healthPoint;
 
@@ -14,9 +15,11 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private int _damage;
     public int Damage => _damage;
 
+    [Header("Route")]
     [SerializeField] private int _defaultWay;
     public int DefaultWay => _defaultWay;
 
+    [Header("Effects")]
     [SerializeField] private GameObject _enemyDeathEffect = null;
 
     private PlayerStats _playerStats = null;
@@ -44,5 +47,10 @@ public class Enemy : MonoBehaviour, IEnemy
             Destroy(deathEffect, 5f);
             Destroy(gameObject);
         }
+    }
+
+    public void GetSlowed()
+    {
+
     }
 }

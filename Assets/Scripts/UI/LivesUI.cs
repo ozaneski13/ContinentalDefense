@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class LivesUI : MonoBehaviour
 {
+    [Header("Lives Text")]
     [SerializeField] private Text _livesText = null;
 
     private PlayerStats _playerStats = null;

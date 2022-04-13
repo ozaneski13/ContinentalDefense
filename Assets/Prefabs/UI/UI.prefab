@@ -167,11 +167,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 39fd620d4559da744a58b96cbf04a1ca, type: 3}
-    m_FontSize: 24
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -322,11 +322,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 39fd620d4559da744a58b96cbf04a1ca, type: 3}
-    m_FontSize: 24
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -923,10 +923,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae3233ca3781b0469bb0c092c7c54e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StandartTurret: {fileID: 1742269527372584459, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
-  _missileLauncher: {fileID: 1298765659694309038, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
+  _standartTurret: {fileID: 8903009462950441062, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
+  _missileLauncher: {fileID: -4190950338126009654, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
+  _laserBeamer: {fileID: 4849587188722384730, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
   _standartTurretText: {fileID: 1296943781952718474}
   _missileLauncherText: {fileID: 1296943782232788605}
+  _laserBeamText: {fileID: 1296943783870228668}
 --- !u!1 &1296943782695678068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,8 +1174,8 @@ RectTransform:
   m_Father: {fileID: 1296943782568330436}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1588,11 +1590,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 39fd620d4559da744a58b96cbf04a1ca, type: 3}
-    m_FontSize: 24
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

@@ -1,6 +1,10 @@
 using UnityEngine;
 public class Turret : MonoBehaviour, ITurret
 {
+    [Header("Stats")]
+    [SerializeField] private ETurret _turretType;
+    public ETurret TurretType => _turretType;
+
     [SerializeField] private int _cost;
     public int Cost => _cost;
 
@@ -10,13 +14,10 @@ public class Turret : MonoBehaviour, ITurret
     [SerializeField] private float _range;
     public float Range => _range;
 
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _rotationSpeed = 10f;
     public float RotationSpeed => _rotationSpeed;
 
-    [SerializeField] private float _fireRate;
-    public float FireRate => _fireRate;
-
-    [SerializeField] private float _timeToCheckTarget;
+    [SerializeField] private float _timeToCheckTarget = 0.5f;
     public float TimeToCheckTarget => _timeToCheckTarget;
 
     [SerializeField] private bool _upgradable = false;

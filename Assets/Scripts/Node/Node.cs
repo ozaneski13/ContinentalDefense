@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
+    [Header("Effects")]
     [SerializeField] private GameObject _builtParticle = null;
 
+    [Header("Node")]
     [SerializeField] private Renderer _renderer = null;
     [SerializeField] private Color _nodeOccupiedColor = Color.red;
     [SerializeField] private float _nodeOccupiedTimer = 0.5f;
 
     private Color _startColor = Color.white;
 
+    [Header("Positioning")]
     [SerializeField] private Vector3 _positionOffset = Vector3.zero;
     
     private Transform _turretHolder = null;

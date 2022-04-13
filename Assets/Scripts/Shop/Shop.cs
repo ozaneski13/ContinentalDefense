@@ -4,8 +4,6 @@ public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager = null;
 
-    //private int _money = 0;
-
     private void Start()
     {
         _buildManager = BuildManager.Instance;
@@ -23,11 +21,6 @@ public class Shop : MonoBehaviour
 
     public void PurchaseLaserBeam()
     {
-        //_buildManager.SetTurretToBuild(_buildManager.LaserBeamPrefab);
-    }
-
-    public void GainMoney(int gain)
-    {
-        //_money += gain;
+        _buildManager.SetTurretToBuild(_buildManager.LaserBeamPrefab);
     }
 }

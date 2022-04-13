@@ -2,21 +2,22 @@ using UnityEngine;
 
 public class Ammunition : MonoBehaviour, IAmmunition
 {
+    [Header("Stats")]
     [SerializeField] private int _damage;
     public int Damage => _damage;
 
     [SerializeField] private float _speed;
     public float Speed => _speed;
 
-    [SerializeField] private float _slowRate;
-    public float SlowRate => _slowRate;
-
     [SerializeField] private float _explosionRadius;
     public float ExplosionRadius => _explosionRadius;
 
+    [Header("Effects")]
     [SerializeField] private GameObject _bulletImpactParticle = null;
 
+    [Header("Layers")]
     [SerializeField] private LayerMask _targetsLayer;
+
     private Transform _target = null;
 
     private Transform _particleHolder = null;

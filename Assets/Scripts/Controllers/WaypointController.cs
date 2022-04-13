@@ -11,6 +11,7 @@ public class WaypointController : MonoBehaviour
     }
     #endregion
 
+    [Header("Way Points")]
     [SerializeField] private WayPoints[] _wayPointsArray;
     public WayPoints[] WayPointsArray => _wayPointsArray;
 }

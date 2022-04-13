@@ -5,19 +5,24 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    [Header("Prefab Options")]
     [SerializeField] private GameObject _enemyPrefab = null;
+
     [SerializeField] private Transform _enemyParent = null;
     [SerializeField] private Transform _spawnPoint = null;
 
+    [Header("UI")]
     [SerializeField] private Text _countdownText = null;
 
+    [Header("Wave Options")]
     [SerializeField] private int _maxWaveNumber = 100;
-
-    [SerializeField] private int _defaultWay = 0;
 
     [SerializeField] private float _countdown = 2f;
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
+
+    [Header("Route")]
+    [SerializeField] private int _defaultWay = 0;
 
     private int _waveNumber = 1;
 

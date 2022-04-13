@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MoneyUI : MonoBehaviour
-{    
+{
+    [Header("Money Text")]
     [SerializeField] private Text _moneyText = null;
 
     private PlayerStats _playerStats = null;

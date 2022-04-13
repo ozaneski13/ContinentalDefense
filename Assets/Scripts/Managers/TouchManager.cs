@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] private Camera _mainCamera = null;
 
     private bool _sellClicked = false;
