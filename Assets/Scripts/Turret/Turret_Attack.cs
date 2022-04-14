@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Turret))]
 public class Turret_Attack : Turret_Control
 {
     [Header("Fire Bullet")]

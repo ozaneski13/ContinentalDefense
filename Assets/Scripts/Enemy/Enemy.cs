@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy_Movement))]
 public class Enemy : MonoBehaviour, IEnemy
 {
     [Header("Stats")]

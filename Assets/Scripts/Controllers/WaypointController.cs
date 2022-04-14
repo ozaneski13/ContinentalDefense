@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(WayPoints))]
 public class WaypointController : MonoBehaviour
 {
     #region Singleton

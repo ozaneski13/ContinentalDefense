@@ -192,7 +192,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 1
-  _slowRate: 0
+  _slowRate: 0.3
 --- !u!114 &1085336171304907445
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class Enemy_Movement : MonoBehaviour
 {
     [Header("Enemy")]
@@ -14,7 +15,8 @@ public class Enemy_Movement : MonoBehaviour
     private int _wayPointIndex = 0;
     private int _defaultWay = 0;
 
-    private float _speed = 0f;
+    private float _defaultSpeed = 0f;
+    private float _currentSpeed = 0f;
    
     private bool _targetSet = false;
 
@@ -23,7 +25,8 @@ public class Enemy_Movement : MonoBehaviour
         _playerStats = PlayerStats.Instance;
         _wayPointController = WaypointController.Instance;
 
-        _speed = _enemy.Speed;
+        _defaultSpeed = _enemy.Speed;
+        _currentSpeed = _defaultSpeed;
         _defaultWay = _enemy.DefaultWay;
 
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
@@ -33,12 +36,10 @@ public class Enemy_Movement : MonoBehaviour
     private void Update()
     {
         Vector3 direction = _target.position - transform.position;
-        transform.Translate(direction.normalized * _speed * Time.deltaTime, Space.World);
+        transform.Translate(direction.normalized * _currentSpeed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, _target.position) <= 0.2f)
-        {
             GetNextWayPoint();
-        }
     }
 
     private void GetNextWayPoint()
@@ -61,10 +62,21 @@ public class Enemy_Movement : MonoBehaviour
 
         if (!_targetSet)
             return;
+
         else
         {
             _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
             _targetSet = true;
         }
+    }
+
+    public void GetSlowed(float slowRate)
+    {
+        _currentSpeed = _currentSpeed * (1f - slowRate);
+    }
+
+    public void SlowStoped()
+    {
+        _currentSpeed = _defaultSpeed;
     }
 }

@@ -236,7 +236,7 @@ MonoBehaviour:
   _countdownText: {fileID: 0}
   _maxWaveNumber: 100
   _countdown: 5
-  _timeBetweenWaves: 20
+  _timeBetweenWaves: 5
   _timeBetweenEachSpawn: 0.5
   _defaultWay: 0
 --- !u!1 &2749537474523023068

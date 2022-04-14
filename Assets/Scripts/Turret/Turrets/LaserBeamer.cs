@@ -1,7 +1,4 @@
-using UnityEngine;
-
-public class LaserBeamer : Turret
+public class LaserBeamer : SlowerTurret
 {
-    [SerializeField] private float _slowRate;
-    public float SlowRate => _slowRate;
+    
 }

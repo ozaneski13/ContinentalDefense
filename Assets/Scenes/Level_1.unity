@@ -4634,8 +4634,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1718289067}
     - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
-      propertyPath: _timeBetweenWaves
-      value: 5
+      propertyPath: _maxWaveNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
@@ -4931,7 +4931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2263929717871754503, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2354409367640584465, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
       propertyPath: m_Name

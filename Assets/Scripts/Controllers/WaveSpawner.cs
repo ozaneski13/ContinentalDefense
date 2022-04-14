@@ -57,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
 
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
 
-        _countdownText.text = string.Format("{0:00.0}", _countdown);//Mathf.Round(_countdown).ToString();
+        _countdownText.text = string.Format("{0:00.0}", _countdown);
     }
 
     private void OnDestroy()
