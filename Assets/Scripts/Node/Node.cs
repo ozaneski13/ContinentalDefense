@@ -35,6 +35,10 @@ public class Node : MonoBehaviour
     public void CreateNewTurret()
     {
         GameObject turretToBuild = BuildManager.Instance.GetTurretToBuild;
+
+        if (turretToBuild == null)
+            return;
+
         Turret turret = turretToBuild.GetComponent<Turret>();
 
         if (turretToBuild == null || _playerStats.Money < turret.Cost)

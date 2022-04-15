@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1118300747550446243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5874068557384857488}
+  - component: {fileID: 728692250303715373}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5874068557384857488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118300747550446243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1853978908098080923}
+  m_Father: {fileID: 1853978908116950092}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728692250303715373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118300747550446243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e189bb03499551a439dc732dcd77df12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
+  _spawnPoint: {fileID: 1853978907404602989}
+  _countdownText: {fileID: 0}
+  _maxWaveNumber: 100
+  _countdown: 5
+  _timeBetweenWaves: 5
+  _timeBetweenEachSpawn: 0.5
+  _startsLate: 0
+  _lateStartTimer: 0
+  _defaultWay: 0
 --- !u!1 &1853978906788850940
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,12 +232,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853978908098080924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1853978907404602989}
-  m_Father: {fileID: 1853978908116950092}
+  m_Father: {fileID: 5874068557384857488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853978908116950093
@@ -195,7 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1853978908116950092}
-  - component: {fileID: 1853978908116950091}
+  - component: {fileID: 1231210308013263554}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -214,11 +268,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1853978908098080923}
+  - {fileID: 5874068557384857488}
   m_Father: {fileID: 1853978906788850939}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1853978908116950091
+--- !u!114 &1231210308013263554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,18 +281,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1853978908116950093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e189bb03499551a439dc732dcd77df12, type: 3}
+  m_Script: {fileID: 11500000, guid: 554bb86980f8e344991d49dd8a68d7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
-  _enemyParent: {fileID: 0}
-  _spawnPoint: {fileID: 1853978907404602989}
-  _countdownText: {fileID: 0}
-  _maxWaveNumber: 100
-  _countdown: 5
-  _timeBetweenWaves: 5
-  _timeBetweenEachSpawn: 0.5
-  _defaultWay: 0
+  _waveSpawners:
+  - {fileID: 728692250303715373}
 --- !u!1 &2749537474523023068
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cb7bb67adf7684f96e103d76ad8e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endGameUI: {fileID: 0}
 --- !u!1 &4945394696832284009
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413acc20bfee17b4db93c303d22a6f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
-  _startMoney: 400
+  _health: 1
+  _startMoney: 100
 --- !u!1 &5905710478631932676
 GameObject:
   m_ObjectHideFlags: 0

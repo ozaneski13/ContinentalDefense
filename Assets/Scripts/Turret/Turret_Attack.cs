@@ -15,6 +15,7 @@ public class Turret_Attack : Turret_Control
         _attackerTurret = _turret as AttackerTurret;
 
         _fireRate = _attackerTurret.FireRate;
+        _fireCountdown = 1f / _fireRate;
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class Turret_Attack : Turret_Control
 
     private void FireBullet()
     {
-        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
+        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation, AmmunitionHolder.Instance.transform);
         bullet.GetComponent<Ammunition>().SetTarget(_target);
     }
 }

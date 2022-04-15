@@ -8,7 +8,6 @@ public class WaveSpawner : MonoBehaviour
     [Header("Prefab Options")]
     [SerializeField] private GameObject _enemyPrefab = null;
 
-    [SerializeField] private Transform _enemyParent = null;
     [SerializeField] private Transform _spawnPoint = null;
 
     [Header("UI")]
@@ -21,14 +20,25 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
 
+    [SerializeField] private bool _startsLate = false;
+    [SerializeField] private float _lateStartTimer = 0f;
+
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
 
+    private Transform _enemyParent = null;
+
     private int _waveNumber = 1;
+    public int WaveNumber => _waveNumber;
 
     private bool _isAllWavesSpawned = false;
 
     public Action AllWavesSpawned;
+
+    private void Start()
+    {
+        _enemyParent = EnemyHolder.Instance.transform;
+    }
 
     private void Update()
     {
@@ -43,8 +53,9 @@ public class WaveSpawner : MonoBehaviour
             _isAllWavesSpawned = true;
 
             _countdown = 0;
-            
-            _countdownText.text = _countdown.ToString();
+
+            if (_countdownText != null)
+                _countdownText.text = _countdown.ToString();
 
             StopAllCoroutines();
 
@@ -67,6 +78,9 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
+        if(_startsLate)
+            yield return new WaitForSeconds(_lateStartTimer);
+
         for (int i = 0; i < _waveNumber; i++)
         {
             SpawnEnemy();

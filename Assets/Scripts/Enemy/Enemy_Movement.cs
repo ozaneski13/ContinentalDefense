@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
@@ -9,6 +10,8 @@ public class Enemy_Movement : MonoBehaviour
     private PlayerStats _playerStats = null;
 
     private WaypointController _wayPointController = null;
+
+    private List<Turret_Slow> _slowerTurrets = null;
 
     private Transform _target = null;
 
@@ -24,6 +27,8 @@ public class Enemy_Movement : MonoBehaviour
     {
         _playerStats = PlayerStats.Instance;
         _wayPointController = WaypointController.Instance;
+
+        _slowerTurrets= new List<Turret_Slow>();
 
         _defaultSpeed = _enemy.Speed;
         _currentSpeed = _defaultSpeed;
@@ -70,13 +75,20 @@ public class Enemy_Movement : MonoBehaviour
         }
     }
 
-    public void GetSlowed(float slowRate)
+    public void GetSlowed(float slowRate, Turret_Slow slowerTurret)
     {
+        _slowerTurrets.Add(slowerTurret);
+
         _currentSpeed = _currentSpeed * (1f - slowRate);
     }
 
-    public void SlowStoped()
+    public void SlowStoped(Turret_Slow slowerTurret)
     {
+        _slowerTurrets.Remove(slowerTurret);
+
+        if (_slowerTurrets.Count > 0)
+            return;
+
         _currentSpeed = _defaultSpeed;
     }
 }

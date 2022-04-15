@@ -33,7 +33,7 @@ public class Turret_Slow : Turret_Control
         }
 
         RotateToEnemy();
-        
+
         FireLaser();
     }
 
@@ -77,10 +77,10 @@ public class Turret_Slow : Turret_Control
         if (_tempTarget != _target)
         {
             if (_tempTarget != null)
-                _tempTarget.GetComponent<Enemy_Movement>().SlowStoped();
+                _tempTarget.GetComponent<Enemy_Movement>().SlowStoped(this);
 
             _tempTarget = _target;
-            _tempTarget.GetComponent<Enemy_Movement>().GetSlowed(_slowRate);
+            _tempTarget.GetComponent<Enemy_Movement>().GetSlowed(_slowRate, this);
         }
     }
 }

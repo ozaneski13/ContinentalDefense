@@ -43,15 +43,10 @@ public class Enemy : MonoBehaviour, IEnemy
         {
             _playerStats.MoneyChanged(_prize);
 
-            GameObject deathEffect = Instantiate(_enemyDeathEffect, transform.position, Quaternion.identity);
+            GameObject deathEffect = Instantiate(_enemyDeathEffect, transform.position,  Quaternion.identity, ParticleHolder.Instance.transform);
 
             Destroy(deathEffect, 5f);
             Destroy(gameObject);
         }
-    }
-
-    public void GetSlowed()
-    {
-
     }
 }

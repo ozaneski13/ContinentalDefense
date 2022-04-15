@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -6,15 +7,26 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Camera _mainCamera = null;
     [SerializeField] private float _dragSpeed = 0.01f;
 
+    private GameManager _gameManager = null;
+
     private Vector3 _mainCameraStartingPosition = Vector3.zero;
+
+    private bool _isGameEnded = false;
 
     private void Start()
     {
+        _gameManager = GameManager.Instance;
+
         _mainCameraStartingPosition = _mainCamera.transform.position;
+
+        RegisterToEvents();
     }
 
     private void Update()
     {
+        if (_isGameEnded)
+            return;
+
         if (Input.touchCount == 1)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -45,5 +57,25 @@ public class CameraManager : MonoBehaviour
 
             _mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Clamp(_mainCamera.GetComponent<Camera>().fieldOfView - difference * 0.01f, 40, 80);
         }
+    }
+
+    private void OnDestroy()
+    {
+        UnregisterFromEvents();
+    }
+
+    private void RegisterToEvents()
+    {
+        _gameManager.GameEnded += GameEnded;
+    }
+
+    private void UnregisterFromEvents()
+    {
+        _gameManager.GameEnded -= GameEnded;
+    }
+
+    private void GameEnded()
+    {
+        _isGameEnded = true;
     }
 }
