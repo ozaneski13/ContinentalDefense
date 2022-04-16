@@ -31,6 +31,8 @@ public class GameOverUI : MonoBehaviour
     public void RetryButtonPressed()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        Time.timeScale = 1f;
     }
 
     public void MenuButtonPressed()

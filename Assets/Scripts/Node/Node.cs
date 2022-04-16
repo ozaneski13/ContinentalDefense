@@ -41,7 +41,7 @@ public class Node : MonoBehaviour
 
         Turret turret = turretToBuild.GetComponent<Turret>();
 
-        if (turretToBuild == null || _playerStats.Money < turret.Cost)
+        if (turretToBuild == null || _playerStats.Money < Mathf.Abs(turret.Cost))
         {
             StartCoroutine(OccupiedRoutine());
             return;
