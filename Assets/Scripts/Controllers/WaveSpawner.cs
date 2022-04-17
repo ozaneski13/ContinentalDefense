@@ -31,8 +31,6 @@ public class WaveSpawner : MonoBehaviour
 
     private List<GameObject[]> _waves = null;
 
-    private int _enemyCount = 0;
-
     private int _waveNumber = 1;
     public int WaveNumber => _waveNumber;
 
