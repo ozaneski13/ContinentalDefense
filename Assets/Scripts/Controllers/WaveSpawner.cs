@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,10 @@ public class WaveSpawner : MonoBehaviour
 
     private Transform _enemyParent = null;
 
+    private List<GameObject[]> _waves = null;
+
+    private int _enemyCount = 0;
+
     private int _waveNumber = 1;
     public int WaveNumber => _waveNumber;
 
@@ -37,6 +42,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
+        _waves = new List<GameObject[]>();
+
         _enemyParent = EnemyHolder.Instance.transform;
     }
 
@@ -81,21 +88,48 @@ public class WaveSpawner : MonoBehaviour
         if(_startsLate)
             yield return new WaitForSeconds(_lateStartTimer);
 
+        GameObject[] enemies = new GameObject[_waveNumber];
+
         for (int i = 0; i < _waveNumber; i++)
         {
-            SpawnEnemy();
+            enemies[i] = SpawnEnemy();
             
             yield return new WaitForSeconds(_timeBetweenEachSpawn);
         }
+
+        _waves.Add(enemies);
 
         _waveNumber++;
 
         yield return new WaitForSeconds(_timeBetweenWaves);
     }
 
-    private void SpawnEnemy()
+    private GameObject SpawnEnemy()
     {
         GameObject enemy = Instantiate(_enemyPrefab, _enemyParent, _spawnPoint);
         enemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
+
+        return enemy;
+    }
+
+    public int GetWaveStatus()
+    {
+        int finishedWaves = 0;
+
+        foreach(GameObject[] enemies in _waves)
+        {
+            int enemyCounter = 0;
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy == null)
+                    enemyCounter++;
+            }
+
+            if (enemyCounter == enemies.Length)
+                finishedWaves++;
+        }
+
+        return finishedWaves;
     }
 }

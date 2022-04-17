@@ -7,12 +7,14 @@ public class WaveManager : MonoBehaviour
 
     public int GetCurrentWave()
     {
-        int maxWaveCounter = 0;
+        int waveStatus = 0;
 
-        foreach (WaveSpawner waveSpawner in _waveSpawners)
-            if (waveSpawner.WaveNumber > maxWaveCounter)
-                maxWaveCounter = waveSpawner.WaveNumber;
+        foreach (WaveSpawner spawner in _waveSpawners)
+        {
+            if (waveStatus < spawner.GetWaveStatus())
+                waveStatus = spawner.GetWaveStatus();
+        }
 
-        return maxWaveCounter;
+        return waveStatus;
     }
 }
