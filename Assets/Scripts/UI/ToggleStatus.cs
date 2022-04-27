@@ -12,20 +12,25 @@ public class ToggleStatus : MonoBehaviour
 
     public void ChangeToggle()
     {
-        EToggle toggleStatus = EToggle.Buy;
+        EToggle toggleStatus = EToggle.Roam;
 
         _counter++;
 
         switch (_counter)
         {
             case 0:
+                toggleStatus = EToggle.Roam;
                 break;
 
             case 1:
-                toggleStatus = EToggle.Sell;
+                toggleStatus = EToggle.Buy;
                 break;
 
             case 2:
+                toggleStatus = EToggle.Sell;
+                break;
+
+            case 3:
                 toggleStatus = EToggle.Upgrade;
                 _counter = -1;
                 break;

@@ -2,5 +2,6 @@ public enum EToggle
 {
     Buy,
     Sell,
-    Upgrade
+    Upgrade,
+    Roam
 }

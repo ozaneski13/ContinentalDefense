@@ -9,9 +9,9 @@ public class TouchManager : MonoBehaviour
 
     private Camera _mainCamera = null;
 
-    private bool _buyClicked = true;
-    private bool _sellClicked = false;
-    private bool _upgradeClicked = false;
+    private bool _canBuy = false;
+    private bool _canSell = false;
+    private bool _canUpgrade = false;
 
     private void Awake()
     {
@@ -57,22 +57,25 @@ public class TouchManager : MonoBehaviour
 
     private void ToggleChanged(EToggle toggleStatus)
     {
-        _sellClicked = false;
-        _buyClicked = false;
-        _upgradeClicked = false;
+        _canSell = false;
+        _canBuy = false;
+        _canUpgrade = false;
 
         switch (toggleStatus)
         {
             case EToggle.Buy:
-                _buyClicked = true;
+                _canBuy = true;
                 break;
 
             case EToggle.Sell:
-                _sellClicked = true;
+                _canSell = true;
                 break;
 
             case EToggle.Upgrade:
-                _upgradeClicked = true;
+                _canUpgrade = true;
+                break;
+
+            case EToggle.Roam:
                 break;
         }
     }
@@ -84,7 +87,7 @@ public class TouchManager : MonoBehaviour
         if (node == null)
             return;
 
-        if (node.CurrentTurret == null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && _buyClicked)
+        if (node.CurrentTurret == null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && _canBuy)
         {
             node.CreateNewTurret();
         }
@@ -96,7 +99,7 @@ public class TouchManager : MonoBehaviour
             if (turret == null)
                 return;
 
-            if (_sellClicked)
+            if (_canSell)
             {
                 SellTurret(node);
 
@@ -110,7 +113,7 @@ public class TouchManager : MonoBehaviour
                 return;
             }
 
-            if (turret.Upgradable && _upgradeClicked)
+            if (turret.Upgradable && _canUpgrade)
             {
                 UpgradeTurret(node);
 

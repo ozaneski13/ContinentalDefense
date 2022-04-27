@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _startMoney: 0
+  _startMoney: 1000
 --- !u!1 &5905710478631932676
 GameObject:
   m_ObjectHideFlags: 0
