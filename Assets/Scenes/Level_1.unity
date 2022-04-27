@@ -3712,6 +3712,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a7173517df0f5f4d9ffc5f17d1eebcc, type: 3}
+--- !u!114 &1928697418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797215340760158226, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+  m_PrefabInstance: {fileID: 1296943783852546340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c842907a7280f154f9ac29dc12ead7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1962419747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4819,6 +4830,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 1853978907507092554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: _toggleStatus
+      value: 
+      objectReference: {fileID: 1928697418}
     - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _enemyParent
       value: 
@@ -4830,6 +4845,10 @@ PrefabInstance:
     - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _maxWaveNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379014594694286141, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: _startMoney
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7667009471165617349, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _endGameUI

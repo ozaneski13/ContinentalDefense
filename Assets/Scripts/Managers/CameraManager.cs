@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    [Header("Camera")]
-    [SerializeField] private Camera _mainCamera = null;
+    [Header("Camera Drag")]
     [SerializeField] private float _dragSpeed = 0.01f;
+
+    private Camera _mainCamera = null;
 
     private GameManager _gameManager = null;
 
@@ -15,6 +16,7 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         _gameManager = GameManager.Instance;
+        _mainCamera = Camera.main;
 
         _mainCameraStartingPosition = _mainCamera.transform.position;
 
@@ -54,7 +56,7 @@ public class CameraManager : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            _mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Clamp(_mainCamera.GetComponent<Camera>().fieldOfView - difference * 0.01f, 40, 80);
+            _mainCamera.fieldOfView = Mathf.Clamp(_mainCamera.fieldOfView - difference * 0.01f, 40, 80);
         }
     }
 

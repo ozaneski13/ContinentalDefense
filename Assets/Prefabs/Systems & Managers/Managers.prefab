@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce12a01648bef44f939f1ca6b14524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
   _dragSpeed: 0.02
 --- !u!1 &1853978907404602990
 GameObject:
@@ -208,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f807f6afd6e584da7728c10ef0e8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _nodeTag: Node
 --- !u!1 &1853978908098080924
 GameObject:
   m_ObjectHideFlags: 0

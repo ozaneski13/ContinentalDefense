@@ -15,13 +15,13 @@ public class Node : MonoBehaviour
 
     [Header("Positioning")]
     [SerializeField] private Vector3 _positionOffset = Vector3.zero;
-    
-    private Transform _turretHolder = null;
 
     private GameObject _currentTurret = null;
     public GameObject CurrentTurret => _currentTurret;
 
     private PlayerStats _playerStats = null;
+
+    private Transform _turretHolder = null;
 
     private void Start()
     {
