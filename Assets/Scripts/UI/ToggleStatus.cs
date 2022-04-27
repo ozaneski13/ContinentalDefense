@@ -14,6 +14,8 @@ public class ToggleStatus : MonoBehaviour
     {
         EToggle toggleStatus = EToggle.Buy;
 
+        _counter++;
+
         switch (_counter)
         {
             case 0:
@@ -30,7 +32,6 @@ public class ToggleStatus : MonoBehaviour
         }
 
         _toggleText.text = toggleStatus.ToString();
-        _counter++;
 
         ToggleChanged?.Invoke(toggleStatus);
     }

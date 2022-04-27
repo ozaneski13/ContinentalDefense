@@ -32,6 +32,17 @@ public class Node : MonoBehaviour
         _startColor = _renderer.material.color;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_currentTurret != null)
+            return;
+
+        if (other.gameObject.GetComponent<Turret>() != null)
+            _currentTurret = other.gameObject;
+
+        other.isTrigger = false;
+    }
+
     public void CreateNewTurret()
     {
         GameObject turretToBuild = BuildManager.Instance.GetTurretToBuild;
@@ -52,6 +63,32 @@ public class Node : MonoBehaviour
 
         _playerStats.MoneyChanged(turret.Cost);
         _currentTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
+    }
+
+    public void SellCurrentTurret()
+    {
+        _playerStats.MoneyChanged(Mathf.Abs(_currentTurret.GetComponent<Turret>().Cost));
+
+        Destroy(_currentTurret);
+    }
+
+    public void UpgradeCurrentTurret()
+    {
+        Turret turret = _currentTurret.GetComponent<Turret>();
+
+        if (turret == null)
+            return;
+
+        if (!turret.Upgradable)
+            return;
+
+        if (turret.UpgradePrice > _playerStats.Money)
+        {
+            NodeOccupied();
+            return;
+        }
+
+        //Upgrade
     }
 
     public void NodeOccupied()

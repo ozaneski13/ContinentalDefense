@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1823382598785582122}
   - component: {fileID: -4190950338126009654}
   - component: {fileID: 4329768136007290519}
+  - component: {fileID: 2775087843429363266}
+  - component: {fileID: 8222391727689606802}
   m_Layer: 0
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -70,6 +72,35 @@ MonoBehaviour:
   _partToRotate: {fileID: 7505700611245993185}
   _firePoint: {fileID: 3085569297099900589}
   _bulletPrefab: {fileID: 6223607429571335158, guid: 6d3fcd74a547b444f97278a0822f8e9d, type: 3}
+--- !u!54 &2775087843429363266
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298765659694309008}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8222391727689606802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298765659694309008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1437679236210327943
 GameObject:
   m_ObjectHideFlags: 0

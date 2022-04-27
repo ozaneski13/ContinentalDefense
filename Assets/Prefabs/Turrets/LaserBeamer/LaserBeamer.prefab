@@ -149,6 +149,8 @@ GameObject:
   - component: {fileID: 694213939027736622}
   - component: {fileID: 4849587188722384730}
   - component: {fileID: 1085336171304907445}
+  - component: {fileID: 8258511277512110500}
+  - component: {fileID: 4788170941252416547}
   m_Layer: 0
   m_Name: LaserBeamer
   m_TagString: Untagged
@@ -211,6 +213,35 @@ MonoBehaviour:
   _lineRenderer: {fileID: 6037906465769415591}
   _laserImpactEffect: {fileID: 4163973452248843624}
   _pointLight: {fileID: 7194899036158978542}
+--- !u!54 &8258511277512110500
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263929717871754503}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &4788170941252416547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263929717871754503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2354409367640584465
 GameObject:
   m_ObjectHideFlags: 0

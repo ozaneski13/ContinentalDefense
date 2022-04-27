@@ -9,8 +9,8 @@ public class TouchManager : MonoBehaviour
 
     private Camera _mainCamera = null;
 
+    private bool _buyClicked = true;
     private bool _sellClicked = false;
-    private bool _buyClicked = false;
     private bool _upgradeClicked = false;
 
     private void Awake()
@@ -93,9 +93,12 @@ public class TouchManager : MonoBehaviour
         {
             Turret turret = node.CurrentTurret.GetComponent<Turret>();
 
+            if (turret == null)
+                return;
+
             if (_sellClicked)
             {
-                //Sell();
+                SellTurret(node);
 
                 return;
             }
@@ -109,13 +112,20 @@ public class TouchManager : MonoBehaviour
 
             if (turret.Upgradable && _upgradeClicked)
             {
-                //Upgrade();
+                UpgradeTurret(node);
 
                 return;
             }
         }
+    }
 
-        /*Geliştirme yapılacak mı? Yapılacaksa geliştirme ekranı aç.
-          Doluysa sat*/
+    private void SellTurret(Node node)
+    {
+        node.SellCurrentTurret();
+    }
+
+    private void UpgradeTurret(Node node)
+    {
+        node.UpgradeCurrentTurret();
     }
 }

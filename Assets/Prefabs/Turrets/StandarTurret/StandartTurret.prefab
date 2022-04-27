@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4607548619220765872}
   - component: {fileID: 8903009462950441062}
   - component: {fileID: -2993204391316513073}
+  - component: {fileID: 4021794631138765899}
+  - component: {fileID: 6846975364116811831}
   m_Layer: 0
   m_Name: StandartTurret
   m_TagString: Untagged
@@ -69,8 +71,36 @@ MonoBehaviour:
   _turret: {fileID: 8903009462950441062}
   _partToRotate: {fileID: 3351379900643286443}
   _firePoint: {fileID: 1809373155906865167}
-  _turret: {fileID: 8903009462950441062}
   _bulletPrefab: {fileID: 1553536428965044812, guid: 3a0700ff920e5fe41914b0895849a9d9, type: 3}
+--- !u!54 &4021794631138765899
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799522555678594570}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6846975364116811831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799522555678594570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3841307129122457885
 GameObject:
   m_ObjectHideFlags: 0
