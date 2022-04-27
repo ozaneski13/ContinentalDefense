@@ -82,7 +82,7 @@ public class Node : MonoBehaviour
         if (!turret.Upgradable)
             return;
 
-        if (turret.UpgradePrice > _playerStats.Money)
+        if (Mathf.Abs(turret.UpgradePrice) > _playerStats.Money)
         {
             NodeOccupied();
             return;

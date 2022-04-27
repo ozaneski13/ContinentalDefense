@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f807f6afd6e584da7728c10ef0e8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toggleStatus: {fileID: 0}
   _nodeTag: Node
 --- !u!1 &1853978908098080924
 GameObject:
@@ -373,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _startMoney: 100
+  _startMoney: 0
 --- !u!1 &5905710478631932676
 GameObject:
   m_ObjectHideFlags: 0

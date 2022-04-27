@@ -4850,10 +4850,6 @@ PrefabInstance:
       propertyPath: _maxWaveNumber
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6379014594694286141, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
-      propertyPath: _startMoney
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 7667009471165617349, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _endGameUI
       value: 
