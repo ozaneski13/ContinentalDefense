@@ -16,9 +16,10 @@ public class Node : MonoBehaviour
 
     [Header("Positioning")]
     [SerializeField] private Vector3 _positionOffset = Vector3.zero;
+    public Vector3 PositionOffset => _positionOffset;
 
-    private GameObject _currentTurret = null;
-    public GameObject CurrentTurret => _currentTurret;
+    private Turret _currentTurret = null;
+    public Turret CurrentTurret => _currentTurret;
 
     private PlayerStats _playerStats = null;
 
@@ -39,7 +40,7 @@ public class Node : MonoBehaviour
             return;
 
         if (other.gameObject.GetComponent<Turret>() != null)
-            _currentTurret = other.gameObject;
+            _currentTurret = other.gameObject.GetComponent<Turret>();
 
         other.isTrigger = false;
     }
@@ -63,7 +64,9 @@ public class Node : MonoBehaviour
         Destroy(particle, 5f);
 
         _playerStats.MoneyChanged(turret.Cost);
-        _currentTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
+
+        GameObject newTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
+        _currentTurret = newTurret.GetComponent<Turret>();
     }
 
     public void SellCurrentTurret()
@@ -73,7 +76,7 @@ public class Node : MonoBehaviour
         GameObject particle = Instantiate(_sellParticle, transform.position + _positionOffset, Quaternion.identity);
         Destroy(particle, 5f);
 
-        Destroy(_currentTurret);
+        Destroy(_currentTurret.gameObject);
     }
 
     public void UpgradeCurrentTurret()

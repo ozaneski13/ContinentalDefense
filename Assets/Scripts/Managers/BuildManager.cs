@@ -11,6 +11,9 @@ public class BuildManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Turret UI")]
+    [SerializeField] private TurretUI _turretUI = null;
+
     [Header("Turret Prefabs")]
     [SerializeField] private GameObject _standartTurretPrefab = null;
     public GameObject StandartTurretPrefab => _standartTurretPrefab;
@@ -24,8 +27,33 @@ public class BuildManager : MonoBehaviour
     private GameObject _turretToBuild = null;
     public GameObject GetTurretToBuild => _turretToBuild;
 
+    private Node _selectedNode = null;
+
     public void SetTurretToBuild(GameObject turretToBuild)
     {
         _turretToBuild = turretToBuild;
+
+        DeSelectNode();
+    }
+
+    public void SetNode(Node node)
+    {
+        if (_selectedNode == node)
+        {
+            DeSelectNode();
+
+            return;
+        }
+
+        _selectedNode = node;
+        _turretToBuild = null;
+
+        _turretUI.SetTargetNode(_selectedNode);
+    }
+
+    private void DeSelectNode()
+    {
+        _selectedNode = null;
+        _turretUI.Hide();
     }
 }
