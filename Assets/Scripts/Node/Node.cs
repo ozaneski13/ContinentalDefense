@@ -5,6 +5,7 @@ public class Node : MonoBehaviour
 {
     [Header("Effects")]
     [SerializeField] private GameObject _builtParticle = null;
+    [SerializeField] private GameObject _sellParticle = null;
 
     [Header("Node")]
     [SerializeField] private Renderer _renderer = null;
@@ -68,6 +69,9 @@ public class Node : MonoBehaviour
     public void SellCurrentTurret()
     {
         _playerStats.MoneyChanged(Mathf.Abs(_currentTurret.GetComponent<Turret>().Cost));
+
+        GameObject particle = Instantiate(_sellParticle, transform.position + _positionOffset, Quaternion.identity);
+        Destroy(particle, 5f);
 
         Destroy(_currentTurret);
     }
