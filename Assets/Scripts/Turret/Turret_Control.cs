@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret_Control : MonoBehaviour
@@ -14,7 +15,7 @@ public class Turret_Control : MonoBehaviour
     private float _timeToCheckTarget = 0f;
 
     [Header("Fire Point")]
-    [SerializeField] protected Transform _firePoint = null;
+    [SerializeField] protected List<Transform> _firePoints = null;
 
     protected Transform _target = null;
 

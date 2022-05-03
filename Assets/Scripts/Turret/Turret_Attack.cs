@@ -41,7 +41,12 @@ public class Turret_Attack : Turret_Control
 
     private void FireBullet()
     {
-        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation, AmmunitionHolder.Instance.transform);
-        bullet.GetComponent<Ammunition>().SetTarget(_target);
+        int cannonCount = _attackerTurret.CannonCount;
+
+        for (int i = 0; i < cannonCount; i++)
+        {
+            GameObject bullet = Instantiate(_bulletPrefab, _firePoints[i].position, _firePoints[cannonCount - 1].rotation, AmmunitionHolder.Instance.transform);
+            bullet.GetComponent<Ammunition>().SetTarget(_target);
+        }
     }
 }

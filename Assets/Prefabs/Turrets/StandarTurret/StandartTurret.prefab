@@ -51,10 +51,12 @@ MonoBehaviour:
   _turretType: 0
   _cost: -50
   _upgradePrice: -100
+  _cannonCount: 1
   _range: 15
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 1
+  _upgradedTurretPrefab: {fileID: 1242745536897903351, guid: ddea0a3dc1acdc14ab58fa5e090a8482, type: 3}
   _fireRate: 1
 --- !u!114 &-2993204391316513073
 MonoBehaviour:
@@ -70,7 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turret: {fileID: 8903009462950441062}
   _partToRotate: {fileID: 3351379900643286443}
-  _firePoint: {fileID: 1809373155906865167}
+  _firePoints:
+  - {fileID: 1809373155906865167}
   _bulletPrefab: {fileID: 1553536428965044812, guid: 3a0700ff920e5fe41914b0895849a9d9, type: 3}
 --- !u!54 &4021794631138765899
 Rigidbody:

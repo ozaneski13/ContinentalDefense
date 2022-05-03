@@ -83,10 +83,7 @@ public class Node : MonoBehaviour
     {
         Turret turret = _currentTurret.GetComponent<Turret>();
 
-        if (turret == null)
-            return;
-
-        if (!turret.Upgradable)
+        if (turret == null || !turret.Upgradable)
             return;
 
         if (Mathf.Abs(turret.UpgradePrice) > _playerStats.Money)
@@ -95,7 +92,12 @@ public class Node : MonoBehaviour
             return;
         }
 
-        //Upgrade
+        Destroy(_currentTurret.gameObject);
+
+        _playerStats.MoneyChanged(turret.UpgradePrice);
+
+        GameObject upgradedTurret = Instantiate(turret.UpgradedTurretPrefab, transform.position + _positionOffset, transform.rotation, _turretHolder);
+        _currentTurret = upgradedTurret.GetComponent<Turret>();
     }
 
     public void NodeOccupied()

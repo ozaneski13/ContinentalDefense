@@ -3736,7 +3736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799522555678594570, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607548619220765872, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
       propertyPath: m_RootOrder
@@ -4798,6 +4798,14 @@ PrefabInstance:
       propertyPath: _waveManager
       value: 
       objectReference: {fileID: 1763175172}
+    - target: {fileID: 6357443367950190044, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357443367950190044, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7921588425307886314, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
       propertyPath: m_Alpha
       value: 1

@@ -14,11 +14,15 @@ public class Turret_Slow : Turret_Control
 
     private float _slowRate = 0f;
 
+    private int _cannonCount = 0;
+
     private void Start()
     {
         _slowerTurret = _turret as SlowerTurret;
 
         _slowRate = _slowerTurret.SlowRate;
+
+        _cannonCount = _slowerTurret.CannonCount;
     }
 
     private void Update()
@@ -61,10 +65,10 @@ public class Turret_Slow : Turret_Control
     {
         ToggleLaser(true);
 
-        _lineRenderer.SetPosition(0, _firePoint.position);
+        _lineRenderer.SetPosition(0, _firePoints[_cannonCount - 1].position);
         _lineRenderer.SetPosition(1, _target.position);
 
-        Vector3 direction = _firePoint.position - _target.position;
+        Vector3 direction = _firePoints[_cannonCount - 1].position - _target.position;
 
         _laserImpactEffect.transform.position = _target.position + direction.normalized;
         _laserImpactEffect.transform.rotation = Quaternion.LookRotation(direction);

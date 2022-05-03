@@ -53,6 +53,8 @@ public class Ammunition : MonoBehaviour, IAmmunition
     public void SetTarget(Transform target)
     {
         _target = target;
+
+        transform.LookAt(_target);
     }
 
     private void Hit()

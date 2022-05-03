@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209941774681503200}
-  m_LocalRotation: {x: 0.5000001, y: 0.50000006, z: -0.4999999, w: -0.49999994}
-  m_LocalPosition: {x: -1.8393269, y: 0.7293928, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.7293928, z: 1.9}
   m_LocalScale: {x: 0.044139665, y: 0.044139665, z: 0.044139665}
   m_Children: []
   m_Father: {fileID: 283312119628838360}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &4415841477828412158
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,12 +132,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turretType: 0
-  _cost: 0
-  _upgradePrice: -150
+  _cost: -100
+  _upgradePrice: 0
+  _cannonCount: 1
   _range: 20
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 0
+  _upgradedTurretPrefab: {fileID: 0}
   _fireRate: 1.5
 --- !u!114 &-4436424280103755105
 MonoBehaviour:
@@ -153,7 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turret: {fileID: -7095436202221612000}
   _partToRotate: {fileID: 283312119628838360}
-  _firePoint: {fileID: 5544936062873493768}
+  _firePoints:
+  - {fileID: 5544936062873493768}
   _bulletPrefab: {fileID: 1553536428965044812, guid: 3a0700ff920e5fe41914b0895849a9d9, type: 3}
 --- !u!54 &3833547713413546689
 Rigidbody:
@@ -322,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8113172246413900078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0.59999996, z: 0}
+  m_LocalPosition: {x: -0.015, y: 0.5, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 283312119628838360}

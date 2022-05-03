@@ -11,6 +11,9 @@ public class Turret : MonoBehaviour, ITurret
     [SerializeField] private int _upgradePrice;
     public int UpgradePrice => _upgradePrice;
 
+    [SerializeField] private int _cannonCount;
+    public int CannonCount => _cannonCount;
+
     [SerializeField] private float _range;
     public float Range => _range;
 
@@ -22,6 +25,9 @@ public class Turret : MonoBehaviour, ITurret
 
     [SerializeField] private bool _upgradable = false;
     public bool Upgradable => _upgradable;
+
+    [SerializeField] private GameObject _upgradedTurretPrefab = null;
+    public GameObject UpgradedTurretPrefab => _upgradedTurretPrefab;
 
     private void OnDrawGizmos()
     {
