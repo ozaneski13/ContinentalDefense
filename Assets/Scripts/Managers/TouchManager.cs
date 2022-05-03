@@ -3,9 +3,7 @@ using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
-    [SerializeField] private BuildManager _buildManager = null;
-
-    [SerializeField] private string _nodeTag = null;
+    private BuildManager _buildManager = null;
 
     private Camera _mainCamera = null;
 
@@ -25,7 +23,7 @@ public class TouchManager : MonoBehaviour
                 Ray raycast = _mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit raycastHit;
 
-                if (Physics.Raycast(raycast, out raycastHit) && raycastHit.transform.gameObject.tag == _nodeTag)
+                if (Physics.Raycast(raycast, out raycastHit))
                 {
                     CheckNode(raycastHit.transform.gameObject);
                 }
@@ -40,10 +38,13 @@ public class TouchManager : MonoBehaviour
         if (node == null)
             return;
 
-        if (node.CurrentTurret == null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            node.CreateNewTurret();
+        if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            if (node.CurrentTurret == null)
+                node.CreateNewTurret();
 
-        else if(node.CurrentTurret != null)
-            _buildManager.SetNode(node);
+            else if (node.CurrentTurret != null)
+                _buildManager.SetNode(node);
+        }
     }
 }

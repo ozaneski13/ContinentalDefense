@@ -4798,14 +4798,6 @@ PrefabInstance:
       propertyPath: _waveManager
       value: 
       objectReference: {fileID: 1763175172}
-    - target: {fileID: 6357443367950190044, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357443367950190044, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7921588425307886314, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
       propertyPath: m_Alpha
       value: 1
@@ -4835,6 +4827,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1649304558822195972, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304558986802433, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304559064329940, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304559130314825, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304559178319370, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304559178319370, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304559960604250, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304560185195057, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649304560185195060, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1649304560815343586, guid: 903d8a1dbb0ac6f49813400a381b2320, type: 3}
       propertyPath: m_Name
       value: TurretUI
