@@ -189,12 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretType: 2
   _cost: -100
-  _upgradePrice: -150
+  _upgradePrice: 0
   _cannonCount: 1
   _range: 20
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
-  _upgradable: 1
+  _upgradable: 0
   _upgradedTurretPrefab: {fileID: 0}
   _slowRate: 0.3
 --- !u!114 &1085336171304907445
