@@ -6,7 +6,6 @@ public class Node : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private GameObject _builtParticle = null;
     [SerializeField] private GameObject _sellParticle = null;
-    [SerializeField] private GameObject _upgradeParticle = null;
 
     [Header("Node")]
     [SerializeField] private Renderer _renderer = null;
@@ -96,9 +95,6 @@ public class Node : MonoBehaviour
         Destroy(_currentTurret.gameObject);
 
         _playerStats.MoneyChanged(turret.UpgradePrice);
-
-        GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity);
-        Destroy(particle, 5f);
 
         GameObject upgradedTurret = Instantiate(turret.UpgradedTurretPrefab, transform.position + _positionOffset, transform.rotation, _turretHolder);
         _currentTurret = upgradedTurret.GetComponent<Turret>();

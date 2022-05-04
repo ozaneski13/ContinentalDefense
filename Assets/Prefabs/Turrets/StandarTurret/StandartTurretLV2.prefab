@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4415841477828412158}
   - component: {fileID: 2344788692309908325}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,9 +59,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96c580269d58248488337fac12618895, type: 2}
-  - {fileID: 2100000, guid: 0e93bb8e8798a6a48b7ef6635240801b, type: 2}
-  - {fileID: 2100000, guid: 8cad48781112cc440b59bb69d4a2b08b, type: 2}
+  - {fileID: 2100000, guid: 82fff65689466e84ab52e60673abb358, type: 2}
+  - {fileID: 2100000, guid: be69986a0f055cc47a824cf10f9e0855, type: 2}
+  - {fileID: 2100000, guid: 816f1c06f0816f14aba39178598a41b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   _timeToCheckTarget: 0.5
   _upgradable: 0
   _upgradedTurretPrefab: {fileID: 0}
+  _disolveSpeed: 0.25
   _fireRate: 1.5
 --- !u!114 &-4436424280103755105
 MonoBehaviour:
@@ -231,7 +232,7 @@ GameObject:
   - component: {fileID: 4534534217599784955}
   - component: {fileID: 1424650165020602777}
   m_Layer: 0
-  m_Name: Turret.001
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,8 +279,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e93bb8e8798a6a48b7ef6635240801b, type: 2}
-  - {fileID: 2100000, guid: 8cad48781112cc440b59bb69d4a2b08b, type: 2}
+  - {fileID: 2100000, guid: be69986a0f055cc47a824cf10f9e0855, type: 2}
+  - {fileID: 2100000, guid: be69986a0f055cc47a824cf10f9e0855, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
