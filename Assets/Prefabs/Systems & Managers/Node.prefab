@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebf2e3b51b8c7914bb04ee20803f01f1, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _builtParticle: {fileID: 32856962043475746, guid: e3b75558fcd2590479581cde0974fbda, type: 3}
   _sellParticle: {fileID: 32856962043475746, guid: 92106de3a4c4f3b40a1e1cca28a5df12, type: 3}
-  _upgradeParticle: {fileID: 0}
   _renderer: {fileID: 4893854533355739514}
   _nodeOccupiedColor: {r: 1, g: 0, b: 0, a: 1}
   _nodeOccupiedTimer: 0.3
   _positionOffset: {x: 0, y: 0.5, z: 0}
+  _currentTurret: {fileID: 0}
