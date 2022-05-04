@@ -116,6 +116,7 @@ Transform:
   m_Children:
   - {fileID: 2339639660249701010}
   - {fileID: 283312119628838360}
+  - {fileID: 1992197720885818054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,7 +159,10 @@ MonoBehaviour:
   _partToRotate: {fileID: 283312119628838360}
   _firePoints:
   - {fileID: 5544936062873493768}
-  _bulletPrefab: {fileID: 1553536428965044812, guid: 3a0700ff920e5fe41914b0895849a9d9, type: 3}
+  _ammunationPrefab: {fileID: 5153689084975007431, guid: 43954ee6f5e94244480408ca70634aff, type: 3}
+  _poolParent: {fileID: 1992197720885818054}
+  _poolControlDuration: 2
+  _poolSize: 100
 --- !u!54 &3833547713413546689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,6 +223,36 @@ Transform:
   - {fileID: 5544936062873493768}
   m_Father: {fileID: 1906375968783609933}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3833861611656775909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992197720885818054}
+  m_Layer: 0
+  m_Name: AmmoPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992197720885818054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833861611656775909}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1906375968783609933}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7272703073785875027
 GameObject:

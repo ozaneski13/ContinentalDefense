@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ammunition : MonoBehaviour, IAmmunition
 {
     [Header("Stats")]
+
     [SerializeField] private int _damage;
     public int Damage => _damage;
 
@@ -63,14 +64,10 @@ public class Ammunition : MonoBehaviour, IAmmunition
         Destroy(particle, 5f);
 
         if (_explosionRadius > 0)
-        {
             Explode();
-        }
 
         else
-        {
             DamageEnemy(_target.gameObject);
-        }
 
         Destroy(gameObject);
     }

@@ -1,21 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Turret))]
 public class Turret_Attack : Turret_Control
 {
-    [Header("Fire Bullet")]
-    [SerializeField] private GameObject _bulletPrefab = null;
+    [Header("Fire Ammunation")]
+    [SerializeField] private GameObject _ammunationPrefab = null;
+
+    [Header("Pool Options")]
+    [SerializeField] private Transform _poolParent = null;
+    [SerializeField] private float _poolControlDuration = 2f;
+    [SerializeField] private int _poolSize = 100;
+    [SerializeField] private int _refillCount = 20;
 
     private AttackerTurret _attackerTurret = null;
 
     private float _fireRate = 0f;
 
+    private List<GameObject> _ammoPool = null;
+
+    private int _firePointsIndex = 0;
+
     private void Start()
     {
+        InitAmmunationPool();
+
         _attackerTurret = _turret as AttackerTurret;
 
         _fireRate = _attackerTurret.FireRate;
         _fireCountdown = 1f / _fireRate;
+
+        StartCoroutine(CheckPool());
     }
 
     private void Update()
@@ -31,7 +47,7 @@ public class Turret_Attack : Turret_Control
         
         if (_fireCountdown <= 0f)
         {
-            FireBullet();
+            FireAmmo();
             
             _fireCountdown = 1f / _fireRate;
         }
@@ -39,14 +55,54 @@ public class Turret_Attack : Turret_Control
         _fireCountdown -= Time.deltaTime;
     }
 
-    private void FireBullet()
+    private void InitAmmunationPool()
+    {
+        _ammoPool = new List<GameObject>();
+
+        FillPool();
+    }
+
+    private void FireAmmo()
     {
         int cannonCount = _attackerTurret.CannonCount;
 
         for (int i = 0; i < cannonCount; i++)
         {
-            GameObject bullet = Instantiate(_bulletPrefab, _firePoints[i].position, _firePoints[cannonCount - 1].rotation, AmmunitionHolder.Instance.transform);
-            bullet.GetComponent<Ammunition>().SetTarget(_target);
+            GameObject ammo = _ammoPool[_ammoPool.Count - 1];
+            ammo.transform.position = _firePoints[i].position;
+            ammo.transform.rotation = _firePoints[i].rotation;
+
+            _ammoPool.Remove(ammo);
+
+            ammo.SetActive(true);
+            ammo.GetComponent<Ammunition>().SetTarget(_target);
+        }
+    }
+
+    private IEnumerator CheckPool()
+    {
+        while (true)
+        {
+            if (_ammoPool.Count < _refillCount)
+                FillPool();
+
+            yield return new WaitForSeconds(_poolControlDuration);
+        }
+    }
+
+    private void FillPool()
+    {
+        for (int i = _ammoPool.Count; i < _poolSize; i++)
+        {
+            GameObject poolFiller = Instantiate(_ammunationPrefab, _poolParent.position, _poolParent.rotation, _poolParent);
+            poolFiller.SetActive(false);
+
+            _ammoPool.Add(poolFiller);
+
+            if (_firePointsIndex < _firePoints.Count - 1)
+                _firePointsIndex++;
+            else if (_firePointsIndex == _firePoints.Count - 1)
+                _firePointsIndex = 0;
         }
     }
 }

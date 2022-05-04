@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c374ea311fd2e040b704fbb400997e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ammoType: 1
   _damage: 100
   _speed: 30
-  _slowRate: 0
   _explosionRadius: 4
   _bulletImpactParticle: {fileID: 1344649311445323627, guid: 56810d21c0604d9449a40ea507fd4d9d, type: 3}
   _targetsLayer:
