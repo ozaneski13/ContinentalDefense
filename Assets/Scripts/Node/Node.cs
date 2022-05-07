@@ -23,11 +23,15 @@ public class Node : MonoBehaviour
 
     private PlayerStats _playerStats = null;
 
+    private Transform _particleHolder = null;
+
     private Transform _turretHolder = null;
 
     private void Start()
     {
         _playerStats = PlayerStats.Instance;
+
+        _particleHolder = ParticleHolder.Instance.transform;
 
         _turretHolder = TurretHolder.Instance.transform;
 
@@ -60,7 +64,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity);
+        GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
         _playerStats.MoneyChanged(turret.Cost);
@@ -73,10 +77,11 @@ public class Node : MonoBehaviour
     {
         _playerStats.MoneyChanged(Mathf.Abs(_currentTurret.GetComponent<Turret>().Cost));
 
-        GameObject particle = Instantiate(_sellParticle, transform.position + _positionOffset, Quaternion.identity);
+        GameObject particle = Instantiate(_sellParticle, _currentTurret.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
         Destroy(_currentTurret.gameObject);
+        _currentTurret = null;
     }
 
     public void UpgradeCurrentTurret()
