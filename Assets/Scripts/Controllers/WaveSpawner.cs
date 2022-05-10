@@ -35,6 +35,7 @@ public class WaveSpawner : MonoBehaviour
     public int WaveNumber => _waveNumber;
 
     private bool _isAllWavesSpawned = false;
+    private bool _currentWaveSpawned = true;
 
     public Action AllWavesSpawned;
 
@@ -47,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_countdown <= 0f && _waveNumber <= _maxWaveNumber)
+        if (_countdown <= 0f && _waveNumber <= _maxWaveNumber && _currentWaveSpawned)
         {
             StartCoroutine(SpawnWave());
             _countdown = _timeBetweenWaves;
@@ -83,7 +84,9 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
-        if(_startsLate)
+        _currentWaveSpawned = false;
+
+        if (_startsLate)
             yield return new WaitForSeconds(_lateStartTimer);
 
         GameObject[] enemies = new GameObject[_waveNumber];
@@ -98,6 +101,8 @@ public class WaveSpawner : MonoBehaviour
         _waves.Add(enemies);
 
         _waveNumber++;
+
+        _currentWaveSpawned = true;
 
         yield return new WaitForSeconds(_timeBetweenWaves);
     }
