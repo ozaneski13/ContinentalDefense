@@ -5,6 +5,8 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _turrets = new List<GameObject>();
 
+    private bool _isButtonAlreadyPressed = false;
+
     private void Awake()
     {
         int randomTurret = Random.Range(0, _turrets.Count);
@@ -14,11 +16,19 @@ public class MainMenuUI : MonoBehaviour
 
     public void Play()
     {
+        if (_isButtonAlreadyPressed)
+            return;
+        
+        _isButtonAlreadyPressed = true;
         FadeUI.Instance.FadeTo(1);
     }
 
     public void Quit()
     {
+        if (_isButtonAlreadyPressed)
+            return;
+        
+        _isButtonAlreadyPressed = true;
         Application.Quit();
     }
 }

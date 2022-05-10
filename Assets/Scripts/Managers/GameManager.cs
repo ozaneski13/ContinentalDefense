@@ -12,7 +12,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private GameObject _endGameUI = null;
+    [Header("Wave Manager")]
+    [SerializeField] private WaveManager _waveManager = null;
+
+    [Header("UI")]
+    [SerializeField] private GameObject _winUI = null;
+    [SerializeField] private GameObject _gameOverUI = null;
+
     private PlayerStats _playerStats = null;
 
     public Action GameEnded;
@@ -32,16 +38,22 @@ public class GameManager : MonoBehaviour
     private void RegisterToEvents()
     {
         _playerStats.NoHealthRemain += EndGame;
+        _waveManager.AllSpawnsDone += EndGame;
     }
 
     private void UnregisterFromEvents()
     {
         _playerStats.NoHealthRemain -= EndGame;
+        _waveManager.AllSpawnsDone -= EndGame;
     }
 
-    private void EndGame()
+    private void EndGame(bool isWin)
     {
+        if (isWin)
+            _winUI.SetActive(true);
+        else
+            _gameOverUI.SetActive(true);
+
         GameEnded?.Invoke();
-        _endGameUI.SetActive(true);
     }
 }

@@ -33,8 +33,8 @@ public class WaveSpawner : MonoBehaviour
 
     private int _waveNumber = 0;
 
-    private bool _isAllWavesSpawned = false;
     private bool _currentWaveSpawned = true;
+    private bool _isInvoked = false;
 
     public Action AllWavesSpawned;
 
@@ -50,10 +50,8 @@ public class WaveSpawner : MonoBehaviour
         if (_countdown <= 0f && _waveNumber < _maxWaveNumber && _currentWaveSpawned)
             StartCoroutine(SpawnWave());
 
-        else if (_waveNumber >= _maxWaveNumber && !_isAllWavesSpawned)
+        else if (_waveNumber >= _maxWaveNumber)
         {
-            _isAllWavesSpawned = true;
-
             _countdown = 0;
 
             if (_countdownText != null)
@@ -61,7 +59,11 @@ public class WaveSpawner : MonoBehaviour
 
             StopAllCoroutines();
 
-            AllWavesSpawned?.Invoke();
+            if (GetWaveStatus() == _maxWaveNumber && !_isInvoked)
+            {
+                _isInvoked = true;
+                AllWavesSpawned?.Invoke();
+            }
 
             return;
         }

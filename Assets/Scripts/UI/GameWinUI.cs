@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameOverUI : MonoBehaviour
+public class GameWinUI : MonoBehaviour
 {
     [Header("Wave Manager")]
     [SerializeField] private WaveManager _waveManager = null;
@@ -30,7 +30,7 @@ public class GameOverUI : MonoBehaviour
         Time.timeScale = _timeScale;
     }
 
-    public void RetryButtonPressed()
+    public void NextButtonPressed()
     {
         if (_isButtonAlreadyPressed)
             return;
@@ -39,7 +39,7 @@ public class GameOverUI : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        FadeUI.Instance.FadeTo(SceneManager.GetActiveScene().buildIndex);
+        FadeUI.Instance.FadeTo(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void MenuButtonPressed()

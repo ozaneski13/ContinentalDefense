@@ -75,17 +75,17 @@ public class CameraManager : MonoBehaviour
         _gameManager.GameEnded -= GameStoped;
     }
 
-    private void GameStoped()
-    {
-        _isGameEnded = true;
-    }
-
     public void GamePaussed()
     {
         GameStoped();
     }
 
-    public void GameRessumed()
+    private void GameStoped()
+    {
+        _isGameEnded = true;
+    }
+
+    public void GameResumed()
     {
         _isGameEnded = false;
     }

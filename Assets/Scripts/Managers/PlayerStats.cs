@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     public Action MoneyCountChanged;
 
     public Action HealthCountChanged;
-    public Action NoHealthRemain;
+    public Action<bool> NoHealthRemain;
 
     public void MoneyChanged(int value)
     {
@@ -42,6 +42,6 @@ public class PlayerStats : MonoBehaviour
         HealthCountChanged?.Invoke();
 
         if (_health == 0)
-            NoHealthRemain?.Invoke();
+            NoHealthRemain?.Invoke(false);
     }
 }
