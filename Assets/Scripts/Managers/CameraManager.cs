@@ -84,4 +84,9 @@ public class CameraManager : MonoBehaviour
     {
         GameStoped();
     }
+
+    public void GameRessumed()
+    {
+        _isGameEnded = false;
+    }
 }
