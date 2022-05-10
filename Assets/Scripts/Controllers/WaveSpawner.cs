@@ -25,7 +25,7 @@ public class WaveSpawner : MonoBehaviour
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
 
-    private float _countdown = 2f;
+    private float _countdown = 5f;
 
     private Transform _enemyParent = null;
 
@@ -52,10 +52,10 @@ public class WaveSpawner : MonoBehaviour
 
         else if (_waveNumber >= _maxWaveNumber)
         {
-            _countdown = 0;
+            _countdown = 00.0f;
 
             if (_countdownText != null)
-                _countdownText.text = _countdown.ToString();
+                _countdownText.text = string.Format("{0:00.0}", _countdown);
 
             StopAllCoroutines();
 
@@ -71,7 +71,7 @@ public class WaveSpawner : MonoBehaviour
         if (_countdown > 0f)
             _countdown -= Time.deltaTime;
 
-        _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
+        _countdown = Mathf.Clamp(_countdown, 00.0f, Mathf.Infinity);
 
         _countdownText.text = string.Format("{0:00.0}", _countdown);
     }
