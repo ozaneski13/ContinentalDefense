@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Enemy_Movement))]
 public class Enemy : MonoBehaviour, IEnemy
@@ -23,6 +24,10 @@ public class Enemy : MonoBehaviour, IEnemy
     [Header("Effects")]
     [SerializeField] private GameObject _enemyDeathEffect = null;
 
+    [Header("Health Bar")]
+    [SerializeField] private Image _healthBar = null;
+    [SerializeField] private Color _criticalHealthColor = Color.red;
+
     private PlayerStats _playerStats = null;
 
     private int _currentHealthPoint;
@@ -37,13 +42,22 @@ public class Enemy : MonoBehaviour, IEnemy
     public void GetHit(int damage)
     {
         if (_currentHealthPoint > damage)
+        {
             _currentHealthPoint -= damage;
+
+            if (_currentHealthPoint <= _healthPoint / 2)
+                _healthBar.color = _criticalHealthColor;
+
+            _healthBar.fillAmount = _currentHealthPoint / (float)_healthPoint;
+        }
 
         else
         {
             _playerStats.MoneyChanged(_prize);
 
-            GameObject deathEffect = Instantiate(_enemyDeathEffect, transform.position,  Quaternion.identity, ParticleHolder.Instance.transform);
+            GameObject deathEffect = Instantiate(_enemyDeathEffect, transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
+
+            _healthBar.fillAmount = 0;
 
             Destroy(deathEffect, 5f);
             Destroy(gameObject);
