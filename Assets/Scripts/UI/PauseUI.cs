@@ -18,11 +18,15 @@ public class PauseUI : MonoBehaviour
 
     public void RetryLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+
+        FadeUI.Instance.FadeTo(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+
+        FadeUI.Instance.FadeTo(0);
     }
 }

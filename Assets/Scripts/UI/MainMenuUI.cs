@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _turrets = new List<GameObject>();
+    [SerializeField] private List<GameObject> _turrets = new List<GameObject>();
 
     private void Awake()
     {
@@ -15,7 +14,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void Play()
     {
-        
+        FadeUI.Instance.FadeTo(1);
     }
 
     public void Quit()

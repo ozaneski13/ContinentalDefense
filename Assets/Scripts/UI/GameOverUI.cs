@@ -30,13 +30,13 @@ public class GameOverUI : MonoBehaviour
 
     public void RetryButtonPressed()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         Time.timeScale = 1f;
+
+        FadeUI.Instance.FadeTo(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MenuButtonPressed()
     {
-
+        FadeUI.Instance.FadeTo(0);
     }
 }
