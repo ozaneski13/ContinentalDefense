@@ -31,8 +31,7 @@ public class WaveSpawner : MonoBehaviour
 
     private List<GameObject[]> _waves = null;
 
-    private int _waveNumber = 1;
-    public int WaveNumber => _waveNumber;
+    private int _waveNumber = 0;
 
     private bool _isAllWavesSpawned = false;
     private bool _currentWaveSpawned = true;
@@ -48,13 +47,10 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_countdown <= 0f && _waveNumber <= _maxWaveNumber && _currentWaveSpawned)
-        {
+        if (_countdown <= 0f && _waveNumber < _maxWaveNumber && _currentWaveSpawned)
             StartCoroutine(SpawnWave());
-            _countdown = _timeBetweenWaves;
-        }
 
-        else if (_waveNumber > _maxWaveNumber && !_isAllWavesSpawned)
+        else if (_waveNumber >= _maxWaveNumber && !_isAllWavesSpawned)
         {
             _isAllWavesSpawned = true;
 
@@ -70,7 +66,8 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        _countdown -= Time.deltaTime;
+        if (_countdown > 0f)
+            _countdown -= Time.deltaTime;
 
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
 
@@ -89,9 +86,9 @@ public class WaveSpawner : MonoBehaviour
         if (_startsLate)
             yield return new WaitForSeconds(_lateStartTimer);
 
-        GameObject[] enemies = new GameObject[_waveNumber];
+        GameObject[] enemies = new GameObject[_waveNumber + 1];
 
-        for (int i = 0; i < _waveNumber; i++)
+        for (int i = 0; i < _waveNumber + 1; i++)
         {
             enemies[i] = SpawnEnemy();
             
@@ -103,6 +100,11 @@ public class WaveSpawner : MonoBehaviour
         _waveNumber++;
 
         _currentWaveSpawned = true;
+
+        if (_waveNumber == _maxWaveNumber)
+            _countdown = 00.0f;
+        else
+            _countdown = _timeBetweenWaves;
 
         yield return new WaitForSeconds(_timeBetweenWaves);
     }
