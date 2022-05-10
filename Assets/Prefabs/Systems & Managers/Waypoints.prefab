@@ -58,10 +58,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6798f9a2827ff64297bbb4ae4b5f354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointsList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _wayPointsList: []

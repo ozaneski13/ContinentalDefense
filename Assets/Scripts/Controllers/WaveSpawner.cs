@@ -8,7 +8,6 @@ public class WaveSpawner : MonoBehaviour
 {
     [Header("Prefab Options")]
     [SerializeField] private GameObject _enemyPrefab = null;
-
     [SerializeField] private Transform _spawnPoint = null;
 
     [Header("UI")]
@@ -17,7 +16,6 @@ public class WaveSpawner : MonoBehaviour
     [Header("Wave Options")]
     [SerializeField] private int _maxWaveNumber = 100;
 
-    [SerializeField] private float _countdown = 2f;
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
 
@@ -26,6 +24,8 @@ public class WaveSpawner : MonoBehaviour
 
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
+
+    private float _countdown = 2f;
 
     private Transform _enemyParent = null;
 
@@ -109,7 +109,8 @@ public class WaveSpawner : MonoBehaviour
 
     private GameObject SpawnEnemy()
     {
-        GameObject enemy = Instantiate(_enemyPrefab, _enemyParent, _spawnPoint);
+        GameObject enemy = Instantiate(_enemyPrefab, _enemyParent);
+        enemy.transform.position = _spawnPoint.position;
         enemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
 
         return enemy;

@@ -22,17 +22,20 @@ public class Enemy_Movement : MonoBehaviour
     private float _currentSpeed = 0f;
    
     private bool _targetSet = false;
+    private bool _defaultWaySet = false;
 
     private void Start()
     {
         _playerStats = PlayerStats.Instance;
         _wayPointController = WaypointController.Instance;
 
-        _slowerTurrets= new List<Turret_Slow>();
+        _slowerTurrets = new List<Turret_Slow>();
 
         _defaultSpeed = _enemy.Speed;
         _currentSpeed = _defaultSpeed;
-        _defaultWay = _enemy.DefaultWay;
+
+        if(!_defaultWaySet)
+            _defaultWay = _enemy.DefaultWay;
 
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
         _targetSet = true;
@@ -58,12 +61,13 @@ public class Enemy_Movement : MonoBehaviour
         }
 
         _wayPointIndex++;
-        _target = _wayPointController.WayPointsArray[0].WayPointsList[_wayPointIndex];
+        _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
     }
 
     public void SetDefaultWay(int way)
     {
         _defaultWay = way;
+        _defaultWaySet = true;
 
         if (!_targetSet)
             return;
