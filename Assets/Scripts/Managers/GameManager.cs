@@ -31,27 +31,17 @@ public class GameManager : MonoBehaviour
 
     private void RegisterToEvents()
     {
-        _playerStats.NoHealthRemain += NoHealthRemain;
+        _playerStats.NoHealthRemain += EndGame;
     }
 
     private void UnregisterFromEvents()
     {
-        _playerStats.NoHealthRemain -= NoHealthRemain;
-    }
-
-    private void NoHealthRemain()
-    {
-        EndGame();
+        _playerStats.NoHealthRemain -= EndGame;
     }
 
     private void EndGame()
     {
         GameEnded?.Invoke();
         _endGameUI.SetActive(true);
-    }
-
-    private void PauseGame()
-    {
-        //Show pause menu UI
     }
 }

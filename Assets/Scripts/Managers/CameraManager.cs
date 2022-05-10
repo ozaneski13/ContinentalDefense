@@ -67,16 +67,21 @@ public class CameraManager : MonoBehaviour
 
     private void RegisterToEvents()
     {
-        _gameManager.GameEnded += GameEnded;
+        _gameManager.GameEnded += GameStoped;
     }
 
     private void UnregisterFromEvents()
     {
-        _gameManager.GameEnded -= GameEnded;
+        _gameManager.GameEnded -= GameStoped;
     }
 
-    private void GameEnded()
+    private void GameStoped()
     {
         _isGameEnded = true;
+    }
+
+    public void GamePaussed()
+    {
+        GameStoped();
     }
 }
