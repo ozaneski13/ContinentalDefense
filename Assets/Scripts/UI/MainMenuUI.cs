@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -29,8 +30,8 @@ public class MainMenuUI : MonoBehaviour
             return;
 
         _isButtonAlreadyPressed = true;
-        
 
+        FadeUI.Instance.FadeTo(SceneManager.sceneCountInBuildSettings - 1);
     }
 
     public void Quit()
