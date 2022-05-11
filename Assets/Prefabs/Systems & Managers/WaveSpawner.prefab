@@ -56,6 +56,9 @@ MonoBehaviour:
   - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
   - {fileID: 8788537642432661641, guid: 2598e030b17b6a44baa6fe6d6d25b807, type: 3}
   - {fileID: 8788537642432661641, guid: baee3de7ddb1e2947a64cff7616682bc, type: 3}
+  _enemyBossTypesList:
+  - {fileID: 8788537642432661641, guid: 9379d1f17f2fb0a44bfe2c6fc172a45d, type: 3}
+  - {fileID: 8788537642432661641, guid: 09b66636530375a4381eca308c6bf6c2, type: 3}
   _defaultWay: 0
 --- !u!1 &4273862018686297017
 GameObject:

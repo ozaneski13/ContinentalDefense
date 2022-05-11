@@ -25,6 +25,7 @@ public class WaveSpawner : MonoBehaviour
     
     [Header("Enemy Types")]
     [SerializeField] private List<GameObject> _enemyTypesList = new List<GameObject>();
+    [SerializeField] private List<GameObject> _enemyBossTypesList = new List<GameObject>();
 
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
@@ -101,6 +102,8 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(_timeBetweenEachSpawn);
         }
 
+        CheckBossWave();
+
         _waves.Add(enemies);
 
         _waveNumber++;
@@ -113,6 +116,26 @@ public class WaveSpawner : MonoBehaviour
             _countdown = _timeBetweenWaves;
 
         yield return new WaitForSeconds(_timeBetweenWaves);
+    }
+
+    private void CheckBossWave()
+    {
+        int bossCount = 0;
+
+        if (_waveNumber == _maxWaveNumber)
+            bossCount = 4;
+        else if (_waveNumber == _maxWaveNumber / 2)
+            bossCount = 2;
+        if (_waveNumber == _maxWaveNumber / 4)
+            bossCount = 1;
+
+        for (int i = 0; i < bossCount; i++)
+        {
+            if (i < bossCount / (float)2)
+                Instantiate(_enemyBossTypesList[0], _enemyParent);
+            else
+                Instantiate(_enemyBossTypesList[1], _enemyParent);
+        }
     }
 
     private GameObject SpawnEnemy()
