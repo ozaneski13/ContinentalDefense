@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [Header("Prefab Options")]
-    [SerializeField] private GameObject _enemyPrefab = null;
+    [Header("Enemy Prefabs")]
+    [SerializeField] private List<GameObject> _enemyTypesList = new List<GameObject>();
+    [SerializeField] private List<GameObject> _enemyBossTypesList = new List<GameObject>();
 
     [SerializeField] private Transform _spawnPoint = null;
 
@@ -22,10 +23,6 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float _lateStartTimer = 0f;
 
     [SerializeField] private bool _startsLate = false;
-    
-    [Header("Enemy Types")]
-    [SerializeField] private List<GameObject> _enemyTypesList = new List<GameObject>();
-    [SerializeField] private List<GameObject> _enemyBossTypesList = new List<GameObject>();
 
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;

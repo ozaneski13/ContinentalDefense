@@ -48,6 +48,11 @@ public class FadeUI : MonoBehaviour
         StartCoroutine(FadeOut(sceneNumber));
     }
 
+    public void FadeTo(string sceneName)
+    {
+        StartCoroutine(FadeOut(sceneName));
+    }
+
     private IEnumerator FadeIn()
     {
         float time = 1f;
@@ -76,5 +81,21 @@ public class FadeUI : MonoBehaviour
         }
 
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    private IEnumerator FadeOut(string sceneName)
+    {
+        float time = 0f;
+
+        while (time < 1f)
+        {
+            time += Time.deltaTime * _fadeSpeed;
+            float alpha = _fadeCurve.Evaluate(time);
+            _fadeImage.color = new Color(0f, 0f, 0f, alpha);
+
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 }
