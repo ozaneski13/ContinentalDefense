@@ -50,7 +50,12 @@ public class GameManager : MonoBehaviour
     private void EndGame(bool isWin)
     {
         if (isWin)
+        {
+            int nextLevel = PlayerPrefs.GetInt("levelReached") + 1;
+            PlayerPrefs.SetInt("levelReached", nextLevel);
             _winUI.SetActive(true);
+        }
+
         else
             _gameOverUI.SetActive(true);
 

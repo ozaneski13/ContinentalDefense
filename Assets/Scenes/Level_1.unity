@@ -2412,6 +2412,10 @@ PrefabInstance:
       propertyPath: _countdownText
       value: 
       objectReference: {fileID: 1718289067}
+    - target: {fileID: 2948094823515649530, guid: 33059adbaeddb6b4485eb5254fd22904, type: 3}
+      propertyPath: _maxWaveNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3274233169166204788, guid: 33059adbaeddb6b4485eb5254fd22904, type: 3}
       propertyPath: m_Name
       value: WaveSpawner

@@ -366,7 +366,7 @@ MonoBehaviour:
   _prize: 80
   _damage: 20
   _defaultWay: 0
-  _enemyDeathEffect: {fileID: 5067656029431141560, guid: c433fd9933136f1428fb69a1270cc173, type: 3}
+  _enemyDeathEffect: {fileID: 5067656029431141560, guid: adb29eb1f778a954e99f8f3ef542b23a, type: 3}
   _healthBar: {fileID: 6746548260605258547}
   _criticalHealthColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &6251784487096859709
