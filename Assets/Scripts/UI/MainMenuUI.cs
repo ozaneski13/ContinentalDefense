@@ -23,6 +23,16 @@ public class MainMenuUI : MonoBehaviour
         FadeUI.Instance.FadeTo(1);
     }
 
+    public void Credits()
+    {
+        if (_isButtonAlreadyPressed)
+            return;
+
+        _isButtonAlreadyPressed = true;
+        
+
+    }
+
     public void Quit()
     {
         if (_isButtonAlreadyPressed)
