@@ -50,8 +50,12 @@ MonoBehaviour:
   _maxWaveNumber: 100
   _timeBetweenWaves: 5
   _timeBetweenEachSpawn: 0.5
-  _startsLate: 0
   _lateStartTimer: 0
+  _startsLate: 0
+  _enemyTypesList:
+  - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
+  - {fileID: 8788537642432661641, guid: 2598e030b17b6a44baa6fe6d6d25b807, type: 3}
+  - {fileID: 8788537642432661641, guid: baee3de7ddb1e2947a64cff7616682bc, type: 3}
   _defaultWay: 0
 --- !u!1 &4273862018686297017
 GameObject:

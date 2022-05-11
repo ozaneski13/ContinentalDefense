@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2497209094670453898}
   - component: {fileID: 6251784487096859709}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: NormalEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710611b7eaab5ff419b129016d11be24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoint: 30
+  _healthPoint: 100
   _speed: 10
   _prize: 20
   _damage: 1

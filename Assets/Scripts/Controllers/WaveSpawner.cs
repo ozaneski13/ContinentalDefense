@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
 {
     [Header("Prefab Options")]
     [SerializeField] private GameObject _enemyPrefab = null;
+
     [SerializeField] private Transform _spawnPoint = null;
 
     [Header("UI")]
@@ -18,9 +19,12 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
+    [SerializeField] private float _lateStartTimer = 0f;
 
     [SerializeField] private bool _startsLate = false;
-    [SerializeField] private float _lateStartTimer = 0f;
+    
+    [Header("Enemy Types")]
+    [SerializeField] private List<GameObject> _enemyTypesList = new List<GameObject>();
 
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
@@ -113,7 +117,9 @@ public class WaveSpawner : MonoBehaviour
 
     private GameObject SpawnEnemy()
     {
-        GameObject enemy = Instantiate(_enemyPrefab, _enemyParent);
+        int enemyTypeIndex = UnityEngine.Random.Range(0, _enemyTypesList.Count);
+
+        GameObject enemy = Instantiate(_enemyTypesList[enemyTypeIndex], _enemyParent);
         enemy.transform.position = _spawnPoint.position;
         enemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
 
