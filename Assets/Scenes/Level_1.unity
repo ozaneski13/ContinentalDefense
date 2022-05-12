@@ -2931,7 +2931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1555156145
 MonoBehaviour:
@@ -3266,7 +3266,7 @@ Transform:
   - {fileID: 534531787}
   - {fileID: 2100801994}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1787386259
 PrefabInstance:
@@ -3568,7 +3568,7 @@ Transform:
   - {fileID: 1842233106}
   - {fileID: 1787386260}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1842233105
 PrefabInstance:
