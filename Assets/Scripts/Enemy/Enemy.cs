@@ -59,6 +59,10 @@ public class Enemy : MonoBehaviour, IEnemy
 
             _healthBar.fillAmount = 0;
 
+            int killCount = PlayerPrefs.GetInt("killCount", 0);
+            killCount++;
+            PlayerPrefs.SetInt("killCount", killCount);
+
             Destroy(deathEffect, 5f);
             Destroy(gameObject);
         }
