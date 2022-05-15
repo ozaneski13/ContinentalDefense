@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,8 +52,12 @@ public class GameManager : MonoBehaviour
     {
         if (isWin)
         {
-            int nextLevel = PlayerPrefs.GetInt("levelReached") + 1;
-            PlayerPrefs.SetInt("levelReached", nextLevel);
+            if (SceneManager.GetActiveScene().name != "TutorialLevel")
+            {
+                int nextLevel = PlayerPrefs.GetInt("levelReached") + 1;
+                PlayerPrefs.SetInt("levelReached", nextLevel);
+            }
+
             _gameWinUI.SetActive(true);
         }
 

@@ -136,13 +136,13 @@ MonoBehaviour:
   _cost: -100
   _upgradePrice: 0
   _cannonCount: 1
-  _range: 10
+  _range: 14
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 0
   _upgradedTurretPrefab: {fileID: 0}
   _disolveSpeed: 0.25
-  _fireRate: 1.5
+  _fireRate: 5
 --- !u!114 &-4436424280103755105
 MonoBehaviour:
   m_ObjectHideFlags: 0
