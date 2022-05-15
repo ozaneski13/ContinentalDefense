@@ -7,10 +7,7 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [Header("Enemy Prefabs")]
-    [SerializeField] private List<GameObject> _enemyTypesList = new List<GameObject>();
-    [SerializeField] private List<GameObject> _enemyBossTypesList = new List<GameObject>();
-
+    [Header("Spawn Point")]
     [SerializeField] private Transform _spawnPoint = null;
 
     [Header("UI")]
@@ -30,6 +27,9 @@ public class WaveSpawner : MonoBehaviour
 
     private LevelSettingsSO _levelSettingsSO = null;
     private LevelSettings _levelSettings = null;
+
+    private List<GameObject> _enemyTypesList = new List<GameObject>();
+    private List<GameObject> _enemyBossTypesList = new List<GameObject>();
 
     private Transform _enemyParent = null;
 

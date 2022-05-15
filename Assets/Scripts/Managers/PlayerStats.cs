@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour
         _levelSettings = _levelSettingsSO.GetLevelSettingsByLevelID(SceneManager.GetActiveScene().buildIndex);
 
         _health = _levelSettings.StartingHealth;
-        _startMoney= _levelSettings.StartingMoney;
+        _startMoney = _levelSettings.StartingMoney;
     }
 
     public void MoneyChanged(int value)

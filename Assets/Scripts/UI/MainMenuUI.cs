@@ -21,7 +21,11 @@ public class MainMenuUI : MonoBehaviour
             return;
         
         _isButtonAlreadyPressed = true;
-        FadeUI.Instance.FadeTo(1);
+
+        if (PlayerPrefs.GetInt("tutorialStatus", 0) == 0)
+            FadeUI.Instance.FadeTo(1);
+        else
+            FadeUI.Instance.FadeTo(2);
     }
 
     public void Credits()
