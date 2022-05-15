@@ -84,4 +84,10 @@ public class Ammunition : MonoBehaviour, IAmmunition
     {
         enemy.GetComponent<Enemy>().GetHit(_damage);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _explosionRadius);
+    }
 }

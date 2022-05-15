@@ -50,10 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turretType: 1
-  _cost: -200
+  _cost: -300
   _upgradePrice: 0
   _cannonCount: 2
-  _range: 30
+  _range: 20
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 0

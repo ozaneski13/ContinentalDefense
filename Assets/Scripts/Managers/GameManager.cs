@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WaveManager _waveManager = null;
 
     [Header("UI")]
-    [SerializeField] private GameObject _winUI = null;
+    [SerializeField] private GameObject _gameWinUI = null;
     [SerializeField] private GameObject _gameOverUI = null;
 
     private PlayerStats _playerStats = null;
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             int nextLevel = PlayerPrefs.GetInt("levelReached") + 1;
             PlayerPrefs.SetInt("levelReached", nextLevel);
-            _winUI.SetActive(true);
+            _gameWinUI.SetActive(true);
         }
 
         else

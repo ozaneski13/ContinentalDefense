@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class TurretUIButtons : MonoBehaviour
 {
     [SerializeField] private TurretUI _turretUI = null;
 
-    [SerializeField] private Text _upgradeButtonText = null;
-    [SerializeField] private Text _sellButtonText = null;
+    [SerializeField] private TextMeshProUGUI _upgradeButtonText = null;
+    [SerializeField] private TextMeshProUGUI _sellButtonText = null;
 
     private void OnEnable()
     {

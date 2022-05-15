@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private WaveManager _waveManager = null;
 
     [Header("Texts")]
-    [SerializeField] private Text _roundText = null;
+    [SerializeField] private TextMeshProUGUI _roundText = null;
 
     [Header("Time Scale")]
     [SerializeField] private float _timeScale = 0.1f;

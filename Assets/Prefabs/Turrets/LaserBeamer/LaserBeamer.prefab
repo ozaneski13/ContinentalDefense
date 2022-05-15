@@ -189,10 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turretType: 2
-  _cost: -100
+  _cost: -150
   _upgradePrice: 0
   _cannonCount: 1
-  _range: 20
+  _range: 12
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
   _upgradable: 0

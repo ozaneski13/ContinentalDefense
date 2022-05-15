@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class CostUI : MonoBehaviour
 {
@@ -9,9 +9,9 @@ public class CostUI : MonoBehaviour
     [SerializeField] private Turret _laserBeamer = null;
 
     [Header("Cost Texts")]
-    [SerializeField] private Text _standartTurretText = null;
-    [SerializeField] private Text _missileLauncherText = null;
-    [SerializeField] private Text _laserBeamText = null;
+    [SerializeField] private TextMeshProUGUI _standartTurretText = null;
+    [SerializeField] private TextMeshProUGUI _missileLauncherText = null;
+    [SerializeField] private TextMeshProUGUI _laserBeamText = null;
 
     private void Awake()
     {

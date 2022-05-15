@@ -72,11 +72,11 @@ public class Turret_Control : MonoBehaviour
 
     protected void RotateToEnemy()
     {
-        Vector3 direction = _target.position - transform.position;
+        Vector3 direction = _target.position - _partToRotate.transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed).eulerAngles;
 
-        _partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        _partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
     }
 
     protected void TurnToStartingRotation()

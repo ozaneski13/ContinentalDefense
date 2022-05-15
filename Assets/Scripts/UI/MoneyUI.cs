@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MoneyUI : MonoBehaviour
 {
     [Header("Money Text")]
-    [SerializeField] private Text _moneyText = null;
+    [SerializeField] private TextMeshProUGUI _moneyText = null;
 
     private PlayerStats _playerStats = null;
 

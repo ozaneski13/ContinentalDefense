@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Transform _spawnPoint = null;
 
     [Header("UI")]
-    [SerializeField] private Text _countdownText = null;
+    [SerializeField] private TextMeshProUGUI _countdownText = null;
 
     [Header("Wave Options")]
     [SerializeField] private int _maxWaveNumber = 100;
@@ -75,7 +75,8 @@ public class WaveSpawner : MonoBehaviour
 
         _countdown = Mathf.Clamp(_countdown, 00.0f, Mathf.Infinity);
 
-        _countdownText.text = string.Format("{0:00.0}", _countdown);
+        if (_countdownText != null)
+            _countdownText.text = string.Format("{0:00.0}", _countdown);
     }
 
     private void OnDestroy()

@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class LivesUI : MonoBehaviour
 {
     [Header("Lives Text")]
-    [SerializeField] private Text _livesText = null;
+    [SerializeField] private TextMeshProUGUI _livesText = null;
 
     private PlayerStats _playerStats = null;
 
