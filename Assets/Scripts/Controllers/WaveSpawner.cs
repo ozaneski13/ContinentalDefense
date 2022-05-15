@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class WaveSpawner : MonoBehaviour
@@ -27,11 +28,14 @@ public class WaveSpawner : MonoBehaviour
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
 
-    private float _countdown = 5f;
+    private LevelSettingsSO _levelSettingsSO = null;
+    private LevelSettings _levelSettings = null;
 
     private Transform _enemyParent = null;
 
     private List<GameObject[]> _waves = null;
+
+    private float _countdown = 5f;
 
     private int _waveNumber = 0;
 
@@ -45,6 +49,13 @@ public class WaveSpawner : MonoBehaviour
         _waves = new List<GameObject[]>();
 
         _enemyParent = EnemyHolder.Instance.transform;
+
+        _levelSettingsSO = LevelSettingsHolder.Instance.LevelSettingsSO;
+        _levelSettings = _levelSettingsSO.GetLevelSettingsByLevelID(SceneManager.GetActiveScene().buildIndex);
+
+        _maxWaveNumber = _levelSettings.WaveCount;
+        _enemyTypesList = _levelSettings.Enemies;
+        _enemyBossTypesList = _levelSettings.Bosses;
     }
 
     private void Update()
@@ -100,7 +111,8 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(_timeBetweenEachSpawn);
         }
 
-        CheckBossWave();
+        if (_enemyBossTypesList.Count != 0)
+            CheckBossWave();
 
         _waves.Add(enemies);
 

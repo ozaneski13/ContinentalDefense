@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -10,15 +11,19 @@ public class PlayerStats : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
+        InitStats();
+
         _money = _startMoney;
     }
     #endregion
 
-    [Header("Stats")]
-    [SerializeField] private int _health = 100;
+    private LevelSettingsSO _levelSettingsSO = null;
+    private LevelSettings _levelSettings = null;
+
+    private int _health = 100;
     public int Health => _health;
 
-    [SerializeField] private int _startMoney = 0;
+    private int _startMoney = 0;
 
     private int _money = 0;
     public int Money => _money;
@@ -27,6 +32,15 @@ public class PlayerStats : MonoBehaviour
 
     public Action HealthCountChanged;
     public Action<bool> NoHealthRemain;
+
+    private void InitStats()
+    {
+        _levelSettingsSO = LevelSettingsHolder.Instance.LevelSettingsSO;
+        _levelSettings = _levelSettingsSO.GetLevelSettingsByLevelID(SceneManager.GetActiveScene().buildIndex);
+
+        _health = _levelSettings.StartingHealth;
+        _startMoney= _levelSettings.StartingMoney;
+    }
 
     public void MoneyChanged(int value)
     {
