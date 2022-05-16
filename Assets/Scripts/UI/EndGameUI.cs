@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndGameUI : MonoBehaviour
 {
@@ -8,8 +8,8 @@ public class EndGameUI : MonoBehaviour
     [SerializeField] private Animator _animator = null;
 
     [Header("Texts")]
-    [SerializeField] private Text _killedEnemiesText = null;
-    [SerializeField] private Text _waveCountText = null;
+    [SerializeField] private TextMeshProUGUI _killedEnemiesText = null;
+    [SerializeField] private TextMeshProUGUI _waveCountText = null;
 
     private bool _readyToFade = false;
     private bool _isAlreadyFading = false;

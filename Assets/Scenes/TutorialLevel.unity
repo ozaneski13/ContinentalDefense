@@ -2391,7 +2391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611759807171169487, guid: f78d1d9b28c17664aaf1d074afe81b67, type: 3}
       propertyPath: m_Name
-      value: TurretHolder
+      value: SpawnableHolder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78d1d9b28c17664aaf1d074afe81b67, type: 3}
