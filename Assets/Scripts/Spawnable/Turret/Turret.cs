@@ -1,16 +1,10 @@
 using System.Collections;
 using UnityEngine;
-public class Turret : MonoBehaviour, ITurret
+
+public class Turret : Spawnable, ITurret
 {
-    [Header("Stats")]
     [SerializeField] private ETurret _turretType;
     public ETurret TurretType => _turretType;
-
-    [SerializeField] private int _cost;
-    public int Cost => _cost;
-
-    [SerializeField] private int _upgradePrice;
-    public int UpgradePrice => _upgradePrice;
 
     [SerializeField] private int _cannonCount;
     public int CannonCount => _cannonCount;
@@ -23,14 +17,6 @@ public class Turret : MonoBehaviour, ITurret
 
     [SerializeField] private float _timeToCheckTarget = 0.5f;
     public float TimeToCheckTarget => _timeToCheckTarget;
-
-    [SerializeField] private bool _upgradable = false;
-    public bool Upgradable => _upgradable;
-
-    [SerializeField] private GameObject _upgradedTurretPrefab = null;
-    public GameObject UpgradedTurretPrefab => _upgradedTurretPrefab;
-
-    [SerializeField] private float _disolveSpeed = 0.25f;
 
     private void Awake()
     {

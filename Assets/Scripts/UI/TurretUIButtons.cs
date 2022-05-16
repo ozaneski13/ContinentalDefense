@@ -10,18 +10,18 @@ public class TurretUIButtons : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_turretUI.TargetNode.CurrentTurret.Upgradable)
-            _upgradeButtonText.text = "<b>UPGRADE</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentTurret.UpgradePrice).ToString();
+        if(_turretUI.TargetNode.CurrentSpawnable.Upgradable)
+            _upgradeButtonText.text = "<b>UPGRADE</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentSpawnable.UpgradePrice).ToString();
         else
             _upgradeButtonText.text = "<b>MAX UPGRADE</b>";
 
-        _sellButtonText.text = "<b>SELL</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentTurret.Cost).ToString();
+        _sellButtonText.text = "<b>SELL</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentSpawnable.Cost).ToString();
     }
 
     public void UpgradeClicked()
     {
         Node node = _turretUI.TargetNode;
-        Turret currentTurret = node.CurrentTurret;
+        Spawnable currentTurret = node.CurrentSpawnable;
 
         if (!currentTurret.Upgradable)
         {
@@ -29,7 +29,7 @@ public class TurretUIButtons : MonoBehaviour
             return;
         }
 
-        node.UpgradeCurrentTurret();
+        node.UpgradeCurrent();
 
         _turretUI.Hide();
     }
@@ -38,7 +38,7 @@ public class TurretUIButtons : MonoBehaviour
     {
         Node node = _turretUI.TargetNode;
 
-        node.SellCurrentTurret();
+        node.SellCurrent();
 
         _turretUI.Hide();
     }

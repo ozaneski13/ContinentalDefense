@@ -1,31 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour, INode
 {
     [Header("Effects")]
-    [SerializeField] private GameObject _builtParticle = null;
-    [SerializeField] private GameObject _sellParticle = null;
+    [SerializeField] protected GameObject _builtParticle = null;
+    [SerializeField] protected GameObject _sellParticle = null;
 
     [Header("Node")]
-    [SerializeField] private Renderer _renderer = null;
-    [SerializeField] private Color _nodeOccupiedColor = Color.red;
-    [SerializeField] private float _nodeOccupiedTimer = 0.5f;
+    [SerializeField] protected Renderer _renderer = null;
+    [SerializeField] protected Color _nodeOccupiedColor = Color.red;
+    [SerializeField] protected float _nodeOccupiedTimer = 0.5f;
 
-    private Color _startColor = Color.white;
+    protected Color _startColor = Color.white;
 
     [Header("Positioning")]
-    [SerializeField] private Vector3 _positionOffset = Vector3.zero;
+    [SerializeField] protected Vector3 _positionOffset = Vector3.zero;
     public Vector3 PositionOffset => _positionOffset;
 
-    private Turret _currentTurret = null;
-    public Turret CurrentTurret => _currentTurret;
+    protected PlayerStats _playerStats = null;
 
-    private PlayerStats _playerStats = null;
+    protected Transform _particleHolder = null;
 
-    private Transform _particleHolder = null;
+    protected Transform _attackedHolder = null;
 
-    private Transform _turretHolder = null;
+    protected Spawnable _currentSpawnable = null;
+    public Spawnable CurrentSpawnable => _currentSpawnable;
 
     private void Start()
     {
@@ -33,32 +33,46 @@ public class Node : MonoBehaviour
 
         _particleHolder = ParticleHolder.Instance.transform;
 
-        _turretHolder = TurretHolder.Instance.transform;
+        _attackedHolder = SpawnableHolder.Instance.transform;
 
         _startColor = _renderer.material.color;
     }
 
+    public void NodeOccupied()
+    {
+        StartCoroutine(OccupiedRoutine());
+    }
+
+    protected IEnumerator OccupiedRoutine()
+    {
+        _renderer.material.color = _nodeOccupiedColor;
+
+        yield return new WaitForSeconds(_nodeOccupiedTimer);
+
+        _renderer.material.color = _startColor;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (_currentTurret != null)
+        if (_currentSpawnable != null)
             return;
 
-        if (other.gameObject.GetComponent<Turret>() != null)
-            _currentTurret = other.gameObject.GetComponent<Turret>();
+        if (other.gameObject.GetComponent<Spawnable>() != null)
+            _currentSpawnable = other.gameObject.GetComponent<Spawnable>();
 
         other.isTrigger = false;
     }
 
-    public void CreateNewTurret()
+    public void CreateNew()
     {
-        GameObject turretToBuild = BuildManager.Instance.GetTurretToBuild;
+        GameObject spawnableToBuild = BuildManager.Instance.GetSpawnableToBuild;
 
-        if (turretToBuild == null)
+        if (spawnableToBuild == null)
             return;
 
-        Turret turret = turretToBuild.GetComponent<Turret>();
+        Spawnable spawnable = spawnableToBuild.GetComponent<Spawnable>();
 
-        if (turretToBuild == null || _playerStats.Money < Mathf.Abs(turret.Cost))
+        if (spawnableToBuild == null || _playerStats.Money < Mathf.Abs(spawnable.Cost))
         {
             StartCoroutine(OccupiedRoutine());
             return;
@@ -67,55 +81,41 @@ public class Node : MonoBehaviour
         GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
-        _playerStats.MoneyChanged(turret.Cost);
+        _playerStats.MoneyChanged(spawnable.Cost);
 
-        GameObject newTurret = Instantiate(turretToBuild, transform.position + _positionOffset, transform.rotation, _turretHolder);
-        _currentTurret = newTurret.GetComponent<Turret>();
+        GameObject newSpawnable = Instantiate(spawnableToBuild, transform.position + _positionOffset, transform.rotation, _attackedHolder);
+        _currentSpawnable = newSpawnable.GetComponent<Spawnable>();
     }
 
-    public void SellCurrentTurret()
+    public void SellCurrent()
     {
-        _playerStats.MoneyChanged(Mathf.Abs(_currentTurret.GetComponent<Turret>().Cost));
+        _playerStats.MoneyChanged(Mathf.Abs(_currentSpawnable.GetComponent<Turret>().Cost));
 
-        GameObject particle = Instantiate(_sellParticle, _currentTurret.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
+        GameObject particle = Instantiate(_sellParticle, _currentSpawnable.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
-        Destroy(_currentTurret.gameObject);
-        _currentTurret = null;
+        Destroy(_currentSpawnable.gameObject);
+        _currentSpawnable = null;
     }
 
-    public void UpgradeCurrentTurret()
+    public void UpgradeCurrent()
     {
-        Turret turret = _currentTurret.GetComponent<Turret>();
+        Spawnable spawnable = _currentSpawnable.GetComponent<Spawnable>();
 
-        if (turret == null || !turret.Upgradable)
+        if (spawnable == null || !spawnable.Upgradable)
             return;
 
-        if (Mathf.Abs(turret.UpgradePrice) > _playerStats.Money)
+        if (Mathf.Abs(spawnable.UpgradePrice) > _playerStats.Money)
         {
             NodeOccupied();
             return;
         }
 
-        Destroy(_currentTurret.gameObject);
+        Destroy(_currentSpawnable.gameObject);
 
-        _playerStats.MoneyChanged(turret.UpgradePrice);
+        _playerStats.MoneyChanged(spawnable.UpgradePrice);
 
-        GameObject upgradedTurret = Instantiate(turret.UpgradedTurretPrefab, transform.position + _positionOffset, transform.rotation, _turretHolder);
-        _currentTurret = upgradedTurret.GetComponent<Turret>();
-    }
-
-    public void NodeOccupied()
-    {
-        StartCoroutine(OccupiedRoutine());
-    }
-
-    private IEnumerator OccupiedRoutine()
-    {
-        _renderer.material.color = _nodeOccupiedColor;
-
-        yield return new WaitForSeconds(_nodeOccupiedTimer);
-
-        _renderer.material.color = _startColor;
+        GameObject upgradedSpawnable = Instantiate(spawnable.UpgradedSpawnablePrefab, transform.position + _positionOffset, transform.rotation, _attackedHolder);
+        _currentSpawnable = upgradedSpawnable.GetComponent<Spawnable>();
     }
 }

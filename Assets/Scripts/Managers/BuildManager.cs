@@ -24,14 +24,14 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject _laserBeamPrefab = null;
     public GameObject LaserBeamPrefab => _laserBeamPrefab;
 
-    private GameObject _turretToBuild = null;
-    public GameObject GetTurretToBuild => _turretToBuild;
+    private GameObject _objectToBuild = null;
+    public GameObject GetSpawnableToBuild => _objectToBuild;
 
     private Node _selectedNode = null;
 
-    public void SetTurretToBuild(GameObject turretToBuild)
+    public void SetTurretToBuild(GameObject objectToBuild)
     {
-        _turretToBuild = turretToBuild;
+        _objectToBuild = objectToBuild;
 
         DeSelectNode();
     }
@@ -48,7 +48,7 @@ public class BuildManager : MonoBehaviour
         _turretUI.Hide();
 
         _selectedNode = node;
-        _turretToBuild = null;
+        _objectToBuild = null;
 
         _turretUI.SetTargetNode(_selectedNode);
     }

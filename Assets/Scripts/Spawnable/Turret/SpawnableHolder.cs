@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class TurretHolder : MonoBehaviour
+public class SpawnableHolder : MonoBehaviour
 {
     #region Singleton
-    public static TurretHolder Instance;
+    public static SpawnableHolder Instance;
     private void Awake()
     {
         if (Instance == null)

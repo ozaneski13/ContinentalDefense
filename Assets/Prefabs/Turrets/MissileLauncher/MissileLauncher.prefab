@@ -49,16 +49,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc5461dc325b6642b2fa34245cadd32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretType: 1
   _cost: -200
   _upgradePrice: -300
+  _upgradable: 1
+  _upgradedSpawnablePrefab: {fileID: 1298765659694309008, guid: fbc7f80363c0d6f46b209d278b6aaf57, type: 3}
+  _disolveSpeed: 0.25
+  _turretType: 1
   _cannonCount: 1
   _range: 15
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
-  _upgradable: 1
-  _upgradedTurretPrefab: {fileID: 1298765659694309008, guid: fbc7f80363c0d6f46b209d278b6aaf57, type: 3}
-  _disolveSpeed: 0.25
   _fireRate: 0.5
 --- !u!114 &4329768136007290519
 MonoBehaviour:

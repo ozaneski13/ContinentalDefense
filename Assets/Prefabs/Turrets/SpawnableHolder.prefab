@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 611759807171169485}
   - component: {fileID: 611759807171169484}
   m_Layer: 0
-  m_Name: TurretHolder
+  m_Name: SpawnableHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

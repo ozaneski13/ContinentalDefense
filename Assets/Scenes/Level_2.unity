@@ -4635,7 +4635,7 @@ Transform:
   - {fileID: 530383270}
   - {fileID: 1873095573}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2041457301 stripped
 Transform:
@@ -4721,7 +4721,7 @@ Transform:
   - {fileID: 1407426659}
   - {fileID: 890283574}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2100344385 stripped
 Transform:

@@ -3575,6 +3575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1853978906788850940, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1853978906905340645, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _xMax
       value: 60

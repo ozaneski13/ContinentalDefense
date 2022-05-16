@@ -64,10 +64,10 @@ public class TouchManager : MonoBehaviour
 
         if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         {
-            if (node.CurrentTurret == null)
-                node.CreateNewTurret();
+            if (node.CurrentSpawnable == null)
+                node.CreateNew();
 
-            else if (node.CurrentTurret != null)
+            else if (node.CurrentSpawnable != null)
                 _buildManager.SetNode(node);
         }
     }
