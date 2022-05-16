@@ -79,6 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce12a01648bef44f939f1ca6b14524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _xMin: 25
+  _xMax: 55
+  _zMin: 5
+  _zMax: 30
   _dragSpeed: 0.02
 --- !u!1 &1853978907507092556
 GameObject:
@@ -123,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f807f6afd6e584da7728c10ef0e8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turretTutorialTrigger: {fileID: 0}
 --- !u!1 &1853978908116950093
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveManager: {fileID: 1231210308013263554}
-  _winUI: {fileID: 0}
+  _gameWinUI: {fileID: 0}
   _gameOverUI: {fileID: 0}
 --- !u!1 &4945394696832284009
 GameObject:
@@ -257,8 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413acc20bfee17b4db93c303d22a6f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
-  _startMoney: 1000
 --- !u!1 &5905710478631932676
 GameObject:
   m_ObjectHideFlags: 0

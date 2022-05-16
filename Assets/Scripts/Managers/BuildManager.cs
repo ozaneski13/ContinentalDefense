@@ -45,6 +45,8 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
+        _turretUI.Hide();
+
         _selectedNode = node;
         _turretToBuild = null;
 
