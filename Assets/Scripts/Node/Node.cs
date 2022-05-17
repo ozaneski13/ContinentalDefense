@@ -8,17 +8,18 @@ public class Node : MonoBehaviour, INode
     [SerializeField] protected GameObject _sellParticle = null;
 
     [Header("Node")]
-    [SerializeField] protected Renderer _renderer = null;
     [SerializeField] protected Color _nodeOccupiedColor = Color.red;
     [SerializeField] protected float _nodeOccupiedTimer = 0.5f;
 
     protected Color _startColor = Color.white;
 
     [Header("Positioning")]
-    [SerializeField] protected Vector3 _positionOffset = Vector3.zero;
+    [SerializeField] protected Vector3 _positionOffset = new Vector3(0, 0.5f, 0);
     public Vector3 PositionOffset => _positionOffset;
 
     protected PlayerStats _playerStats = null;
+
+    protected Renderer _renderer = null;
 
     protected Transform _particleHolder = null;
 
@@ -29,6 +30,11 @@ public class Node : MonoBehaviour, INode
 
     private void Start()
     {
+        if (GetComponent<Renderer>() != null)
+            _renderer = GetComponent<Renderer>();
+        else
+            _renderer = GetComponentInParent<Renderer>();
+
         _playerStats = PlayerStats.Instance;
 
         _particleHolder = ParticleHolder.Instance.transform;
@@ -68,6 +74,9 @@ public class Node : MonoBehaviour, INode
         GameObject spawnableToBuild = BuildManager.Instance.GetSpawnableToBuild;
 
         if (spawnableToBuild == null)
+            return;
+
+        if ((spawnableToBuild.GetComponent<LandMine>() != null && this is NormalNode) || (spawnableToBuild.GetComponent<Turret>() != null && this is LandMineNode))
             return;
 
         Spawnable spawnable = spawnableToBuild.GetComponent<Spawnable>();

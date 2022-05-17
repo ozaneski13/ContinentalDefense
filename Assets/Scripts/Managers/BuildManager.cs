@@ -24,6 +24,9 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject _laserBeamPrefab = null;
     public GameObject LaserBeamPrefab => _laserBeamPrefab;
 
+    [SerializeField] private GameObject _landMinePrefab = null;
+    public GameObject LandMinePrefab => _landMinePrefab;
+
     private GameObject _objectToBuild = null;
     public GameObject GetSpawnableToBuild => _objectToBuild;
 

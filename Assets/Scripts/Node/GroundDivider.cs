@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class GroundDivider : MonoBehaviour
 {
+    [Header("Efffects")]
+    [SerializeField] private GameObject _builtParticle = null;
+    [SerializeField] private GameObject _sellParticle = null;
+
     [Header("Division Count")]
-    [SerializeField] private int _divisionCount = 0;
+    [SerializeField] private int _landMineNodeDistance = 6;
 
     private List<GameObject> _subParts = null;
 
@@ -17,70 +21,41 @@ public class GroundDivider : MonoBehaviour
     {
         _subParts = new List<GameObject>();
 
-        float longestAxis = FindLongestAxis();
+        int nodeCount = (int)transform.localScale.z / _landMineNodeDistance;
 
-        float edgeLength = longestAxis / _divisionCount;
+        float edgeLength = transform.localScale.z / nodeCount;
 
-        for (float i = Mathf.Ceil(-_divisionCount / 2f); i <= Mathf.Floor(_divisionCount / 2f); i++)
+        float startingPoint = transform.position.z - (transform.localScale.z / 2) + (edgeLength / 2);
+        float currentPoint;
+
+        for (int i = 0; i < nodeCount; i++)
         {
             GameObject subPart = new GameObject();
 
-            float x = 0, y = 0, z = 0;
-            float scale = 0;
+            currentPoint = startingPoint + ((edgeLength) * i);
 
-            Vector3 scaleVector = new Vector3();
-            scale = longestAxis / _divisionCount;
-
-            if (longestAxis == transform.localScale.x)
+            if (transform.rotation.eulerAngles.y == 0)
             {
-                x = transform.position.x + scale * i;
-                y = transform.position.y;
-                z = transform.position.z;
-
-                scaleVector = new Vector3(scale, transform.localScale.y, transform.localScale.z);
+                subPart.transform.position = new Vector3(transform.position.x, transform.position.y, currentPoint);
+                subPart.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, edgeLength);
             }
 
-            else if (longestAxis == transform.localScale.y)
+            else if (transform.rotation.eulerAngles.y == 90)
             {
-                x = transform.position.x;
-                y = transform.position.y + scale * i;
-                z = transform.position.z;
+                startingPoint = transform.position.x - (transform.localScale.z / 2) + (edgeLength / 2);
+                currentPoint = startingPoint + ((edgeLength) * i);
 
-                scaleVector = new Vector3(transform.localScale.x, scale, transform.localScale.z);
+                subPart.transform.position = new Vector3(currentPoint, transform.position.y, transform.position.z);
+                subPart.transform.localScale = new Vector3(edgeLength, transform.localScale.y, transform.localScale.x);
             }
 
-            else if (longestAxis == transform.localScale.z)
-            {
-                x = transform.position.x;
-                y = transform.position.y;
-                z = transform.position.z + scale * i;
+            LandMineNode landMineNode = subPart.AddComponent<LandMineNode>();
+            landMineNode.BuiltParticleSetter(_builtParticle);
+            landMineNode.SellParticleSetter(_sellParticle);
 
-                scaleVector = new Vector3(transform.localScale.x, transform.localScale.y, scale);
-            }
-
-            Vector3 position = new Vector3(x, y, z);
-
-            subPart.transform.position = position;
-            subPart.transform.rotation = Quaternion.identity;
-            subPart.transform.localScale = scaleVector;
-            subPart.AddComponent<BoxCollider>();
-            subPart.AddComponent<LandMineNode>();
-
-            //subPart.transform.parent = transform;
+            subPart.transform.parent = transform;
 
             _subParts.Add(subPart);
         }
-    }
-
-    private float FindLongestAxis()
-    {
-        float longestAxis = transform.localScale.x;
-
-        if (transform.localScale.y > longestAxis)
-            longestAxis = transform.localScale.y;
-        else if (transform.localScale.z > longestAxis)
-            longestAxis = transform.localScale.z;
-
-        return longestAxis;
     }
 }

@@ -309,6 +309,7 @@ MonoBehaviour:
   _standartTurretPrefab: {fileID: 3799522555678594570, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
   _missileLauncherPrefab: {fileID: 1298765659694309008, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
   _laserBeamPrefab: {fileID: 2263929717871754503, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
+  _landMinePrefab: {fileID: 5087515819566530747, guid: 7088d72592d48264c9291b549d06f22b, type: 3}
 --- !u!1001 &1640073907694755851
 PrefabInstance:
   m_ObjectHideFlags: 0

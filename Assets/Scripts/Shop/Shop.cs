@@ -23,4 +23,9 @@ public class Shop : MonoBehaviour
     {
         _buildManager.SetTurretToBuild(_buildManager.LaserBeamPrefab);
     }
+
+    public void PurchaseLandMine()
+    {
+        _buildManager.SetTurretToBuild(_buildManager.LandMinePrefab);
+    }
 }

@@ -46,10 +46,10 @@ public class LandMine_Explode : MonoBehaviour
 
         foreach (Collider collider in hitArray)
             DamageEnemy(collider.gameObject);
-
+        
         GameObject particle = Instantiate(_explosionEffect, transform.position, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
-
+        
         Destroy(gameObject);
     }
 
