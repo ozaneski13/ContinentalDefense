@@ -28,26 +28,17 @@ public class GroundDivider : MonoBehaviour
         float startingPoint = transform.position.z - (transform.localScale.z / 2) + (edgeLength / 2);
         float currentPoint;
 
+        Vector3 rotation = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(new Vector3());
+
         for (int i = 0; i < nodeCount; i++)
         {
             GameObject subPart = new GameObject();
 
             currentPoint = startingPoint + ((edgeLength) * i);
-
-            if (transform.rotation.eulerAngles.y == 0)
-            {
-                subPart.transform.position = new Vector3(transform.position.x, transform.position.y, currentPoint);
-                subPart.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, edgeLength);
-            }
-
-            else if (transform.rotation.eulerAngles.y == 90)
-            {
-                startingPoint = transform.position.x - (transform.localScale.z / 2) + (edgeLength / 2);
-                currentPoint = startingPoint + ((edgeLength) * i);
-
-                subPart.transform.position = new Vector3(currentPoint, transform.position.y, transform.position.z);
-                subPart.transform.localScale = new Vector3(edgeLength, transform.localScale.y, transform.localScale.x);
-            }
+            
+            subPart.transform.position = new Vector3(transform.position.x, transform.position.y, currentPoint);
+            subPart.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, edgeLength);
 
             LandMineNode landMineNode = subPart.AddComponent<LandMineNode>();
             landMineNode.BuiltParticleSetter(_builtParticle);
@@ -57,5 +48,7 @@ public class GroundDivider : MonoBehaviour
 
             _subParts.Add(subPart);
         }
+
+        transform.rotation = Quaternion.Euler(rotation);
     }
 }
