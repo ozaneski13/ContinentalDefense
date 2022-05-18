@@ -24,7 +24,6 @@ public class GroundDivider : MonoBehaviour
         int nodeCount = (int)transform.localScale.z / _landMineNodeDistance;
 
         float edgeLength = transform.localScale.z / nodeCount;
-
         float startingPoint = transform.position.z - (transform.localScale.z / 2) + (edgeLength / 2);
         float currentPoint;
 
@@ -35,7 +34,7 @@ public class GroundDivider : MonoBehaviour
         {
             GameObject subPart = new GameObject();
 
-            currentPoint = startingPoint + ((edgeLength) * i);
+            currentPoint = startingPoint + (edgeLength * i);
             
             subPart.transform.position = new Vector3(transform.position.x, transform.position.y, currentPoint);
             subPart.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, edgeLength);
