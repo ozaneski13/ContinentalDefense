@@ -8,6 +8,8 @@ public class Node : MonoBehaviour, INode
     [SerializeField] protected GameObject _sellParticle = null;
 
     [Header("Node")]
+    [SerializeField] protected Renderer _renderer = null;
+
     [SerializeField] protected Color _nodeOccupiedColor = Color.red;
     [SerializeField] protected float _nodeOccupiedTimer = 0.5f;
 
@@ -19,8 +21,6 @@ public class Node : MonoBehaviour, INode
 
     protected PlayerStats _playerStats = null;
 
-    protected Renderer _renderer = null;
-
     protected Transform _particleHolder = null;
 
     protected Transform _attackedHolder = null;
@@ -30,9 +30,9 @@ public class Node : MonoBehaviour, INode
 
     private void Start()
     {
-        if (GetComponent<Renderer>() != null)
+        if (_renderer == null)
             _renderer = GetComponent<Renderer>();
-        else
+        if (_renderer == null)
             _renderer = GetComponentInParent<Renderer>();
 
         _playerStats = PlayerStats.Instance;

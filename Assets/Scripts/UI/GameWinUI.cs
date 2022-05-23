@@ -49,6 +49,8 @@ public class GameWinUI : MonoBehaviour
 
         _isButtonAlreadyPressed = true;
 
+        Time.timeScale = 1f;
+
         FadeUI.Instance.FadeTo(0);
     }
 }
