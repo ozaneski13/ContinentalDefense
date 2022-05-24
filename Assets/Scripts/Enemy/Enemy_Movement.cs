@@ -7,6 +7,9 @@ public class Enemy_Movement : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] private Enemy _enemy = null;
 
+    [Header("Enemy Model")]
+    [SerializeField] private Transform _enemyModel = null;
+
     private PlayerStats _playerStats = null;
 
     private WaypointController _wayPointController = null;
@@ -38,6 +41,7 @@ public class Enemy_Movement : MonoBehaviour
             _defaultWay = _enemy.DefaultWay;
 
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
+        _enemyModel.LookAt(_target);
         _targetSet = true;
     }
 
@@ -62,6 +66,7 @@ public class Enemy_Movement : MonoBehaviour
 
         _wayPointIndex++;
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
+        _enemyModel.LookAt(_target);
     }
 
     public void SetDefaultWay(int way)

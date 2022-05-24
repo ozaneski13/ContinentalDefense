@@ -112,7 +112,7 @@ public class WaveSpawner : MonoBehaviour
         }
 
         if (_enemyBossTypesList.Count != 0)
-            CheckBossWave();
+            StartCoroutine(CheckBossWave());
 
         _waves.Add(enemies);
 
@@ -128,16 +128,16 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(_timeBetweenWaves);
     }
 
-    private void CheckBossWave()
+    private IEnumerator CheckBossWave()
     {
         int bossCount = 0;
 
         if (_waveNumber == _maxWaveNumber)
-            bossCount = 4;
+            bossCount = 16;
         else if (_waveNumber == _maxWaveNumber / 2)
-            bossCount = 2;
-        if (_waveNumber == _maxWaveNumber / 4)
-            bossCount = 1;
+            bossCount = 8;
+        if (_waveNumber % 10 == 0 && _waveNumber != 0)
+            bossCount = 4;
 
         for (int i = 0; i < bossCount; i++)
         {
@@ -145,6 +145,8 @@ public class WaveSpawner : MonoBehaviour
                 Instantiate(_enemyBossTypesList[0], _enemyParent);
             else
                 Instantiate(_enemyBossTypesList[1], _enemyParent);
+
+            yield return new WaitForSeconds(_timeBetweenEachSpawn * 2);
         }
     }
 

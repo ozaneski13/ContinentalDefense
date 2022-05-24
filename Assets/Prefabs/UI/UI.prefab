@@ -737,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveManager: {fileID: 0}
   _roundText: {fileID: 2003289073635985166}
-  _timeScale: 0.1
+  _timeScale: 0.05
 --- !u!95 &7296425036743487007
 Animator:
   serializedVersion: 3
@@ -4478,7 +4478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveManager: {fileID: 0}
   _roundText: {fileID: 6439650242982730358}
-  _timeScale: 0.1
+  _timeScale: 0.05
 --- !u!95 &8791043127614898616
 Animator:
   serializedVersion: 3
@@ -4591,7 +4591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d33297822d68da4d831cd620f1aa897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeScale: 0.1
+  _timeScale: 0.05
 --- !u!95 &7693574911068236990
 Animator:
   serializedVersion: 3

@@ -33,6 +33,8 @@ public class PlayerStats : MonoBehaviour
     public Action HealthCountChanged;
     public Action<bool> NoHealthRemain;
 
+    private bool _isInvoked = false;
+
     private void InitStats()
     {
         _levelSettingsSO = LevelSettingsHolder.Instance.LevelSettingsSO;
@@ -53,9 +55,17 @@ public class PlayerStats : MonoBehaviour
     {
         _health -= value;
 
-        HealthCountChanged?.Invoke();
-
         if (_health == 0)
-            NoHealthRemain?.Invoke(false);
+        {
+            if (!_isInvoked)
+            {
+                NoHealthRemain?.Invoke(false);
+                _isInvoked = true;
+            }
+
+            return;
+        }
+
+        HealthCountChanged?.Invoke();
     }
 }

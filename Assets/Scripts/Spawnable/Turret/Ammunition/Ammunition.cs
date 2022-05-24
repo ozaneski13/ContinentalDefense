@@ -23,6 +23,8 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private Transform _particleHolder = null;
 
+    private bool _selfDestructActivated = false;
+
     private void Start()
     {
         _particleHolder = ParticleHolder.Instance.transform;
@@ -32,7 +34,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
     {
         if (_target == null)
         {
-            Destroy(gameObject);
+            SelfDestruct();
 
             return;
         }
@@ -83,6 +85,19 @@ public class Ammunition : MonoBehaviour, IAmmunition
     private void DamageEnemy(GameObject enemy)
     {
         enemy.GetComponent<Enemy>().GetHit(_damage);
+    }
+
+    private void SelfDestruct()
+    {
+        if (_selfDestructActivated)
+            return;
+
+        _selfDestructActivated = true;
+
+        GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
+        Destroy(particle, 5f);
+
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
