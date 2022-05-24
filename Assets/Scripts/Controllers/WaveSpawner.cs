@@ -18,12 +18,15 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
-    [SerializeField] private float _lateStartTimer = 0f;
-
-    [SerializeField] private bool _startsLate = false;
 
     [Header("Route")]
     [SerializeField] private int _defaultWay = 0;
+
+    [Header("Pool Settings")]
+    [SerializeField] private Transform _poolParent = null;
+    [SerializeField] private int _poolSize = 40;
+    [SerializeField] private int _refillCount = 10;
+    [SerializeField] private float _poolControlDuration = 0.5f;
 
     private LevelSettingsSO _levelSettingsSO = null;
     private LevelSettings _levelSettings = null;
@@ -34,6 +37,7 @@ public class WaveSpawner : MonoBehaviour
     private Transform _enemyParent = null;
 
     private List<GameObject[]> _waves = null;
+    private List<List<GameObject>> _pools = null;
 
     private float _countdown = 5f;
 
@@ -56,6 +60,8 @@ public class WaveSpawner : MonoBehaviour
         _maxWaveNumber = _levelSettings.WaveCount;
         _enemyTypesList = _levelSettings.Enemies;
         _enemyBossTypesList = _levelSettings.Bosses;
+
+        InitEnemyPool();
     }
 
     private void Update()
@@ -95,12 +101,66 @@ public class WaveSpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void InitEnemyPool()
+    {
+        _pools = new List<List<GameObject>>();
+
+        FillPools();
+
+        StartCoroutine(RefillRoutine());
+    }
+
+    private void FillPools()
+    {
+        for (int k = 0; k < (_enemyTypesList.Count + _enemyBossTypesList.Count); k++)
+        {
+            List<GameObject> pool = new List<GameObject>();
+
+            FillPool(pool, k);
+
+            _pools.Add(pool);
+        }
+    }
+
+    private IEnumerator RefillRoutine()
+    {
+        while (true)
+        {
+            int index = 0;
+
+            foreach (List<GameObject> pool in _pools)
+            {
+                if (pool.Count < _refillCount)
+                    FillPool(pool, index);
+
+                index++;
+            }
+
+            yield return new WaitForSeconds(_poolControlDuration);
+        }
+    }
+
+    private void FillPool(List<GameObject> pool, int index)
+    {
+        for (int i = pool.Count; i < _poolSize; i++)
+        {
+            GameObject enemy;
+
+            if (index < _enemyTypesList.Count)
+                enemy = Instantiate(_enemyTypesList[index], _poolParent);
+
+            else
+                enemy = Instantiate(_enemyBossTypesList[index - _enemyBossTypesList.Count - 1], _poolParent);
+
+            enemy.SetActive(false);
+            enemy.transform.position = _spawnPoint.position;
+            pool.Add(enemy);
+        }
+    }
+
     private IEnumerator SpawnWave()
     {
         _currentWaveSpawned = false;
-
-        if (_startsLate)
-            yield return new WaitForSeconds(_lateStartTimer);
 
         GameObject[] enemies = new GameObject[_waveNumber + 1];
 
@@ -139,12 +199,23 @@ public class WaveSpawner : MonoBehaviour
         if (_waveNumber % 10 == 0 && _waveNumber != 0)
             bossCount = 4;
 
+        int index = 0;
+
         for (int i = 0; i < bossCount; i++)
         {
-            if (i < bossCount / (float)2)
-                Instantiate(_enemyBossTypesList[0], _enemyParent);
+            GameObject bossEnemy = _pools[_enemyTypesList.Count + index][_pools[_enemyTypesList.Count + index].Count - 1];
+            bossEnemy.transform.parent = _enemyParent;
+
+            bossEnemy.SetActive(true);
+
+            bossEnemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
+
+            _pools[_enemyTypesList.Count + index].Remove(bossEnemy);
+
+            if ((index + 1) == _enemyBossTypesList.Count)
+                index = 0;
             else
-                Instantiate(_enemyBossTypesList[1], _enemyParent);
+                index++;
 
             yield return new WaitForSeconds(_timeBetweenEachSpawn * 2);
         }
@@ -154,8 +225,12 @@ public class WaveSpawner : MonoBehaviour
     {
         int enemyTypeIndex = UnityEngine.Random.Range(0, _enemyTypesList.Count);
 
-        GameObject enemy = Instantiate(_enemyTypesList[enemyTypeIndex], _enemyParent);
-        enemy.transform.position = _spawnPoint.position;
+        GameObject enemy = _pools[enemyTypeIndex][_pools[enemyTypeIndex].Count - 1];
+        enemy.transform.parent = _enemyParent;
+
+        _pools[enemyTypeIndex].Remove(enemy);
+
+        enemy.SetActive(true);
         enemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
 
         return enemy;

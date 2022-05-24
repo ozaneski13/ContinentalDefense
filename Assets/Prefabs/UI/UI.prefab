@@ -4439,7 +4439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8323077364612030045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4477,7 +4477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveManager: {fileID: 0}
-  _roundText: {fileID: 6439650242982730358}
+  _roundText: {fileID: 172616940583727217}
   _timeScale: 0.05
 --- !u!95 &8791043127614898616
 Animator:

@@ -22,14 +22,14 @@ MonoBehaviour:
     _bosses: []
   - _buildIndex: 3
     _waveCount: 10
-    _startingMoney: 1000
+    _startingMoney: 500
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
     _bosses: []
   - _buildIndex: 4
     _waveCount: 50
-    _startingMoney: 500
+    _startingMoney: 400
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
@@ -38,7 +38,7 @@ MonoBehaviour:
     _bosses: []
   - _buildIndex: 5
     _waveCount: 100
-    _startingMoney: 500
+    _startingMoney: 400
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
@@ -48,7 +48,7 @@ MonoBehaviour:
     - {fileID: 8788537642432661641, guid: 09b66636530375a4381eca308c6bf6c2, type: 3}
   - _buildIndex: 6
     _waveCount: 100
-    _startingMoney: 500
+    _startingMoney: 400
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
@@ -58,7 +58,7 @@ MonoBehaviour:
     - {fileID: 8788537642432661641, guid: 9379d1f17f2fb0a44bfe2c6fc172a45d, type: 3}
   - _buildIndex: 7
     _waveCount: 100
-    _startingMoney: 500
+    _startingMoney: 300
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
