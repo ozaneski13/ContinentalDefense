@@ -150,7 +150,7 @@ public class WaveSpawner : MonoBehaviour
                 enemy = Instantiate(_enemyTypesList[index], _poolParent);
 
             else
-                enemy = Instantiate(_enemyBossTypesList[index - _enemyBossTypesList.Count - 1], _poolParent);
+                enemy = Instantiate(_enemyBossTypesList[index - _enemyTypesList.Count], _poolParent);
 
             enemy.SetActive(false);
             enemy.transform.position = _spawnPoint.position;

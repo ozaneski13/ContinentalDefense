@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8152060282893466415}
   - component: {fileID: 8152060282893466413}
   - component: {fileID: 8152060282893466412}
-  - component: {fileID: 8152060282893466386}
   m_Layer: 0
   m_Name: Snow
   m_TagString: Untagged
@@ -82,16 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8152060282893466386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8152060282893466414}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bf5881fe14c014498ac5184f5f44107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.3
