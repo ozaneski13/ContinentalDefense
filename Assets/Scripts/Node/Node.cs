@@ -94,11 +94,17 @@ public class Node : MonoBehaviour, INode
 
         GameObject newSpawnable = Instantiate(spawnableToBuild, transform.position + _positionOffset, transform.rotation, _attackedHolder);
         _currentSpawnable = newSpawnable.GetComponent<Spawnable>();
+
+        if(spawnable is LandMine)
+        {
+            LandMine landMine = newSpawnable.GetComponent<LandMine>();
+            landMine.SetLandMineNode(this);
+        }
     }
 
     public void SellCurrent()
     {
-        _playerStats.MoneyChanged(Mathf.Abs(_currentSpawnable.GetComponent<Turret>().Cost));
+        _playerStats.MoneyChanged(Mathf.Abs(_currentSpawnable.GetComponent<Spawnable>().SellCost));
 
         GameObject particle = Instantiate(_sellParticle, _currentSpawnable.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);

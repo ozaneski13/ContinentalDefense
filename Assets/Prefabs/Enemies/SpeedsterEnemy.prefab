@@ -869,7 +869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthPoint: 50
   _speed: 20
-  _prize: 40
+  _prize: 60
   _damage: 1
   _defaultWay: 0
   _enemyDeathEffect: {fileID: 5067656029431141560, guid: f54e8cf8127e4eb47b51ff535fe006c0, type: 3}

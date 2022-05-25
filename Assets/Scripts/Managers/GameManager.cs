@@ -59,10 +59,12 @@ public class GameManager : MonoBehaviour
 
         if (isWin)
         {
-            if (SceneManager.GetActiveScene().name != "TutorialLevel")
+            if (SceneManager.GetActiveScene().name != "TutorialLevel" && PlayerPrefs.GetInt(SceneManager.GetActiveScene().name, 0) == 0)
             {
                 int nextLevel = PlayerPrefs.GetInt("levelReached") + 1;
                 PlayerPrefs.SetInt("levelReached", nextLevel);
+
+                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             }
 
             _gameWinUI.SetActive(true);

@@ -15,7 +15,7 @@ public class TurretUIButtons : MonoBehaviour
         else
             _upgradeButtonText.text = "<b>MAX UPGRADE</b>";
 
-        _sellButtonText.text = "<b>SELL</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentSpawnable.Cost).ToString();
+        _sellButtonText.text = "<b>SELL</b>\n $" + Mathf.Abs(_turretUI.TargetNode.CurrentSpawnable.SellCost).ToString();
     }
 
     public void UpgradeClicked()

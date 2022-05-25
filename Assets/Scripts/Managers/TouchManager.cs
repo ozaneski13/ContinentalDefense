@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
+    [Header("Tutorial Only")]
     [SerializeField] private TriggerController _upgradeTurretTutorialTrigger = null;
 
     private BuildManager _buildManager = null;
@@ -65,6 +66,9 @@ public class TouchManager : MonoBehaviour
     private void CheckNode(GameObject nodeGO)
     {
         Node node = nodeGO.GetComponent<Node>();
+
+        if (nodeGO.GetComponent<LandMine>() != null)
+            node = nodeGO.GetComponent<LandMine>().LandMineNode;
 
         if (node == null)
             return;

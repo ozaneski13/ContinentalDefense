@@ -31,7 +31,8 @@ public class Turret_Slow : Turret_Control
         {
             ToggleLaser(false);
 
-            TurnToStartingRotation();
+            if(_canReturnStartingPosition)
+                TurnToStartingRotation();
 
             return;
         }

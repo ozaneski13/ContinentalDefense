@@ -13,6 +13,7 @@ public class GameWinUI : MonoBehaviour
 
     [Header("Time Scale")]
     [SerializeField] private float _timeScale = 0.1f;
+    [SerializeField] private float _lateStartDuration = 1f;
 
     private bool _isButtonAlreadyPressed = false;
 
@@ -25,7 +26,7 @@ public class GameWinUI : MonoBehaviour
 
     private IEnumerator LateStart()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_lateStartDuration);
 
         Time.timeScale = _timeScale;
     }

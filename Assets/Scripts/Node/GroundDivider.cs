@@ -38,6 +38,7 @@ public class GroundDivider : MonoBehaviour
             
             subPart.transform.position = new Vector3(transform.position.x, transform.position.y, currentPoint);
             subPart.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, edgeLength);
+            subPart.tag = "Node";
 
             LandMineNode landMineNode = subPart.AddComponent<LandMineNode>();
             landMineNode.BuiltParticleSetter(_builtParticle);

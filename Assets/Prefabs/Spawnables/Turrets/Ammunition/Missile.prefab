@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c374ea311fd2e040b704fbb400997e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 100
+  _damage: 50
   _speed: 30
   _explosionRadius: 3
   _bulletImpactParticle: {fileID: 1344649311445323627, guid: 56810d21c0604d9449a40ea507fd4d9d, type: 3}

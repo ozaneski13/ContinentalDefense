@@ -8,6 +8,7 @@ public class Turret_Control : MonoBehaviour
     [SerializeField] protected Turret _turret = null;
 
     [Header("Rotation")]
+    [SerializeField] protected bool _canReturnStartingPosition = false;
     [SerializeField] private Transform _partToRotate = null;
     
     private float _range = 0f;

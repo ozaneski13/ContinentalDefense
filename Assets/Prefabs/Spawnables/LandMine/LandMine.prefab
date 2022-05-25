@@ -78,8 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29e0c6d8fd8314ab6e622147848483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: -100
-  _upgradePrice: -200
+  _cost: -200
+  _sellCost: -150
+  _upgradePrice: -400
   _upgradable: 0
   _upgradedSpawnablePrefab: {fileID: 0}
   _disolveSpeed: 0.25
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _landMine: {fileID: 6448224070983203232}
-  _durationBeforeExplosion: 1
+  _durationBeforeExplosion: 0.5
   _targetsLayer:
     serializedVersion: 2
     m_Bits: 64

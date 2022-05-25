@@ -7,6 +7,9 @@ public class Spawnable : MonoBehaviour, ISpawnable
     [SerializeField] protected int _cost;
     public int Cost => _cost;
 
+    [SerializeField] protected int _sellCost;
+    public int SellCost => _sellCost;
+
     [SerializeField] protected int _upgradePrice;
     public int UpgradePrice => _upgradePrice;
 

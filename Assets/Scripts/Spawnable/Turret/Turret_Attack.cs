@@ -38,7 +38,8 @@ public class Turret_Attack : Turret_Control
     {
         if (_target == null)
         {
-            TurnToStartingRotation();
+            if(_canReturnStartingPosition)
+                TurnToStartingRotation();
 
             return;
         }

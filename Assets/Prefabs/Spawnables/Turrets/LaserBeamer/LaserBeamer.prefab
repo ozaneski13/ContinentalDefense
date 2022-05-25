@@ -188,8 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7197cdc09152fa5499fd62d278631dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: -150
-  _upgradePrice: -300
+  _cost: -200
+  _sellCost: -150
+  _upgradePrice: -400
   _upgradable: 1
   _upgradedSpawnablePrefab: {fileID: 2263929717871754503, guid: 1eeea0ea9b19ddc45bb87fc61e622ae0, type: 3}
   _disolveSpeed: 0.25
@@ -198,7 +199,7 @@ MonoBehaviour:
   _range: 12
   _rotationSpeed: 10
   _timeToCheckTarget: 0.5
-  _slowRate: 0.3
+  _slowRate: 0.25
 --- !u!114 &1085336171304907445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turret: {fileID: 4849587188722384730}
+  _canReturnStartingPosition: 0
   _partToRotate: {fileID: 7333130948882673014}
   _firePoints:
   - {fileID: 6628548499234302761}
