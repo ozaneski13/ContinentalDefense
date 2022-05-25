@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 2497209094670453898}
-  _enemyModel: {fileID: 0}
+  _enemyModel: {fileID: 7825941406385457955}
 --- !u!1001 &7715208511467891912
 PrefabInstance:
   m_ObjectHideFlags: 0
