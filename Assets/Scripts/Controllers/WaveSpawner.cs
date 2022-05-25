@@ -41,8 +41,10 @@ public class WaveSpawner : MonoBehaviour
 
     private float _countdown = 5f;
 
+    private int _waveNumber = 0;
+    public int WaveNumber => _waveNumber;
+
     private int _maxWaveNumber = 0;
-    private int _waveNumber = 1;
 
     private bool _currentWaveSpawned = true;
     private bool _isInvoked = false;
@@ -67,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_countdown <= 0f && _waveNumber <= _maxWaveNumber && _currentWaveSpawned)
+        if (_countdown <= 0f && _waveNumber < _maxWaveNumber && _currentWaveSpawned)
             StartCoroutine(SpawnWave());
 
         else if (_waveNumber >= _maxWaveNumber)
@@ -79,7 +81,7 @@ public class WaveSpawner : MonoBehaviour
 
             StopAllCoroutines();
 
-            if (GetWaveStatus() == _maxWaveNumber && !_isInvoked)
+            if (_waveNumber >= _maxWaveNumber && !_isInvoked && AllWavesDone())
             {
                 _isInvoked = true;
                 AllWavesSpawned?.Invoke();
@@ -101,7 +103,7 @@ public class WaveSpawner : MonoBehaviour
     {
         StopAllCoroutines();
 
-        int finishedWaveCount = PlayerPrefs.GetInt("finishedWaves", 0) + GetWaveStatus();
+        int finishedWaveCount = PlayerPrefs.GetInt("finishedWaves", 0) + _waveNumber;
         PlayerPrefs.SetInt("finishedWaves", finishedWaveCount);
     }
 
@@ -165,13 +167,11 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
-        int totalEnemyCount = _waveNumber * _enemyCountPerWave;
-
         _currentWaveSpawned = false;
 
-        GameObject[] enemies = new GameObject[totalEnemyCount];
+        GameObject[] enemies = new GameObject[(_waveNumber + 1) * _enemyCountPerWave];
 
-        for (int i = 0; i < totalEnemyCount; i++)
+        for (int i = 0; i < (_waveNumber + 1) * _enemyCountPerWave; i++)
         {
             enemies[i] = SpawnEnemy();
             
@@ -243,27 +243,6 @@ public class WaveSpawner : MonoBehaviour
         return enemy;
     }
 
-    public int GetWaveStatus()
-    {
-        int finishedWaves = 0;
-
-        foreach(GameObject[] enemies in _waves)
-        {
-            int enemyCounter = 0;
-
-            foreach (GameObject enemy in enemies)
-            {
-                if (enemy == null)
-                    enemyCounter++;
-            }
-
-            if (enemyCounter == enemies.Length)
-                finishedWaves++;
-        }
-
-        return finishedWaves;
-    }
-
     public void RefillEnemy(Enemy enemy)
     {
         enemy.gameObject.SetActive(false);
@@ -273,5 +252,25 @@ public class WaveSpawner : MonoBehaviour
         foreach (List<GameObject> pool in _pools)
             if (pool[0].GetComponent<Enemy>().EnemyType == enemy.EnemyType)
                 pool.Add(enemy.gameObject);
+    }
+
+    private bool AllWavesDone()
+    {
+        int enemyCounter = 0;
+        int sumEnemyCount = 0;
+
+        foreach (GameObject[] wave in _waves)
+        {
+            sumEnemyCount += wave.Length;
+
+            foreach (GameObject enemy in wave)
+                if (!enemy.activeInHierarchy)
+                    enemyCounter++;
+        }
+
+        if (sumEnemyCount == enemyCounter)
+            return true;
+        else
+            return false;
     }
 }

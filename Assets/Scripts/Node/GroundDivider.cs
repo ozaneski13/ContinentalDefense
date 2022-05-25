@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GroundDivider : MonoBehaviour
 {
+    [Header("Land Mine Prefab")]
+    [SerializeField] private GameObject _landMinePrefab = null;
+
     [Header("Efffects")]
     [SerializeField] private GameObject _builtParticle = null;
     [SerializeField] private GameObject _sellParticle = null;
@@ -41,8 +44,16 @@ public class GroundDivider : MonoBehaviour
             subPart.tag = "Node";
 
             LandMineNode landMineNode = subPart.AddComponent<LandMineNode>();
+
+            GameObject landMine = Instantiate(_landMinePrefab, subPart.transform.position, Quaternion.identity);
+            landMine.GetComponent<LandMine>().SetLandMineNode(landMineNode);
+            landMine.transform.position += landMineNode.PositionOffset;
+            landMine.transform.parent = subPart.transform;
+            landMine.SetActive(false);
+
             landMineNode.BuiltParticleSetter(_builtParticle);
             landMineNode.SellParticleSetter(_sellParticle);
+            landMineNode.LandMineSetter(landMine.GetComponent<LandMine>());
 
             subPart.transform.parent = transform;
 

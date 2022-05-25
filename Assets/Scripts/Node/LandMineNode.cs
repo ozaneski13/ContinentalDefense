@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class LandMineNode : Node
 {
+    private LandMine _landMine = null;
+    public LandMine LandMine => _landMine;
+
     private void Awake()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -27,5 +30,10 @@ public class LandMineNode : Node
     public void SellParticleSetter(GameObject sellParticle)
     {
         _sellParticle = sellParticle;
+    }
+
+    public void LandMineSetter(LandMine landMine)
+    {
+        _landMine = landMine;
     }
 }

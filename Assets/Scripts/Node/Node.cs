@@ -40,7 +40,7 @@ public class Node : MonoBehaviour, INode
         InitPool();
     }
 
-    private void InitPool()
+    protected void InitPool()
     {
         _spawnablePool = new List<Spawnable>();
 
@@ -113,9 +113,12 @@ public class Node : MonoBehaviour, INode
 
         _playerStats.MoneyChanged(spawnableToBuild.Cost);
 
-        foreach (Spawnable poolSpawnable in _spawnablePool)
-            if (poolSpawnable.SpawnableType == spawnableToBuild.SpawnableType && poolSpawnable.Upgradable)
-                _currentSpawnable = poolSpawnable;
+        if (spawnableToBuild is LandMine)
+            _currentSpawnable = (this as LandMineNode).LandMine;
+        else
+            foreach (Spawnable poolSpawnable in _spawnablePool)
+                if (poolSpawnable.SpawnableType == spawnableToBuild.SpawnableType && poolSpawnable.Upgradable)
+                    _currentSpawnable = poolSpawnable;
 
         GameObject newSpawnable = _currentSpawnable.gameObject;
         newSpawnable.transform.parent = _attackedHolder;

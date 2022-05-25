@@ -62,7 +62,7 @@ public class Turret_Control : MonoBehaviour
                 }
             }
 
-            if (nearestEnemy != null && shortestDistance <= _range)
+            if (nearestEnemy != null && nearestEnemy.gameObject.activeInHierarchy && shortestDistance <= _range)
                 _target = nearestEnemy.transform;
             else
                 _target = null;

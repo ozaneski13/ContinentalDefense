@@ -59,7 +59,7 @@ public class Enemy_Movement : MonoBehaviour
         if (_wayPointIndex >= _wayPointController.WayPointsArray[_defaultWay].WayPointsList.Count - 1)
         {
             _playerStats.HealthChanged(_enemy.Damage);
-            Destroy(gameObject);
+            _enemy.WaveSpawner.RefillEnemy(_enemy);
 
             return;
         }

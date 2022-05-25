@@ -46,8 +46,8 @@ public class WaveManager : MonoBehaviour
 
         foreach (WaveSpawner spawner in _waveSpawners)
         {
-            if (waveStatus < spawner.GetWaveStatus())
-                waveStatus = spawner.GetWaveStatus();
+            if (waveStatus < spawner.WaveNumber)
+                waveStatus = spawner.WaveNumber;
         }
 
         return waveStatus;

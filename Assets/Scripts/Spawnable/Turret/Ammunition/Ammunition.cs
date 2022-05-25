@@ -34,7 +34,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private void Update()
     {
-        if (_target == null)
+        if (!_target.gameObject.activeInHierarchy)
         {
             SelfDestruct();
 

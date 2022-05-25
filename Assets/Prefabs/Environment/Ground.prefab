@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da91a9189472144f9ca206eab37c536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landMinePrefab: {fileID: 5087515819566530747, guid: 7088d72592d48264c9291b549d06f22b, type: 3}
   _builtParticle: {fileID: 32856962043475746, guid: 77af89ef8f8db2f48bb234859f66a643, type: 3}
   _sellParticle: {fileID: 32856962043475746, guid: 92106de3a4c4f3b40a1e1cca28a5df12, type: 3}
-  _divisionCount: 0
+  _landMineNodeDistance: 6

@@ -27,9 +27,11 @@ public class Enemy : MonoBehaviour, IEnemy
 
     [Header("Health Bar")]
     [SerializeField] private Image _healthBar = null;
+    [SerializeField] private Color _normalHealthColor = Color.green;
     [SerializeField] private Color _criticalHealthColor = Color.red;
 
     private WaveSpawner _waveSpawner = null;
+    public WaveSpawner WaveSpawner=>_waveSpawner;
 
     private PlayerStats _playerStats = null;
 
@@ -40,6 +42,8 @@ public class Enemy : MonoBehaviour, IEnemy
         _playerStats = PlayerStats.Instance;
 
         _currentHealthPoint = _healthPoint;
+        _healthBar.fillAmount = 1f;
+        _healthBar.color = _normalHealthColor;
     }
 
     public void GetHit(int damage)

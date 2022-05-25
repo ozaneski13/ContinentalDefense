@@ -50,7 +50,7 @@ public class LandMine_Explode : MonoBehaviour
         GameObject particle = Instantiate(_explosionEffect, transform.position, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
         
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void DamageEnemy(GameObject enemy)

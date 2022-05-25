@@ -36,7 +36,7 @@ public class Turret_Attack : Turret_Control
 
     private void Update()
     {
-        if (_target == null)
+        if (_target == null || !_target.gameObject.activeInHierarchy)
         {
             if(_canReturnStartingPosition)
                 TurnToStartingRotation();
