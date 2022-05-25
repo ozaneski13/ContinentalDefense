@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _countdownText = null;
 
     [Header("Wave Options")]
-    [SerializeField] private int _maxWaveNumber = 100;
+    [SerializeField] private int _enemyCountPerWave = 2;
 
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEachSpawn = 1f;
@@ -41,7 +41,8 @@ public class WaveSpawner : MonoBehaviour
 
     private float _countdown = 5f;
 
-    private int _waveNumber = 0;
+    private int _maxWaveNumber = 0;
+    private int _waveNumber = 1;
 
     private bool _currentWaveSpawned = true;
     private bool _isInvoked = false;
@@ -66,7 +67,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_countdown <= 0f && _waveNumber < _maxWaveNumber && _currentWaveSpawned)
+        if (_countdown <= 0f && _waveNumber <= _maxWaveNumber && _currentWaveSpawned)
             StartCoroutine(SpawnWave());
 
         else if (_waveNumber >= _maxWaveNumber)
@@ -163,11 +164,13 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
+        int totalEnemyCount = _waveNumber * _enemyCountPerWave;
+
         _currentWaveSpawned = false;
 
-        GameObject[] enemies = new GameObject[_waveNumber + 1];
+        GameObject[] enemies = new GameObject[totalEnemyCount];
 
-        for (int i = 0; i < _waveNumber + 1; i++)
+        for (int i = 0; i < totalEnemyCount; i++)
         {
             enemies[i] = SpawnEnemy();
             

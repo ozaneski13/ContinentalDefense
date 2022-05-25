@@ -738,6 +738,7 @@ MonoBehaviour:
   _waveManager: {fileID: 0}
   _roundText: {fileID: 2003289073635985166}
   _timeScale: 0.05
+  _lateStartDuration: 1
 --- !u!95 &7296425036743487007
 Animator:
   serializedVersion: 3
@@ -4479,6 +4480,7 @@ MonoBehaviour:
   _waveManager: {fileID: 0}
   _roundText: {fileID: 172616940583727217}
   _timeScale: 0.05
+  _lateStartDuration: 1
 --- !u!95 &8791043127614898616
 Animator:
   serializedVersion: 3

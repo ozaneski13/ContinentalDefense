@@ -94,9 +94,6 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
         _selfDestructActivated = true;
 
-        GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
-        Destroy(particle, 5f);
-
         Destroy(gameObject);
     }
 
