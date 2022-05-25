@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29e0c6d8fd8314ab6e622147848483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnableType: 6
   _cost: -200
   _sellCost: -150
   _upgradePrice: -400

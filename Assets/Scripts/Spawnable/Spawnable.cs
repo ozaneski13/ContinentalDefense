@@ -4,6 +4,10 @@ using System.Collections;
 public class Spawnable : MonoBehaviour, ISpawnable
 {
     [Header("Stats")]
+
+    [SerializeField] private ESpawnable _spawnableType;
+    public ESpawnable SpawnableType => _spawnableType;
+
     [SerializeField] protected int _cost;
     public int Cost => _cost;
 
@@ -21,7 +25,7 @@ public class Spawnable : MonoBehaviour, ISpawnable
 
     [SerializeField] protected float _disolveSpeed = 0.25f;
 
-    private void Awake()
+    private void OnEnable()
     {
         StartCoroutine(ShaderRoutine());
     }

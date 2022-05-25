@@ -11,21 +11,21 @@ public class Shop : MonoBehaviour
 
     public void PurchaseStandartTurret()
     {
-        _buildManager.SetTurretToBuild(_buildManager.StandartTurretPrefab);
+        _buildManager.SetSpawnableToBuild(_buildManager.StandartTurretPrefab);
     }
 
     public void PurchaseMissileLauncher()
     {
-        _buildManager.SetTurretToBuild(_buildManager.MissileLauncherPrefab);
+        _buildManager.SetSpawnableToBuild(_buildManager.MissileLauncherPrefab);
     }
 
     public void PurchaseLaserBeam()
     {
-        _buildManager.SetTurretToBuild(_buildManager.LaserBeamPrefab);
+        _buildManager.SetSpawnableToBuild(_buildManager.LaserBeamPrefab);
     }
 
     public void PurchaseLandMine()
     {
-        _buildManager.SetTurretToBuild(_buildManager.LandMinePrefab);
+        _buildManager.SetSpawnableToBuild(_buildManager.LandMinePrefab);
     }
 }

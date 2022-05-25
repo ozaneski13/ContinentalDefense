@@ -19,6 +19,8 @@ public class Ammunition : MonoBehaviour, IAmmunition
     [Header("Layers")]
     [SerializeField] private LayerMask _targetsLayer;
 
+    private Turret_Attack _attacker = null;
+
     private Transform _target = null;
 
     private Transform _particleHolder = null;
@@ -60,6 +62,11 @@ public class Ammunition : MonoBehaviour, IAmmunition
         transform.LookAt(_target);
     }
 
+    public void SetAttacker(Turret_Attack attacker)
+    {
+        _attacker = attacker;
+    }
+
     private void Hit()
     {
         GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
@@ -71,7 +78,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
         else
             DamageEnemy(_target.gameObject);
 
-        Destroy(gameObject);
+        _attacker.RefillPool(gameObject);
     }
 
     private void Explode()
@@ -94,7 +101,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
         _selfDestructActivated = true;
 
-        Destroy(gameObject);
+        _attacker.RefillPool(gameObject);
     }
 
     private void OnDrawGizmos()

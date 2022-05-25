@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour, IEnemy
 {
     [Header("Stats")]
+    [SerializeField] private EEnemy _enemyType = EEnemy.Normal;
+    public EEnemy EnemyType => _enemyType;
+
     [SerializeField] private int _healthPoint;
-    public int HealthPoint => _healthPoint;
 
     [SerializeField] private float _speed;
     public float Speed => _speed;
 
     [SerializeField] private int _prize;
-    public int Prize => _prize;
 
     [SerializeField] private int _damage;
     public int Damage => _damage;
@@ -28,11 +29,13 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private Image _healthBar = null;
     [SerializeField] private Color _criticalHealthColor = Color.red;
 
+    private WaveSpawner _waveSpawner = null;
+
     private PlayerStats _playerStats = null;
 
     private int _currentHealthPoint;
 
-    private void Start()
+    private void OnEnable()
     {
         _playerStats = PlayerStats.Instance;
 
@@ -64,7 +67,13 @@ public class Enemy : MonoBehaviour, IEnemy
             PlayerPrefs.SetInt("killCount", killCount);
 
             Destroy(deathEffect, 5f);
-            Destroy(gameObject);
+
+            _waveSpawner.RefillEnemy(this);
         }
+    }
+
+    public void SetSpawner(WaveSpawner spawner)
+    {
+        _waveSpawner = spawner;
     }
 }

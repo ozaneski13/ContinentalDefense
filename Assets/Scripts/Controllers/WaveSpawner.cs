@@ -156,6 +156,7 @@ public class WaveSpawner : MonoBehaviour
             else
                 enemy = Instantiate(_enemyBossTypesList[index - _enemyTypesList.Count], _poolParent);
 
+            enemy.GetComponent<Enemy>().SetSpawner(this);
             enemy.SetActive(false);
             enemy.transform.position = _spawnPoint.position;
             pool.Add(enemy);
@@ -261,5 +262,16 @@ public class WaveSpawner : MonoBehaviour
         }
 
         return finishedWaves;
+    }
+
+    public void RefillEnemy(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(false);
+        enemy.transform.position = _spawnPoint.position;
+        enemy.transform.parent = _poolParent;
+
+        foreach (List<GameObject> pool in _pools)
+            if (pool[0].GetComponent<Enemy>().EnemyType == enemy.EnemyType)
+                pool.Add(enemy.gameObject);
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Node : MonoBehaviour, INode
@@ -13,11 +14,17 @@ public class Node : MonoBehaviour, INode
     [SerializeField] protected Color _nodeOccupiedColor = Color.red;
     [SerializeField] protected float _nodeOccupiedTimer = 0.5f;
 
+    [Header("Pool")]
+    [SerializeField] private GameObject[] _spawnables = null;
+    [SerializeField] private Transform _spawnablePoolParent = null;
+
     protected Color _startColor = Color.white;
 
     [Header("Positioning")]
     [SerializeField] protected Vector3 _positionOffset = new Vector3(0, 0.5f, 0);
     public Vector3 PositionOffset => _positionOffset;
+
+    private List<Spawnable> _spawnablePool = null;
 
     protected PlayerStats _playerStats = null;
 
@@ -27,6 +34,25 @@ public class Node : MonoBehaviour, INode
 
     protected Spawnable _currentSpawnable = null;
     public Spawnable CurrentSpawnable => _currentSpawnable;
+
+    private void Awake()
+    {
+        InitPool();
+    }
+
+    private void InitPool()
+    {
+        _spawnablePool = new List<Spawnable>();
+
+        foreach(GameObject spawnable in _spawnables)
+        {
+            GameObject poolSpawnable = Instantiate(spawnable, transform.position + _positionOffset, transform.rotation);
+            poolSpawnable.transform.parent = _spawnablePoolParent;
+            poolSpawnable.SetActive(false);
+
+            _spawnablePool.Add(poolSpawnable.GetComponent<Spawnable>());
+        }
+    }
 
     private void Start()
     {
@@ -71,35 +97,32 @@ public class Node : MonoBehaviour, INode
 
     public void CreateNew()
     {
-        GameObject spawnableToBuild = BuildManager.Instance.GetSpawnableToBuild;
+        Spawnable spawnableToBuild = BuildManager.Instance.GetSpawnableToBuild;
 
-        if (spawnableToBuild == null)
-            return;
-
-        if ((spawnableToBuild.GetComponent<LandMine>() != null && this is NormalNode) || (spawnableToBuild.GetComponent<Turret>() != null && this is LandMineNode))
-            return;
-
-        Spawnable spawnable = spawnableToBuild.GetComponent<Spawnable>();
-
-        if (spawnableToBuild == null || _playerStats.Money < Mathf.Abs(spawnable.Cost))
+        if (spawnableToBuild == null || _playerStats.Money < Mathf.Abs(spawnableToBuild.Cost))
         {
             StartCoroutine(OccupiedRoutine());
             return;
         }
 
+        if ((spawnableToBuild is LandMine && this is NormalNode) || (spawnableToBuild is Turret && this is LandMineNode))
+            return;
+
         GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
-        _playerStats.MoneyChanged(spawnable.Cost);
+        _playerStats.MoneyChanged(spawnableToBuild.Cost);
 
-        GameObject newSpawnable = Instantiate(spawnableToBuild, transform.position + _positionOffset, transform.rotation, _attackedHolder);
-        _currentSpawnable = newSpawnable.GetComponent<Spawnable>();
+        foreach (Spawnable poolSpawnable in _spawnablePool)
+            if (poolSpawnable.SpawnableType == spawnableToBuild.SpawnableType && poolSpawnable.Upgradable)
+                _currentSpawnable = poolSpawnable;
 
-        if(spawnable is LandMine)
-        {
-            LandMine landMine = newSpawnable.GetComponent<LandMine>();
-            landMine.SetLandMineNode(this);
-        }
+        GameObject newSpawnable = _currentSpawnable.gameObject;
+        newSpawnable.transform.parent = _attackedHolder;
+        newSpawnable.SetActive(true);
+
+        if(spawnableToBuild is LandMine)
+            (spawnableToBuild as LandMine).SetLandMineNode(this);
     }
 
     public void SellCurrent()
@@ -109,28 +132,34 @@ public class Node : MonoBehaviour, INode
         GameObject particle = Instantiate(_sellParticle, _currentSpawnable.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
         Destroy(particle, 5f);
 
-        Destroy(_currentSpawnable.gameObject);
+        _currentSpawnable.gameObject.SetActive(false);
         _currentSpawnable = null;
     }
 
     public void UpgradeCurrent()
     {
-        Spawnable spawnable = _currentSpawnable.GetComponent<Spawnable>();
-
-        if (spawnable == null || !spawnable.Upgradable)
+        if (_currentSpawnable == null || !_currentSpawnable.Upgradable)
             return;
 
-        if (Mathf.Abs(spawnable.UpgradePrice) > _playerStats.Money)
+        if (Mathf.Abs(_currentSpawnable.UpgradePrice) > _playerStats.Money)
         {
             NodeOccupied();
             return;
         }
+        
+        _currentSpawnable.gameObject.SetActive(false);
 
-        Destroy(_currentSpawnable.gameObject);
+        _playerStats.MoneyChanged(_currentSpawnable.UpgradePrice);
 
-        _playerStats.MoneyChanged(spawnable.UpgradePrice);
+        foreach (Spawnable spawnable in _spawnablePool)
+            if (spawnable.SpawnableType == _currentSpawnable.UpgradedSpawnablePrefab.GetComponent<Spawnable>().SpawnableType)
+                _currentSpawnable = spawnable;
 
-        GameObject upgradedSpawnable = Instantiate(spawnable.UpgradedSpawnablePrefab, transform.position + _positionOffset, transform.rotation, _attackedHolder);
-        _currentSpawnable = upgradedSpawnable.GetComponent<Spawnable>();
+        GameObject upgradedSpawnable = _currentSpawnable.gameObject;
+        upgradedSpawnable.transform.parent = _attackedHolder;
+        upgradedSpawnable.SetActive(true);
+
+        if (_currentSpawnable is LandMine)
+            (_currentSpawnable as LandMine).SetLandMineNode(this);
     }
 }

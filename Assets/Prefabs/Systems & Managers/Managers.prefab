@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f807f6afd6e584da7728c10ef0e8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turretTutorialTrigger: {fileID: 0}
+  _upgradeTurretTutorialTrigger: {fileID: 0}
 --- !u!1 &1853978908116950093
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,10 +306,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turretUI: {fileID: 0}
-  _standartTurretPrefab: {fileID: 3799522555678594570, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
-  _missileLauncherPrefab: {fileID: 1298765659694309008, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
-  _laserBeamPrefab: {fileID: 2263929717871754503, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
-  _landMinePrefab: {fileID: 5087515819566530747, guid: 7088d72592d48264c9291b549d06f22b, type: 3}
+  _standartTurretPrefab: {fileID: 8903009462950441062, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
+  _missileLauncherPrefab: {fileID: -4190950338126009654, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
+  _laserBeamPrefab: {fileID: 4849587188722384730, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
+  _landMinePrefab: {fileID: 6448224070983203232, guid: 7088d72592d48264c9291b549d06f22b, type: 3}
 --- !u!1001 &1640073907694755851
 PrefabInstance:
   m_ObjectHideFlags: 0

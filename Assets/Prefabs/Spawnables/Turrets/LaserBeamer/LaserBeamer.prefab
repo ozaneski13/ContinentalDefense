@@ -188,13 +188,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7197cdc09152fa5499fd62d278631dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnableType: 4
   _cost: -200
   _sellCost: -150
   _upgradePrice: -400
   _upgradable: 1
   _upgradedSpawnablePrefab: {fileID: 2263929717871754503, guid: 1eeea0ea9b19ddc45bb87fc61e622ae0, type: 3}
   _disolveSpeed: 0.25
-  _turretType: 2
   _cannonCount: 1
   _range: 12
   _rotationSpeed: 10

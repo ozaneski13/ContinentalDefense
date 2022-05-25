@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Turret : Spawnable, ITurret
 {
-    [SerializeField] private ETurret _turretType;
-    public ETurret TurretType => _turretType;
-
     [SerializeField] private int _cannonCount;
     public int CannonCount => _cannonCount;
 

@@ -24,7 +24,7 @@ public class Turret_Control : MonoBehaviour
 
     protected float _fireCountdown = 0f;
 
-    private void Awake()
+    private void OnEnable()
     {
         _range = _turret.Range;
         _rotationSpeed = _turret.RotationSpeed;

@@ -15,24 +15,24 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private TurretUI _turretUI = null;
 
     [Header("Turret Prefabs")]
-    [SerializeField] private GameObject _standartTurretPrefab = null;
-    public GameObject StandartTurretPrefab => _standartTurretPrefab;
+    [SerializeField] private Spawnable _standartTurretPrefab = null;
+    public Spawnable StandartTurretPrefab => _standartTurretPrefab;
 
-    [SerializeField] private GameObject _missileLauncherPrefab = null;
-    public GameObject MissileLauncherPrefab => _missileLauncherPrefab;
+    [SerializeField] private Spawnable _missileLauncherPrefab = null;
+    public Spawnable MissileLauncherPrefab => _missileLauncherPrefab;
 
-    [SerializeField] private GameObject _laserBeamPrefab = null;
-    public GameObject LaserBeamPrefab => _laserBeamPrefab;
+    [SerializeField] private Spawnable _laserBeamPrefab = null;
+    public Spawnable LaserBeamPrefab => _laserBeamPrefab;
 
-    [SerializeField] private GameObject _landMinePrefab = null;
-    public GameObject LandMinePrefab => _landMinePrefab;
+    [SerializeField] private Spawnable _landMinePrefab = null;
+    public Spawnable LandMinePrefab => _landMinePrefab;
 
-    private GameObject _objectToBuild = null;
-    public GameObject GetSpawnableToBuild => _objectToBuild;
+    private Spawnable _objectToBuild = null;
+    public Spawnable GetSpawnableToBuild => _objectToBuild;
 
     private Node _selectedNode = null;
 
-    public void SetTurretToBuild(GameObject objectToBuild)
+    public void SetSpawnableToBuild(Spawnable objectToBuild)
     {
         _objectToBuild = objectToBuild;
 

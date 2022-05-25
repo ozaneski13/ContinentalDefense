@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children:
   - {fileID: 5834908550461274251}
+  - {fileID: 3197439071760211325}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,6 +51,15 @@ MonoBehaviour:
   _renderer: {fileID: 864134548803599164}
   _nodeOccupiedColor: {r: 1, g: 0, b: 0, a: 1}
   _nodeOccupiedTimer: 0.3
+  _spawnables:
+  - {fileID: 5087515819566530747, guid: 7088d72592d48264c9291b549d06f22b, type: 3}
+  - {fileID: 2263929717871754503, guid: dc868e13826602f4fb930c85a06acf59, type: 3}
+  - {fileID: 2263929717871754503, guid: 1eeea0ea9b19ddc45bb87fc61e622ae0, type: 3}
+  - {fileID: 1298765659694309008, guid: 998d092f80a87cf4cb666b01b559ee8f, type: 3}
+  - {fileID: 1298765659694309008, guid: fbc7f80363c0d6f46b209d278b6aaf57, type: 3}
+  - {fileID: 3799522555678594570, guid: 7abdbfbf1811695418cc1caefa22a1de, type: 3}
+  - {fileID: 1242745536897903351, guid: ddea0a3dc1acdc14ab58fa5e090a8482, type: 3}
+  _spawnablePoolParent: {fileID: 3197439071760211325}
   _positionOffset: {x: 0, y: 0.5, z: 0}
 --- !u!65 &5953743351591871199
 BoxCollider:
@@ -206,6 +216,36 @@ Transform:
   m_Children:
   - {fileID: 6185201305825784758}
   m_Father: {fileID: 5834908550461274251}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6376752721161087913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3197439071760211325}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3197439071760211325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376752721161087913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815511666184394740}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5934766483681465437

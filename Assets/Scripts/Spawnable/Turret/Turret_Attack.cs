@@ -77,6 +77,7 @@ public class Turret_Attack : Turret_Control
 
             ammo.SetActive(true);
             ammo.GetComponent<Ammunition>().SetTarget(_target);
+            ammo.GetComponent<Ammunition>().SetAttacker(this);
         }
     }
 
@@ -105,5 +106,11 @@ public class Turret_Attack : Turret_Control
             else if (_firePointsIndex == _firePoints.Count - 1)
                 _firePointsIndex = 0;
         }
+    }
+
+    public void RefillPool(GameObject ammo)
+    {
+        ammo.SetActive(false);
+        _ammoPool.Add(ammo);
     }
 }
