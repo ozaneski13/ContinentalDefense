@@ -55,7 +55,9 @@ public class PlayerStats : MonoBehaviour
     {
         _health -= value;
 
-        if (_health == 0)
+        HealthCountChanged?.Invoke();
+
+        if (_health <= 0)
         {
             if (!_isInvoked)
             {
@@ -65,7 +67,5 @@ public class PlayerStats : MonoBehaviour
 
             return;
         }
-
-        HealthCountChanged?.Invoke();
     }
 }

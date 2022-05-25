@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerStats _playerStats = null;
 
+    private bool _isTriggered = false;
+
     public Action GameEnded;
 
     private void Start()
@@ -50,6 +52,11 @@ public class GameManager : MonoBehaviour
 
     private void EndGame(bool isWin)
     {
+        if (_isTriggered)
+            return;
+
+        _isTriggered = true;
+
         if (isWin)
         {
             if (SceneManager.GetActiveScene().name != "TutorialLevel")

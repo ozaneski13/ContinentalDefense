@@ -16,7 +16,7 @@ MonoBehaviour:
   - _buildIndex: 1
     _waveCount: 5
     _startingMoney: 1000
-    _startingHealth: 100
+    _startingHealth: 15
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
     _bosses: []

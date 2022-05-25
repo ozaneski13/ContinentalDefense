@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
-    [SerializeField] private TriggerController _turretTutorialTrigger = null;
+    [SerializeField] private TriggerController _upgradeTurretTutorialTrigger = null;
 
     private BuildManager _buildManager = null;
 
@@ -13,11 +14,11 @@ public class TouchManager : MonoBehaviour
 
     private void Start()
     {
-        if (_turretTutorialTrigger != null)
+        if (_upgradeTurretTutorialTrigger != null)
         {
             _canCheck = false;
 
-            _turretTutorialTrigger.triggerActivated += CanCheck;
+            _upgradeTurretTutorialTrigger.triggerActivated += CanCheck;
         }
 
         _buildManager = BuildManager.Instance;
@@ -44,14 +45,20 @@ public class TouchManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_turretTutorialTrigger != null)
+        if (_upgradeTurretTutorialTrigger != null)
         {
-            _turretTutorialTrigger.triggerActivated -= CanCheck;
+            _upgradeTurretTutorialTrigger.triggerActivated -= CanCheck;
         }
     }
 
     private void CanCheck(int index)
     {
+        StartCoroutine(CheckRoutine());
+    }
+
+    private IEnumerator CheckRoutine()
+    {
+        yield return new WaitForSeconds(1f);
         _canCheck = true;
     }
 

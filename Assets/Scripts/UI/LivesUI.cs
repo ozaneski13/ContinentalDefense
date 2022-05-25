@@ -34,6 +34,9 @@ public class LivesUI : MonoBehaviour
 
     private void UpdateLives()
     {
-        _livesText.text = _playerStats.Health.ToString() + " LIVES";
+        if (_playerStats.Health <= 0)
+            _livesText.text = "0 LIVES";
+        else
+            _livesText.text = _playerStats.Health.ToString() + " LIVES";
     }
 }

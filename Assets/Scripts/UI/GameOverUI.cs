@@ -13,6 +13,7 @@ public class GameOverUI : MonoBehaviour
 
     [Header("Time Scale")]
     [SerializeField] private float _timeScale = 0.1f;
+    [SerializeField] private float _lateStartDuration = 1f;
 
     private bool _isButtonAlreadyPressed = false;
 
@@ -23,9 +24,15 @@ public class GameOverUI : MonoBehaviour
         StartCoroutine(LateStart());
     }
 
+    private void OnEnable()
+    {
+        if(SceneManager.GetActiveScene().name == "TutorialLevel")
+            PlayerPrefs.SetInt("tutorialStatus", 0);
+    }
+
     private IEnumerator LateStart()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_lateStartDuration);
 
         Time.timeScale = _timeScale;
     }
@@ -48,6 +55,8 @@ public class GameOverUI : MonoBehaviour
             return;
 
         _isButtonAlreadyPressed = true;
+
+        Time.timeScale = 1f;
 
         FadeUI.Instance.FadeTo(0);
     }

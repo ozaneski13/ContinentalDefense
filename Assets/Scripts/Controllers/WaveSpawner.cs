@@ -99,6 +99,9 @@ public class WaveSpawner : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
+
+        int finishedWaveCount = PlayerPrefs.GetInt("finishedWaves", 0) + GetWaveStatus();
+        PlayerPrefs.SetInt("finishedWaves", finishedWaveCount);
     }
 
     private void InitEnemyPool()
@@ -251,13 +254,7 @@ public class WaveSpawner : MonoBehaviour
             }
 
             if (enemyCounter == enemies.Length)
-            {
                 finishedWaves++;
-
-                int finishedWaveCount = PlayerPrefs.GetInt("finishedWaves", 0);
-                finishedWaveCount++;
-                PlayerPrefs.SetInt("finishedWaves", finishedWaveCount);
-            }
         }
 
         return finishedWaves;
