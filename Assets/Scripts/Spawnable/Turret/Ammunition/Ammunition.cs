@@ -27,6 +27,11 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private bool _selfDestructActivated = false;
 
+    private void OnEnable()
+    {
+        _selfDestructActivated = false;
+    }
+
     private void Start()
     {
         _particleHolder = ParticleHolder.Instance.transform;

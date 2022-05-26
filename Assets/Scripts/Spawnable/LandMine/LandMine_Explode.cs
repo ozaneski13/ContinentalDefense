@@ -20,6 +20,11 @@ public class LandMine_Explode : MonoBehaviour
 
     private bool _isRoutineStarted = false;
 
+    private void OnEnable()
+    {
+        _isRoutineStarted = false;
+    }
+
     private void Start()
     {
         _particleHolder = ParticleHolder.Instance.transform;
