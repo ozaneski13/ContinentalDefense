@@ -36,6 +36,9 @@ public class Enemy_Movement : MonoBehaviour
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
         _enemyModel.LookAt(_target);
         _targetSet = true;
+
+        _defaultSpeed = _enemy.Speed;
+        _currentSpeed = _defaultSpeed;
     }
 
     private void Start()
