@@ -27,7 +27,7 @@ public class Turret_Slow : Turret_Control
 
     private void Update()
     {
-        if (_target == null)
+        if (_target == null || !_target.gameObject.activeInHierarchy)
         {
             ToggleLaser(false);
 

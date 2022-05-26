@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour, IEnemy
             Destroy(deathEffect, 5f);
 
             _waveSpawner.RefillEnemy(this);
+            gameObject.SetActive(false);
         }
     }
 

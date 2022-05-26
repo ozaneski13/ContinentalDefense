@@ -245,7 +245,6 @@ public class WaveSpawner : MonoBehaviour
 
     public void RefillEnemy(Enemy enemy)
     {
-        enemy.gameObject.SetActive(false);
         enemy.transform.position = _spawnPoint.position;
         enemy.transform.parent = _poolParent;
 

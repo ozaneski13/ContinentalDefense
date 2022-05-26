@@ -27,6 +27,17 @@ public class Enemy_Movement : MonoBehaviour
     private bool _targetSet = false;
     private bool _defaultWaySet = false;
 
+    private void OnEnable()
+    {
+        _wayPointController = WaypointController.Instance;
+
+        _wayPointIndex = 0;
+
+        _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
+        _enemyModel.LookAt(_target);
+        _targetSet = true;
+    }
+
     private void Start()
     {
         _playerStats = PlayerStats.Instance;
@@ -60,6 +71,7 @@ public class Enemy_Movement : MonoBehaviour
         {
             _playerStats.HealthChanged(_enemy.Damage);
             _enemy.WaveSpawner.RefillEnemy(_enemy);
+            _enemy.gameObject.SetActive(false);
 
             return;
         }

@@ -34,7 +34,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private void Update()
     {
-        if (!_target.gameObject.activeInHierarchy)
+        if (!_target.gameObject.activeInHierarchy || _target == null)
         {
             SelfDestruct();
 
@@ -79,6 +79,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
             DamageEnemy(_target.gameObject);
 
         _attacker.RefillPool(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void Explode()
@@ -102,6 +103,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
         _selfDestructActivated = true;
 
         _attacker.RefillPool(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()

@@ -110,7 +110,6 @@ public class Turret_Attack : Turret_Control
 
     public void RefillPool(GameObject ammo)
     {
-        ammo.SetActive(false);
         _ammoPool.Add(ammo);
     }
 }

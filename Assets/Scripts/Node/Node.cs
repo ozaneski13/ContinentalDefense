@@ -156,7 +156,10 @@ public class Node : MonoBehaviour, INode
 
         foreach (Spawnable spawnable in _spawnablePool)
             if (spawnable.SpawnableType == _currentSpawnable.UpgradedSpawnablePrefab.GetComponent<Spawnable>().SpawnableType)
+            {
                 _currentSpawnable = spawnable;
+                break;
+            }
 
         GameObject upgradedSpawnable = _currentSpawnable.gameObject;
         upgradedSpawnable.transform.parent = _attackedHolder;
@@ -164,5 +167,10 @@ public class Node : MonoBehaviour, INode
 
         if (_currentSpawnable is LandMine)
             (_currentSpawnable as LandMine).SetLandMineNode(this);
+    }
+
+    public void LandMineExplode()
+    {
+        _currentSpawnable = null;
     }
 }
