@@ -7,6 +7,7 @@ public class PauseUI : MonoBehaviour
     [SerializeField] private float _timeScale = 0.1f;
 
     private bool _isButtonAlreadyPressed = false;
+    public bool IsButtonAlreadyPressed => _isButtonAlreadyPressed;
 
     private void OnEnable()
     {
@@ -15,7 +16,8 @@ public class PauseUI : MonoBehaviour
 
     private void OnDisable()
     {
-        Time.timeScale = 1f;
+        if (SceneManager.GetActiveScene().name != "TutorialLevel")
+            Time.timeScale = 1f;
     }
 
     public void RetryLevel()

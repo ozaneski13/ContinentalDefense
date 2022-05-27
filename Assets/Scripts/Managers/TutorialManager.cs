@@ -9,6 +9,9 @@ public class TutorialManager : MonoBehaviour
     [Header("Tutorials")]
     [SerializeField] private List<GameObject> _tutorials = null;
 
+    [Header("Pause UI")]
+    [SerializeField] private PauseUI _pauseUI = null;
+
     private GameObject _currentTutorial = null;
 
     private int _skippedCount = 0;
@@ -20,7 +23,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && !_pauseUI.gameObject.activeInHierarchy)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -52,6 +55,9 @@ public class TutorialManager : MonoBehaviour
 
     private void TriggerActivated(int index)
     {
+        if (_pauseUI.IsButtonAlreadyPressed)
+            return;
+
         _currentTutorial = _tutorials[index];
         _currentTutorial.SetActive(true);
 
@@ -60,7 +66,7 @@ public class TutorialManager : MonoBehaviour
 
     private void SkipCurrentTutorial()
     {
-        if (_currentTutorial == null)
+        if (_currentTutorial == null || _pauseUI.IsButtonAlreadyPressed)
             return;
 
         _currentTutorial.SetActive(false);
