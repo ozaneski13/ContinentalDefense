@@ -104,7 +104,7 @@ MonoBehaviour:
   _targetsLayer:
     serializedVersion: 2
     m_Bits: 64
-  _explosionEffect: {fileID: 3391283250495499348, guid: 0e415fca0ff405d4098328cd9738d308, type: 3}
+  _explosionParticle: {fileID: 3391283250495499348, guid: 0e415fca0ff405d4098328cd9738d308, type: 3}
 --- !u!135 &2916593225519723482
 SphereCollider:
   m_ObjectHideFlags: 0
