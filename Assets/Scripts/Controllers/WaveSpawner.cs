@@ -213,9 +213,8 @@ public class WaveSpawner : MonoBehaviour
             GameObject bossEnemy = _pools[_enemyTypesList.Count + index][_pools[_enemyTypesList.Count + index].Count - 1];
             bossEnemy.transform.parent = _enemyParent;
 
-            bossEnemy.SetActive(true);
-
             bossEnemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
+            bossEnemy.SetActive(true);
 
             _pools[_enemyTypesList.Count + index].Remove(bossEnemy);
 
@@ -237,8 +236,8 @@ public class WaveSpawner : MonoBehaviour
 
         _pools[enemyTypeIndex].Remove(enemy);
 
-        enemy.SetActive(true);
         enemy.GetComponent<Enemy_Movement>().SetDefaultWay(_defaultWay);
+        enemy.SetActive(true);
 
         return enemy;
     }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ammunition : MonoBehaviour, IAmmunition
@@ -14,27 +16,33 @@ public class Ammunition : MonoBehaviour, IAmmunition
     public float ExplosionRadius => _explosionRadius;
 
     [Header("Effects")]
-    [SerializeField] private GameObject _bulletImpactParticle = null;
+    [SerializeField] private GameObject _ammoImpactParticle = null;
+    private GameObject _ammoImpactEfffect = null;
 
     [Header("Layers")]
     [SerializeField] private LayerMask _targetsLayer;
 
     private Turret_Attack _attacker = null;
 
+    private List<ParticleSystem> _particleSystems = null;
+
     private Transform _target = null;
 
-    private Transform _particleHolder = null;
-
     private bool _selfDestructActivated = false;
+
+    private void Awake()
+    {
+        _ammoImpactEfffect = Instantiate(_ammoImpactParticle, transform.position, transform.rotation, ParticleHolder.Instance.transform);
+
+        _particleSystems = _ammoImpactEfffect.GetComponentsInChildren<ParticleSystem>().ToList();
+    }
 
     private void OnEnable()
     {
         _selfDestructActivated = false;
-    }
 
-    private void Start()
-    {
-        _particleHolder = ParticleHolder.Instance.transform;
+        foreach (ParticleSystem particleSystem in _particleSystems)
+            particleSystem.Stop();
     }
 
     private void Update()
@@ -74,8 +82,11 @@ public class Ammunition : MonoBehaviour, IAmmunition
 
     private void Hit()
     {
-        GameObject particle = Instantiate(_bulletImpactParticle, transform.position, transform.rotation, _particleHolder);
-        Destroy(particle, 5f);
+        _ammoImpactEfffect.transform.position = transform.position;
+        _ammoImpactEfffect.SetActive(true);
+
+        foreach (ParticleSystem particleSystem in _particleSystems)
+            particleSystem.Play();
 
         if (_explosionRadius > 0)
             Explode();

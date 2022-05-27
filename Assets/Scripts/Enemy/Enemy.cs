@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,12 +20,9 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private int _damage;
     public int Damage => _damage;
 
-    [Header("Route")]
-    [SerializeField] private int _defaultWay;
-    public int DefaultWay => _defaultWay;
-
     [Header("Effects")]
-    [SerializeField] private GameObject _enemyDeathEffect = null;
+    [SerializeField] private GameObject _enemyDeathParticle = null;
+    private GameObject _deathEffect = null;
 
     [Header("Health Bar")]
     [SerializeField] private Image _healthBar = null;
@@ -35,11 +34,23 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private PlayerStats _playerStats = null;
 
+    private List<ParticleSystem> _particleSystems = null;
+
     private int _currentHealthPoint;
+
+    private void Awake()
+    {
+        _deathEffect = Instantiate(_enemyDeathParticle, ParticleHolder.Instance.transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
+        
+        _particleSystems = _deathEffect.GetComponentsInChildren<ParticleSystem>().ToList();
+    }
 
     private void OnEnable()
     {
         _playerStats = PlayerStats.Instance;
+
+        foreach (ParticleSystem particleSystem in _particleSystems)
+            particleSystem.Stop();
 
         _currentHealthPoint = _healthPoint;
         _healthBar.fillAmount = 1f;
@@ -62,15 +73,17 @@ public class Enemy : MonoBehaviour, IEnemy
         {
             _playerStats.MoneyChanged(_prize);
 
-            GameObject deathEffect = Instantiate(_enemyDeathEffect, transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
+            _deathEffect.transform.position = transform.position;
+            _deathEffect.SetActive(true);
+
+            foreach (ParticleSystem particleSystem in _particleSystems)
+                particleSystem.Play();
 
             _healthBar.fillAmount = 0;
 
             int killCount = PlayerPrefs.GetInt("killCount", 0);
             killCount++;
             PlayerPrefs.SetInt("killCount", killCount);
-
-            Destroy(deathEffect, 5f);
 
             _waveSpawner.RefillEnemy(this);
             gameObject.SetActive(false);

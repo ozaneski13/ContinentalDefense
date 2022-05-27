@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(LandMine))]
@@ -14,20 +16,26 @@ public class LandMine_Explode : MonoBehaviour
     [SerializeField] private LayerMask _targetsLayer;
 
     [Header("Particles")]
-    [SerializeField] private GameObject _explosionEffect = null;
+    [SerializeField] private GameObject _explosionParticle = null;
+    private GameObject _explosionEffect = null;
 
-    private Transform _particleHolder = null;
+    private List<ParticleSystem> _particleSystems = null;
 
     private bool _isRoutineStarted = false;
 
-    private void OnEnable()
+    private void Awake()
     {
-        _isRoutineStarted = false;
+        _explosionEffect = Instantiate(_explosionParticle, transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
+
+        _particleSystems = _explosionEffect.GetComponentsInChildren<ParticleSystem>().ToList();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        _particleHolder = ParticleHolder.Instance.transform;
+        foreach (ParticleSystem particleSystem in _particleSystems)
+            particleSystem.Stop();
+
+        _isRoutineStarted = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -51,9 +59,12 @@ public class LandMine_Explode : MonoBehaviour
 
         foreach (Collider collider in hitArray)
             DamageEnemy(collider.gameObject);
-        
-        GameObject particle = Instantiate(_explosionEffect, transform.position, Quaternion.identity, _particleHolder);
-        Destroy(particle, 5f);
+
+        _explosionEffect.transform.position = transform.position;
+        _explosionEffect.SetActive(true);
+
+        foreach (ParticleSystem particleSystem in _particleSystems)
+            particleSystem.Play();
 
         _landMine.LandMineNode.LandMineExplode();
         gameObject.SetActive(false);

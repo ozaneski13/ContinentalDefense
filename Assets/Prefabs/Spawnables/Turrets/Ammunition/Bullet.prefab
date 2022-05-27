@@ -128,7 +128,7 @@ MonoBehaviour:
   _damage: 10
   _speed: 70
   _explosionRadius: 0
-  _bulletImpactParticle: {fileID: 1298177532507543375, guid: d1612123ebc29aa4397270b0e81b25bb, type: 3}
+  _ammoImpactParticle: {fileID: 1298177532507543375, guid: d1612123ebc29aa4397270b0e81b25bb, type: 3}
   _targetsLayer:
     serializedVersion: 2
     m_Bits: 64

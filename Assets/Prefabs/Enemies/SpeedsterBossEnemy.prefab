@@ -872,8 +872,7 @@ MonoBehaviour:
   _speed: 20
   _prize: 120
   _damage: 2
-  _defaultWay: 0
-  _enemyDeathEffect: {fileID: 5067656029431141560, guid: f54e8cf8127e4eb47b51ff535fe006c0, type: 3}
+  _enemyDeathParticle: {fileID: 5067656029431141560, guid: f54e8cf8127e4eb47b51ff535fe006c0, type: 3}
   _healthBar: {fileID: 6746548260605258547}
   _normalHealthColor: {r: 0.27450982, g: 0.9019608, b: 0.27450982, a: 1}
   _criticalHealthColor: {r: 1, g: 0, b: 0, a: 1}

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Node : MonoBehaviour, INode
 {
     [Header("Effects")]
     [SerializeField] protected GameObject _builtParticle = null;
+    private GameObject _builtEffect = null;
+
     [SerializeField] protected GameObject _sellParticle = null;
+    private GameObject _sellEffect = null;
 
     [Header("Node")]
     [SerializeField] protected Renderer _renderer = null;
@@ -27,8 +31,6 @@ public class Node : MonoBehaviour, INode
     private List<Spawnable> _spawnablePool = null;
 
     protected PlayerStats _playerStats = null;
-
-    protected Transform _particleHolder = null;
 
     protected Transform _attackedHolder = null;
 
@@ -63,11 +65,17 @@ public class Node : MonoBehaviour, INode
 
         _playerStats = PlayerStats.Instance;
 
-        _particleHolder = ParticleHolder.Instance.transform;
-
         _attackedHolder = SpawnableHolder.Instance.transform;
 
         _startColor = _renderer.material.color;
+
+        InitParticles();
+    }
+
+    private void InitParticles()
+    {
+        _builtEffect = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity, ParticleHolder.Instance.transform);
+        _sellEffect = Instantiate(_sellParticle, transform.position + _positionOffset, Quaternion.identity, ParticleHolder.Instance.transform);
     }
 
     public void NodeOccupied()
@@ -99,17 +107,16 @@ public class Node : MonoBehaviour, INode
     {
         Spawnable spawnableToBuild = BuildManager.Instance.GetSpawnableToBuild;
 
+        if ((spawnableToBuild is LandMine && this is NormalNode) || (spawnableToBuild is Turret && this is LandMineNode))
+            return;
+
         if (spawnableToBuild == null || _playerStats.Money < Mathf.Abs(spawnableToBuild.Cost))
         {
             StartCoroutine(OccupiedRoutine());
             return;
         }
 
-        if ((spawnableToBuild is LandMine && this is NormalNode) || (spawnableToBuild is Turret && this is LandMineNode))
-            return;
-
-        GameObject particle = Instantiate(_builtParticle, transform.position + _positionOffset, Quaternion.identity, _particleHolder);
-        Destroy(particle, 5f);
+        StartCoroutine(ParticleRoutine(_builtEffect));
 
         _playerStats.MoneyChanged(spawnableToBuild.Cost);
 
@@ -132,8 +139,7 @@ public class Node : MonoBehaviour, INode
     {
         _playerStats.MoneyChanged(Mathf.Abs(_currentSpawnable.GetComponent<Spawnable>().SellCost));
 
-        GameObject particle = Instantiate(_sellParticle, _currentSpawnable.transform.position + _positionOffset, Quaternion.identity, _particleHolder);
-        Destroy(particle, 5f);
+        StartCoroutine(ParticleRoutine(_sellEffect));
 
         _currentSpawnable.gameObject.SetActive(false);
         _currentSpawnable = null;
@@ -172,5 +178,20 @@ public class Node : MonoBehaviour, INode
     public void LandMineExplode()
     {
         _currentSpawnable = null;
+    }
+
+    private IEnumerator ParticleRoutine(GameObject particleGO)
+    {
+        particleGO.SetActive(true);
+
+        List<ParticleSystem> particleSystems = particleGO.GetComponentsInChildren<ParticleSystem>().ToList();
+
+        foreach(ParticleSystem particleSystem in particleSystems)
+            particleSystem.Play();
+
+        yield return new WaitForSeconds(5f);
+
+        foreach (ParticleSystem particleSystem in particleSystems)
+            particleSystem.Stop();
     }
 }

@@ -25,7 +25,6 @@ public class Enemy_Movement : MonoBehaviour
     private float _currentSpeed = 0f;
    
     private bool _targetSet = false;
-    private bool _defaultWaySet = false;
 
     private void OnEnable()
     {
@@ -50,9 +49,6 @@ public class Enemy_Movement : MonoBehaviour
 
         _defaultSpeed = _enemy.Speed;
         _currentSpeed = _defaultSpeed;
-
-        if(!_defaultWaySet)
-            _defaultWay = _enemy.DefaultWay;
 
         _target = _wayPointController.WayPointsArray[_defaultWay].WayPointsList[_wayPointIndex];
         _enemyModel.LookAt(_target);
@@ -87,7 +83,6 @@ public class Enemy_Movement : MonoBehaviour
     public void SetDefaultWay(int way)
     {
         _defaultWay = way;
-        _defaultWaySet = true;
 
         if (!_targetSet)
             return;
