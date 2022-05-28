@@ -8,7 +8,13 @@ public class Turret_Slow : Turret_Control
     [SerializeField] private ParticleSystem _laserImpactEffect = null;
     [SerializeField] private Light _pointLight = null;
 
+    [Header("Upgraded Settings")]
+    [SerializeField] private int _damageOverTime = 20;
+
     private SlowerTurret _slowerTurret = null;
+
+    private Enemy _targetEnemy = null;
+    private Transform _attackedTarget = null;
 
     private Transform _tempTarget = null;
 
@@ -75,6 +81,11 @@ public class Turret_Slow : Turret_Control
         _laserImpactEffect.transform.rotation = Quaternion.LookRotation(direction);
 
         SlowEnemy();
+
+        if (_slowerTurret.IsUpgraded)
+        {
+            Hit();
+        }
     }
 
     private void SlowEnemy()
@@ -87,5 +98,17 @@ public class Turret_Slow : Turret_Control
             _tempTarget = _target;
             _tempTarget.GetComponent<Enemy_Movement>().GetSlowed(_slowRate, this);
         }
+    }
+
+    private void Hit()
+    {
+        if (_targetEnemy == null || _attackedTarget != _target)
+        {
+            _targetEnemy = _target.GetComponent<Enemy>();
+
+            _attackedTarget = _target;
+        }
+
+        _targetEnemy.GetHit(_damageOverTime * Time.deltaTime);
     }
 }

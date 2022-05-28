@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149116270321325226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 694213939027736622}
@@ -193,6 +193,7 @@ MonoBehaviour:
   _sellCost: -200
   _upgradePrice: 0
   _upgradable: 0
+  _isUpgraded: 1
   _upgradedSpawnablePrefab: {fileID: 0}
   _disolveSpeed: 0.25
   _cannonCount: 1
@@ -220,6 +221,7 @@ MonoBehaviour:
   _lineRenderer: {fileID: 6037906465769415591}
   _laserImpactEffect: {fileID: 4163973452248843624}
   _pointLight: {fileID: 7194899036158978542}
+  _damageOverTime: 20
 --- !u!54 &8258511277512110500
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -273,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2354409367640584465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8544683245191615096}
@@ -306,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2520702997352574535}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.49525392, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0047461, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 63.703358}
   m_Children: []
   m_Father: {fileID: 694213939027736622}
@@ -386,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5606793516525483046}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.3974535, z: 0}
+  m_LocalPosition: {x: 0, y: 0.897454, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 25977262254688936}

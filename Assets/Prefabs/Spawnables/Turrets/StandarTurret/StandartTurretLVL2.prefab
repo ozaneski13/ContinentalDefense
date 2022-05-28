@@ -137,6 +137,7 @@ MonoBehaviour:
   _sellCost: -150
   _upgradePrice: 0
   _upgradable: 0
+  _isUpgraded: 1
   _upgradedSpawnablePrefab: {fileID: 0}
   _disolveSpeed: 0.25
   _cannonCount: 1

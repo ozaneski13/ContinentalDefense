@@ -36,7 +36,9 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private List<ParticleSystem> _particleSystems = null;
 
-    private int _currentHealthPoint;
+    private float _currentHealthPoint;
+
+    private bool _isDead = false;
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private void OnEnable()
     {
+        _isDead = false;
         _playerStats = PlayerStats.Instance;
 
         foreach (ParticleSystem particleSystem in _particleSystems)
@@ -57,7 +60,7 @@ public class Enemy : MonoBehaviour, IEnemy
         _healthBar.color = _normalHealthColor;
     }
 
-    public void GetHit(int damage)
+    public void GetHit(float damage)
     {
         if (_currentHealthPoint > damage)
         {
@@ -71,6 +74,11 @@ public class Enemy : MonoBehaviour, IEnemy
 
         else
         {
+            if (_isDead)
+                return;
+
+            _isDead = true;
+
             _playerStats.MoneyChanged(_prize);
 
             _deathEffect.transform.position = transform.position;

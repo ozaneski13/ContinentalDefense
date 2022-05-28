@@ -34,7 +34,7 @@ public class Node : MonoBehaviour, INode
 
     protected PlayerStats _playerStats = null;
 
-    protected Transform _attackedHolder = null;
+    protected Transform _spawnableHolder = null;
 
     protected Spawnable _currentSpawnable = null;
     public Spawnable CurrentSpawnable => _currentSpawnable;
@@ -69,7 +69,7 @@ public class Node : MonoBehaviour, INode
 
         _playerStats = PlayerStats.Instance;
 
-        _attackedHolder = SpawnableHolder.Instance.transform;
+        _spawnableHolder = SpawnableHolder.Instance.transform;
 
         _startColor = _renderer.material.color;
 
@@ -138,7 +138,7 @@ public class Node : MonoBehaviour, INode
                     _currentSpawnable = poolSpawnable;
 
         GameObject newSpawnable = _currentSpawnable.gameObject;
-        newSpawnable.transform.parent = _attackedHolder;
+        newSpawnable.transform.parent = _spawnableHolder;
         newSpawnable.SetActive(true);
 
         if(spawnableToBuild is LandMine)
@@ -178,7 +178,7 @@ public class Node : MonoBehaviour, INode
             }
 
         GameObject upgradedSpawnable = _currentSpawnable.gameObject;
-        upgradedSpawnable.transform.parent = _attackedHolder;
+        upgradedSpawnable.transform.parent = _spawnableHolder;
         upgradedSpawnable.SetActive(true);
 
         if (_currentSpawnable is LandMine)

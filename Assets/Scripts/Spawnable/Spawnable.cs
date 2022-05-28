@@ -20,6 +20,9 @@ public class Spawnable : MonoBehaviour, ISpawnable
     [SerializeField] protected bool _upgradable = false;
     public bool Upgradable => _upgradable;
 
+    [SerializeField] protected bool _isUpgraded = false;
+    public bool IsUpgraded => _isUpgraded;
+
     [SerializeField] protected GameObject _upgradedSpawnablePrefab = null;
     public GameObject UpgradedSpawnablePrefab => _upgradedSpawnablePrefab;
 
