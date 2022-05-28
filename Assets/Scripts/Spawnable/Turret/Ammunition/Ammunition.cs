@@ -33,6 +33,7 @@ public class Ammunition : MonoBehaviour, IAmmunition
     private void Awake()
     {
         _ammoImpactEfffect = Instantiate(_ammoImpactParticle, transform.position, transform.rotation, ParticleHolder.Instance.transform);
+        _ammoImpactEfffect.SetActive(false);
 
         _particleSystems = _ammoImpactEfffect.GetComponentsInChildren<ParticleSystem>().ToList();
     }

@@ -558,6 +558,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4469640869169646589, guid: 351ad4c92aa7b524487e3a3aeaef8339, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528358648405239321, guid: 351ad4c92aa7b524487e3a3aeaef8339, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7306728947137733758, guid: 351ad4c92aa7b524487e3a3aeaef8339, type: 3}
       propertyPath: m_Name
       value: LaserImpactEffect

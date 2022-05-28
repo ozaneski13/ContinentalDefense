@@ -15,25 +15,23 @@ public class LandMine_Explode : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask _targetsLayer;
 
-    [Header("Particles")]
-    [SerializeField] private GameObject _explosionParticle = null;
     private GameObject _explosionEffect = null;
 
     private List<ParticleSystem> _particleSystems = null;
 
     private bool _isRoutineStarted = false;
 
-    private void Awake()
+    private void Start()
     {
-        _explosionEffect = Instantiate(_explosionParticle, transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
-
-        _particleSystems = _explosionEffect.GetComponentsInChildren<ParticleSystem>().ToList();
+        if (_particleSystems == null && _explosionEffect != null)
+            _particleSystems = _explosionEffect.GetComponentsInChildren<ParticleSystem>().ToList();
     }
 
     private void OnEnable()
     {
-        foreach (ParticleSystem particleSystem in _particleSystems)
-            particleSystem.Stop();
+        if(_particleSystems != null)
+            foreach (ParticleSystem particleSystem in _particleSystems)
+                particleSystem.Stop();
 
         _isRoutineStarted = false;
     }
@@ -60,6 +58,7 @@ public class LandMine_Explode : MonoBehaviour
         foreach (Collider collider in hitArray)
             DamageEnemy(collider.gameObject);
 
+        _explosionEffect.transform.parent = ParticleHolder.Instance.transform;
         _explosionEffect.transform.position = transform.position;
         _explosionEffect.SetActive(true);
 
@@ -73,5 +72,10 @@ public class LandMine_Explode : MonoBehaviour
     private void DamageEnemy(GameObject enemy)
     {
         enemy.GetComponent<Enemy>().GetHit(_landMine.Damage);
+    }
+
+    public void SetEffect(GameObject explosionEffect)
+    {
+        _explosionEffect = explosionEffect;
     }
 }

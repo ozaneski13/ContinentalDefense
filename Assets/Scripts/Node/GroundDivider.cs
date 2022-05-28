@@ -9,6 +9,7 @@ public class GroundDivider : MonoBehaviour
     [Header("Efffects")]
     [SerializeField] private GameObject _builtParticle = null;
     [SerializeField] private GameObject _sellParticle = null;
+    [SerializeField] private GameObject _explosionParticle = null;
 
     [Header("Division Count")]
     [SerializeField] private int _landMineNodeDistance = 6;
@@ -50,6 +51,11 @@ public class GroundDivider : MonoBehaviour
             landMine.transform.position += landMineNode.PositionOffset;
             landMine.transform.parent = subPart.transform;
             landMine.SetActive(false);
+
+            GameObject explosionEffect = Instantiate(_explosionParticle, transform.position, Quaternion.identity, ParticleHolder.Instance.transform);
+            landMine.GetComponent<LandMine_Explode>().SetEffect(explosionEffect);
+            explosionEffect.transform.position = landMine.transform.position + landMineNode.PositionOffset;
+            explosionEffect.SetActive(false);
 
             landMineNode.BuiltParticleSetter(_builtParticle);
             landMineNode.SellParticleSetter(_sellParticle);
