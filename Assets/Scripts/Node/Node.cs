@@ -28,6 +28,8 @@ public class Node : MonoBehaviour, INode
     [SerializeField] protected Vector3 _positionOffset = new Vector3(0, 0.5f, 0);
     public Vector3 PositionOffset => _positionOffset;
 
+    private TouchManager _touchManager = null;
+
     private List<Spawnable> _spawnablePool = null;
 
     protected PlayerStats _playerStats = null;
@@ -62,6 +64,8 @@ public class Node : MonoBehaviour, INode
             _renderer = GetComponent<Renderer>();
         if (_renderer == null)
             _renderer = GetComponentInParent<Renderer>();
+
+        _touchManager = TouchManager.Instance;
 
         _playerStats = PlayerStats.Instance;
 
@@ -110,7 +114,13 @@ public class Node : MonoBehaviour, INode
         if ((spawnableToBuild is LandMine && this is NormalNode) || (spawnableToBuild is Turret && this is LandMineNode))
             return;
 
-        if (spawnableToBuild == null || _playerStats.Money < Mathf.Abs(spawnableToBuild.Cost))
+        if (spawnableToBuild == null)
+        {
+            _touchManager.NothingSelected();
+            return;
+        }
+
+        if (_playerStats.Money < Mathf.Abs(spawnableToBuild.Cost))
         {
             StartCoroutine(OccupiedRoutine());
             return;

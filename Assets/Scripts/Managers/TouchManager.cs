@@ -4,6 +4,18 @@ using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
+    #region Singleton
+    public static TouchManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+    #endregion
+
+    [Header("Nothing Selected UI")]
+    [SerializeField] private GameObject _nothingSelectedUI = null;
+
     [Header("Tutorial Only")]
     [SerializeField] private TriggerController _upgradeTurretTutorialTrigger = null;
 
@@ -81,5 +93,19 @@ public class TouchManager : MonoBehaviour
             else if (node.CurrentSpawnable != null)
                 _buildManager.SetNode(node);
         }
+    }
+
+    public void NothingSelected()
+    {
+        StartCoroutine(NothingSelectedRoutine());
+    }
+
+    private IEnumerator NothingSelectedRoutine()
+    {
+        _nothingSelectedUI.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        _nothingSelectedUI.SetActive(false);
     }
 }

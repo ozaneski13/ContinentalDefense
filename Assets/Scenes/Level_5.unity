@@ -1445,6 +1445,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5962742942629514992, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
   m_PrefabInstance: {fileID: 292663768}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &292663772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7940911435930076410, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+  m_PrefabInstance: {fileID: 292663768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &366002362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3017,10 @@ PrefabInstance:
       propertyPath: _toggleStatus
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1853978907507092554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: _nothingSelectedUI
+      value: 
+      objectReference: {fileID: 292663772}
     - target: {fileID: 1853978908116950091, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _enemyParent
       value: 
