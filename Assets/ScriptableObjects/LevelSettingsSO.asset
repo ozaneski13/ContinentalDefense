@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: LevelSettingsSO
   m_EditorClassIdentifier: 
   LevelSettings:
-  - _buildIndex: 1
+  - _buildIndex: 2
     _waveCount: 5
     _startingMoney: 1000
     _startingHealth: 15
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
     _bosses: []
-  - _buildIndex: 3
+  - _buildIndex: 4
     _waveCount: 10
     _startingMoney: 500
     _startingHealth: 100
     _enemies:
     - {fileID: 8788537642432661641, guid: 8379ee33a607b584cb8460cfc23c77df, type: 3}
     _bosses: []
-  - _buildIndex: 4
+  - _buildIndex: 5
     _waveCount: 20
     _startingMoney: 400
     _startingHealth: 100
@@ -36,7 +36,7 @@ MonoBehaviour:
     - {fileID: 8788537642432661641, guid: 2598e030b17b6a44baa6fe6d6d25b807, type: 3}
     - {fileID: 8788537642432661641, guid: baee3de7ddb1e2947a64cff7616682bc, type: 3}
     _bosses: []
-  - _buildIndex: 5
+  - _buildIndex: 6
     _waveCount: 30
     _startingMoney: 400
     _startingHealth: 100
@@ -46,7 +46,7 @@ MonoBehaviour:
     - {fileID: 8788537642432661641, guid: baee3de7ddb1e2947a64cff7616682bc, type: 3}
     _bosses:
     - {fileID: 8788537642432661641, guid: 09b66636530375a4381eca308c6bf6c2, type: 3}
-  - _buildIndex: 6
+  - _buildIndex: 7
     _waveCount: 50
     _startingMoney: 400
     _startingHealth: 100
@@ -56,7 +56,7 @@ MonoBehaviour:
     - {fileID: 8788537642432661641, guid: baee3de7ddb1e2947a64cff7616682bc, type: 3}
     _bosses:
     - {fileID: 8788537642432661641, guid: 9379d1f17f2fb0a44bfe2c6fc172a45d, type: 3}
-  - _buildIndex: 7
+  - _buildIndex: 8
     _waveCount: 50
     _startingMoney: 1000
     _startingHealth: 100
