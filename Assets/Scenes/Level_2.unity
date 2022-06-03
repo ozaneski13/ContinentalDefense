@@ -1939,6 +1939,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7940911435930076410, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
   m_PrefabInstance: {fileID: 692140684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &692140689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 684149021218544402, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+  m_PrefabInstance: {fileID: 692140684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &694302246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4614,6 +4619,10 @@ PrefabInstance:
       propertyPath: _countdownText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1231210308013263554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: _bossWaveUI
+      value: 
+      objectReference: {fileID: 692140689}
     - target: {fileID: 1231210308013263554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _waveSpawners.Array.size
       value: 1

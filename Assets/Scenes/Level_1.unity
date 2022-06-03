@@ -3357,6 +3357,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1231210308013263554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
+      propertyPath: _bossWaveUI
+      value: 
+      objectReference: {fileID: 1899803685}
+    - target: {fileID: 1231210308013263554, guid: a1b3b38c7a53e5a41a652e8c5df62d13, type: 3}
       propertyPath: _waveSpawners.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3529,6 +3533,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7832735948289742422, guid: 46baf69f2affa2c4fa3ba78d9083eb97, type: 3}
   m_PrefabInstance: {fileID: 1344431813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1899803685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 684149021218544402, guid: 043d8439fb07df74b86fa4108fb832f0, type: 3}
+  m_PrefabInstance: {fileID: 692140684}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911691604
 GameObject:

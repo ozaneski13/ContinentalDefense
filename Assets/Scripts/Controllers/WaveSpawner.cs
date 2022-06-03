@@ -50,6 +50,7 @@ public class WaveSpawner : MonoBehaviour
     private bool _isInvoked = false;
 
     public Action AllWavesSpawned;
+    public Action BossWaveSpawned;
 
     private void Start()
     {
@@ -207,6 +208,9 @@ public class WaveSpawner : MonoBehaviour
             bossCount = 4;
 
         int index = 0;
+
+        if (bossCount > 0)
+            BossWaveSpawned?.Invoke();
 
         for (int i = 0; i < bossCount; i++)
         {

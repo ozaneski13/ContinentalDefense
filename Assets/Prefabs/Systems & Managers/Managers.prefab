@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f807f6afd6e584da7728c10ef0e8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nothingSelectedUI: {fileID: 0}
   _upgradeTurretTutorialTrigger: {fileID: 0}
 --- !u!1 &1853978908116950093
 GameObject:
@@ -173,6 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveSpawners: []
+  _bossWaveUI: {fileID: 0}
+  _animClip: {fileID: 7400000, guid: 4c7e1b1451e999f4288a9a7dda45e496, type: 2}
 --- !u!1 &2749537474523023068
 GameObject:
   m_ObjectHideFlags: 0
